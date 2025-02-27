@@ -1,0 +1,32 @@
+.typewriter {
+  display: inline;
+  overflow: hidden;
+  height: 100%;
+  background: linear-gradient(to right, var(--color-text), var(--color-mauve));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cursor {
+  display: inline-block;
+  width: 6px;
+  height: 80px;
+  background: var(--color-text);
+  margin-left: 2px;
+  border-radius: 4px;
+  &.blink {
+    animation: pulse 1s infinite ease-in-out;
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  40%,
+  60% {
+    transform: scaleY(0);
+  }
+}

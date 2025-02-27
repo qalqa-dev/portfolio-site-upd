@@ -1,0 +1,85 @@
+.main {
+  width: 1200px;
+  .hero {
+    max-width: 1200px;
+    .title {
+      font-size: 120px;
+      font-weight: 500;
+    }
+  }
+
+  .about {
+    display: flex;
+    max-width: 1200px;
+    gap: 3vw;
+    font-size: 18px;
+    .about__content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+      width: 100%;
+      display: inline;
+    }
+
+    hr {
+      border: none;
+      border-bottom: 2px dashed var(--color-text);
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .list {
+      & li::before {
+        content: "-";
+        margin-right: 5px;
+      }
+    }
+    .highlight {
+      font-weight: 600;
+      color: var(--color-mauve);
+    }
+
+    .highlight-true {
+      color: var(--color-green);
+      font-weight: 600;
+    }
+
+    .highlight-found {
+      text-decoration: underline var(--color-text) 1px;
+    }
+  }
+}
+
+.stack {
+  .error {
+    color: var(--color-red);
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .reset {
+    color: var(--color-base);
+    font-weight: 600;
+    line-height: 1;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px 40px;
+    background-color: var(--color-mauve);
+    transition: 0.3s ease-in-out;
+  }
+
+  .reset:hover {
+    background-color: var(--color-pink);
+  }
+
+  .stack-loader {
+    font-size: 80px;
+  }
+}

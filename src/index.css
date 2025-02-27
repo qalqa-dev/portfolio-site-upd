@@ -1,25 +1,77 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Geist Sans";
+  src: url("./assets/fonts/Geist-v1.4.01/webfonts/Geist[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("./assets/fonts/GeistMono-1.4.01/webfonts/GeistMono[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./assets/fonts/JetBrainsMono/JetBrainsMono[wght].ttf") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:
+    Geist Mono,
+    Inter,
+    Helvetica,
+    Arial,
+    sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
+  --color-rosewater: #f5e0dc;
+  --color-flamingo: #f2cdcd;
+  --color-pink: #f5c2e7;
+  --color-mauve: #cba6f7;
+  --color-red: #f38ba8;
+  --color-maroon: #eba0ac;
+  --color-peach: #fab387;
+  --color-yelow: #f9e2af;
+  --color-green: #a6e3a1;
+  --color-teal: #81c8be;
+  --color-sky: #99d1db;
+  --color-sapphire: #85c1dc;
+  --color-blue: #8aadf4;
+  --color-lavender: #b7bdf8;
+  --color-text: #c9d1d9;
+  --color-subtext1: #8b949e;
+  --color-subtext0: #8b949e;
+  --color-overlay2: #3b4252;
+  --color-overlay1: #414868;
+  --color-overlay0: #1e1e2e;
+  --color-surface2: #3b4252;
+  --color-surface1: #414868;
+  --color-surface0: #1e1e2e;
+  --color-base: #1e1e2e;
+  --color-mantle: #181825;
+  --color-crust: #11111b;
+
+  --color-close-circle: #ff605c;
+  --color-hide-circle: #ffbd44;
+  --color-maximize-circle: #00ca4e;
+
+  color: var(--color-text);
+  background-color: var(--color-base);
+
+  scroll-behavior: smooth;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
 body {
@@ -27,42 +79,11 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
+  justify-content: center;
   min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 80px;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
