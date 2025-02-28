@@ -1,6 +1,8 @@
 import styles from './App.module.scss';
-import AsciiArt from './components/AsciiArt';
+import { AsciiArt } from './components/AsciiArt';
+import AsciiBar from './components/Term/AsciiBar';
 import { Term } from './components/Term/Term';
+import { TermCursor } from './components/Term/TermCusor/TermCursor';
 import Typewriter from './components/Typewriter/Typewriter';
 
 function App() {
@@ -21,21 +23,16 @@ function App() {
         </section>
         <section className={styles.about + ' mb-5'}>
           <div className="flex gap-5">
-            <Term className=" justify-center items-center w-3/5">
+            <Term className=" justify-center w-full items-center">
               <AsciiArt
                 imageSrc="src/assets/img/kitten.png"
-                scale={0.6}
+                scale={0.7}
                 size={5}
                 mirror
               />
             </Term>
-            <Term className="w-full pt-10">
-              <p>
-                {'>'} <span className={styles['highlight-true']}>cat</span>{' '}
-                <span className={styles['highlight-found']}>
-                  about_qalqa.md
-                </span>
-              </p>
+            <Term className="pt-10">
+              <TermCursor command="cat" text="about_qalqa.md" state="success" />
               <hr />
               <h2 className={styles.title}>Data</h2>
 
@@ -103,7 +100,73 @@ function App() {
         </section>
         <section className={styles.stack + ' mb-10'}>
           <Term className="" heading="Stack">
-            <AsciiArt imageSrc="src/assets/img/js.png" scale={0.05} size={14} />
+            <TermCursor command="neostack" state="success" />
+            <div className="flex">
+              <div className="flex gap-3">
+                <AsciiArt
+                  imageSrc="src/assets/img/js.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>JavaScript</h2>
+
+                  <div className="flex gap-2">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex gap-2">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={60}></AsciiBar>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={30}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      JS is more like something I have to use when working with
+                      legacy code, I prefer TS. But don't forget who we all owe
+                      it to!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <AsciiArt
+                  imageSrc="src/assets/img/ts.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>TypeScript</h2>
+
+                  <div className="flex gap-2">
+                    <span className={styles.highlight}>Skill:</span>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className={styles.highlight}>Fondness:</span>
+                    <AsciiBar value={100}></AsciiBar>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={90}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      TS - is absolute goat. I can't live without it.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </Term>
         </section>
       </main>

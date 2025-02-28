@@ -1,4 +1,4 @@
-import React, { JSX, useEffect, useRef, useState } from 'react';
+import { JSX, useEffect, useRef, useState } from 'react';
 
 interface AsciiArtProps {
   imageSrc: string;
@@ -23,7 +23,7 @@ const PALETTE: PaletteColor[] = [
   { name: 'red', hex: '#f38ba8', r: 243, g: 139, b: 168 },
   { name: 'maroon', hex: '#eba0ac', r: 235, g: 160, b: 172 },
   { name: 'peach', hex: '#fab387', r: 250, g: 179, b: 135 },
-  { name: 'yelow', hex: '#f9e2af', r: 249, g: 226, b: 175 },
+  { name: 'yellow', hex: '#f9e2af', r: 249, g: 226, b: 175 },
   { name: 'green', hex: '#a6e3a1', r: 166, g: 227, b: 161 },
   { name: 'teal', hex: '#81c8be', r: 129, g: 200, b: 190 },
   { name: 'sky', hex: '#99d1db', r: 153, g: 209, b: 219 },
@@ -62,15 +62,24 @@ const getNearestPaletteColor = (r: number, g: number, b: number): string => {
   return nearestColor;
 };
 
-const AsciiArt: React.FC<AsciiArtProps> = ({
+export const AsciiArt = ({
   imageSrc,
   scale = 0.1,
   size = 12,
   mirror = false,
-}) => {
+}: AsciiArtProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [asciiRows, setAsciiRows] = useState<JSX.Element[]>([]);
   const [asciiWidth, setAsciiWidth] = useState<number>(0);
+
+  const enhanceColor = (r: number, g: number, b: number, factor = 1.3) => {
+    const avg = (r + g + b) / 3;
+    return {
+      r: Math.min(255, avg + (r - avg) * factor),
+      g: Math.min(255, avg + (g - avg) * factor),
+      b: Math.min(255, avg + (b - avg) * factor),
+    };
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -100,10 +109,16 @@ const AsciiArt: React.FC<AsciiArtProps> = ({
 
         for (let x = 0; x < width; x++) {
           const index = (y * width + x) * 4;
-          const r = imageData[index];
-          const g = imageData[index + 1];
-          const b = imageData[index + 2];
+          let r = imageData[index];
+          let g = imageData[index + 1];
+          let b = imageData[index + 2];
           const a = imageData[index + 3];
+
+          const enhanced = enhanceColor(r, g, b);
+          r = enhanced.r;
+          g = enhanced.g;
+          b = enhanced.b;
+
           let asciiChar: string;
           let nearestColor: string;
 
@@ -172,5 +187,3 @@ const AsciiArt: React.FC<AsciiArtProps> = ({
     </div>
   );
 };
-
-export default AsciiArt;

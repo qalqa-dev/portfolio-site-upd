@@ -1,0 +1,13 @@
+.highlight-success {
+  color: var(--color-green);
+  font-weight: 600;
+}
+
+.highlight-error {
+  color: var(--color-red);
+  font-weight: 600;
+}
+
+.highlight-found {
+  text-decoration: underline var(--color-text) 1px;
+}
