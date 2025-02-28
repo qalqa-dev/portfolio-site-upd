@@ -1,22 +1,9 @@
-import clsx from 'clsx';
-import { useState } from 'react';
 import styles from './App.module.scss';
-import { Init } from './components/Init/Init';
+import AsciiArt from './components/AsciiArt';
 import { Term } from './components/Term/Term';
 import Typewriter from './components/Typewriter/Typewriter';
 
 function App() {
-  const [resetting, setResetting] = useState(false);
-  // const [resetted, setResetted] = useState(false);
-
-  const handleReset = () => {
-    setResetting(true);
-    setTimeout(() => {
-      setResetting(false);
-      // setResetted(true);
-    }, 5000);
-  };
-
   return (
     <>
       <main className={styles.main}>
@@ -35,7 +22,12 @@ function App() {
         <section className={styles.about + ' mb-5'}>
           <div className="flex gap-5">
             <Term className=" justify-center items-center w-3/5">
-              <p className="w-full">Ascii photo</p>
+              <AsciiArt
+                imageSrc="src/assets/img/kitten.png"
+                scale={0.6}
+                size={5}
+                mirror
+              />
             </Term>
             <Term className="w-full pt-10">
               <p>
@@ -62,7 +54,7 @@ function App() {
               <ul className={styles.list}>
                 <li>
                   <span className={styles.highlight}>2 years</span> at WONE-IT
-                  (a major B2B IT company)
+                  (a major B2B IT company) as FS-dev
                 </li>
                 <li>
                   Developed the <span className={styles.highlight}>FE</span> for
@@ -110,15 +102,9 @@ function App() {
           </div>
         </section>
         <section className={styles.stack + ' mb-10'}>
-          <Term className="items-center h-[180px]">
-            <p className={clsx(styles.error, 'uppercase')}>
-              Oops, something went wrong
-            </p>
-            <button onClick={handleReset} className={styles.reset}>
-              Reset
-            </button>
+          <Term className="" heading="Stack">
+            <AsciiArt imageSrc="src/assets/img/js.png" scale={0.05} size={14} />
           </Term>
-          {resetting && <Init />}
         </section>
       </main>
     </>
