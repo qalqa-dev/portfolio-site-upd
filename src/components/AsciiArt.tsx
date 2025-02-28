@@ -16,6 +16,7 @@ type PaletteColor = {
 };
 
 const PALETTE: PaletteColor[] = [
+  { name: 'white', hex: '#fffff', r: 255, g: 255, b: 255 },
   { name: 'rosewater', hex: '#f5e0dc', r: 245, g: 224, b: 220 },
   { name: 'flamingo', hex: '#f2cdcd', r: 242, g: 205, b: 205 },
   { name: 'pink', hex: '#f5c2e7', r: 245, g: 194, b: 231 },
@@ -122,7 +123,7 @@ export const AsciiArt = ({
           let asciiChar: string;
           let nearestColor: string;
 
-          if (a < 128) {
+          if (a === 0) {
             asciiChar = ' ';
             nearestColor = 'transparent';
           } else {
@@ -151,6 +152,7 @@ export const AsciiArt = ({
             currentText = asciiChar;
           }
         }
+
         if (currentText !== '') {
           spans.push(
             <span key={width} style={{ color: currentColor || undefined }}>

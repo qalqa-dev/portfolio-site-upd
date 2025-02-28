@@ -1,6 +1,6 @@
 import styles from './App.module.scss';
 import { AsciiArt } from './components/AsciiArt';
-import AsciiBar from './components/Term/AsciiBar';
+import { AsciiBar } from './components/Term/AsciiBar';
 import { Term } from './components/Term/Term';
 import { TermCursor } from './components/Term/TermCusor/TermCursor';
 import Typewriter from './components/Typewriter/Typewriter';
@@ -98,11 +98,11 @@ function App() {
             </Term>
           </div>
         </section>
-        <section className={styles.stack + ' mb-10'}>
-          <Term className="" heading="Stack">
-            <TermCursor command="neostack" state="success" />
-            <div className="flex">
-              <div className="flex gap-3">
+        <section className={styles.stack + ' mb-10 flex flex-col gap-5'}>
+          <Term heading="Stack">
+            <TermCursor command="neostack" state="success" prefix="--fe" />
+            <div className="flex mb-10">
+              <div className="flex gap-3 w-full">
                 <AsciiArt
                   imageSrc="src/assets/img/js.png"
                   scale={0.06}
@@ -111,33 +111,32 @@ function App() {
                 <div>
                   <h2 className={styles.title}>JavaScript</h2>
 
-                  <div className="flex gap-2">
+                  <div className="flex justify-between">
                     <p>
                       <span className={styles.highlight}>Skill</span>:
                     </p>
                     <AsciiBar value={80}></AsciiBar>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex justify-between">
                     <p>
                       <span className={styles.highlight}>Affinity</span>:
                     </p>
-                    <AsciiBar value={60}></AsciiBar>
+                    <AsciiBar value={50}></AsciiBar>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex justify-between">
                     <span className={styles.highlight}>Usage:</span>
                     <AsciiBar value={30}></AsciiBar>
                   </div>
                   <div>
                     <h2 className={styles.highlight}>Little summary</h2>
                     <p className="text-pretty break-words">
-                      JS is more like something I have to use when working with
-                      legacy code, I prefer TS. But don't forget who we all owe
-                      it to!
+                      More like something I have to use when working with legacy
+                      code. But don't forget who we all owe it to!
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 w-full">
                 <AsciiArt
                   imageSrc="src/assets/img/ts.png"
                   scale={0.06}
@@ -145,23 +144,369 @@ function App() {
                 />
                 <div>
                   <h2 className={styles.title}>TypeScript</h2>
-
-                  <div className="flex gap-2">
-                    <span className={styles.highlight}>Skill:</span>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
                     <AsciiBar value={80}></AsciiBar>
                   </div>
-                  <div className="flex gap-2">
-                    <span className={styles.highlight}>Fondness:</span>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
                     <AsciiBar value={100}></AsciiBar>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex justify-between">
                     <span className={styles.highlight}>Usage:</span>
                     <AsciiBar value={90}></AsciiBar>
                   </div>
                   <div>
                     <h2 className={styles.highlight}>Little summary</h2>
                     <p className="text-pretty break-words">
-                      TS - is absolute goat. I can't live without it.
+                      Is absolute goat. I can't live without it.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex mb-10">
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/react.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>React</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={90}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={60}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      At the moment, my main framework is for its simplicity and
+                      flexibility. Virtual DOM - makes things
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/nextjs.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>NextJs</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={40}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={20}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      It's a new tech that I'm learning, so not feel confident
+                      at it yet.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex">
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/angular.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>Angular</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={70}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={50}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={0}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      In the past, this was my main framework, but now it's too
+                      overloaded for my tasks.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/vue.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>Vue</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={50}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={50}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={20}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      I had to learn it in university, there aren't many
+                      differences from react, mid so...
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Term>
+          <Term className="" heading="Stack_BE">
+            <TermCursor command="neostack" state="success" prefix="--be" />
+            <div className="flex mb-10">
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/js.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>JavaScript</h2>
+
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={50}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={30}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      More like something I have to use when working with legacy
+                      code. But don't forget who we all owe it to!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/ts.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>TypeScript</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={100}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={90}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      Is absolute goat. I can't live without it.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex mb-10">
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/react.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>React</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={90}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={60}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      At the moment, my main framework is for its simplicity and
+                      flexibility. Virtual DOM - makes things
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/nextjs.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>NextJs</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={40}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={80}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={20}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      It's a new tech that I'm learning, so not feel confident
+                      at it yet.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex">
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/angular.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>Angular</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={70}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={50}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={0}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      In the past, this was my main framework, but now it's too
+                      overloaded for my tasks.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 w-full">
+                <AsciiArt
+                  imageSrc="src/assets/img/vue.png"
+                  scale={0.06}
+                  size={10}
+                />
+                <div>
+                  <h2 className={styles.title}>Vue</h2>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Skill</span>:
+                    </p>
+                    <AsciiBar value={50}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <p>
+                      <span className={styles.highlight}>Affinity</span>:
+                    </p>
+                    <AsciiBar value={50}></AsciiBar>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className={styles.highlight}>Usage:</span>
+                    <AsciiBar value={20}></AsciiBar>
+                  </div>
+                  <div>
+                    <h2 className={styles.highlight}>Little summary</h2>
+                    <p className="text-pretty break-words">
+                      I had to learn it in university, there aren't many
+                      differences from react, mid so...
                     </p>
                   </div>
                 </div>

@@ -2,7 +2,7 @@ interface AsciiProgressBarProps {
   value: number;
 }
 
-export const AsciiProgressBar = ({ value }: AsciiProgressBarProps) => {
+export const AsciiBar = ({ value }: AsciiProgressBarProps) => {
   const width = 20;
   const filledLength = Math.round((value / 100) * width);
   const emptyLength = width - filledLength;
@@ -28,8 +28,11 @@ export const AsciiProgressBar = ({ value }: AsciiProgressBarProps) => {
   });
 
   return (
-    <pre style={{ color: barColor?.hex }}>{`${filled}${empty} ${value}%`}</pre>
+    <>
+      <pre style={{ color: barColor?.hex, width: 271 }}>
+        {`${filled}${empty} `}
+        <span>{value}%</span>
+      </pre>
+    </>
   );
 };
-
-export default AsciiProgressBar;

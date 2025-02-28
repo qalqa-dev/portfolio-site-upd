@@ -3,10 +3,16 @@ import styles from './TermCursor.module.scss';
 interface ITermCursorProps {
   command: string;
   text?: string;
+  prefix?: string;
   state?: 'error' | 'success' | 'uncompleted';
 }
 
-export const TermCursor = ({ command, text, state }: ITermCursorProps) => {
+export const TermCursor = ({
+  command,
+  text,
+  prefix,
+  state,
+}: ITermCursorProps) => {
   return (
     <p>
       {'>'}{' '}
@@ -25,6 +31,7 @@ export const TermCursor = ({ command, text, state }: ITermCursorProps) => {
       >
         {text}
       </span>
+      <span>{prefix}</span>
     </p>
   );
 };
