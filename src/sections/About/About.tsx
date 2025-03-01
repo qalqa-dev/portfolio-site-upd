@@ -11,64 +11,63 @@ export const About = () => {
         <Term className="pt-10" heading="qalqa/About">
           <TermCursor command="cat" text="about_qalqa.md" state="success" />
           <hr />
-          <h2 className={styles.title}>Data</h2>
+          <h2 className={'title'}>Data</h2>
 
           <p>
-            <span className={styles.highlight}>Name:</span> Andrey
+            <span className={'highlight'}>Name:</span> Andrey
           </p>
           <p>
-            <span className={styles.highlight}>Origin:</span> Russia
+            <span className={'highlight'}>Origin:</span> Russia
           </p>
           <p>
-            <span className={styles.highlight}>Education:</span> Moscow
-            Polytechnic University
+            <span className={'highlight'}>Education:</span> Moscow Polytechnic
+            University
           </p>
           <hr />
-          <h2 className={styles.title}>Experience</h2>
+          <h2 className={'title'}>Experience</h2>
           <ul className={styles.list}>
             <li>
-              <span className={styles.highlight}>2 years</span> at WONE-IT (a
-              major B2B IT company) as FS-dev
+              <span className={'highlight'}>2 years</span> at WONE-IT (a major
+              B2B IT company) as FS-dev
             </li>
             <li>
-              Developed the <span className={styles.highlight}>FE</span> for a
+              Developed the <span className={'highlight'}>FE</span> for a
               workspace booking system
             </li>
             <li>
-              Engineered{' '}
-              <span className={styles.highlight}>one of the largest</span> CRM
-              systems in Kazakhstan (Victoria Insurance)
+              Engineered <span className={'highlight'}>one of the largest</span>{' '}
+              CRM systems in Kazakhstan (Victoria Insurance)
             </li>
           </ul>
           <hr />
-          <h2 className={styles.title}>Goals</h2>
+          <h2 className={'title'}>Goals</h2>
           <ul className={styles.list}>
             <li>
               To secure a role at a leading{' '}
-              <span className={styles.highlight}>big tech</span> company
+              <span className={'highlight'}>big tech</span> company
             </li>
             <li>
-              I need a <span className={styles.highlight}>dolla</span>,{' '}
-              <span className={styles.highlight}>dolla</span>,{' '}
-              <span className={styles.highlight}>dolla</span> :){' '}
+              I need a <span className={'highlight'}>dolla</span>,{' '}
+              <span className={'highlight'}>dolla</span>,{' '}
+              <span className={'highlight'}>dolla</span> :){' '}
             </li>
           </ul>
           <hr />
-          <h2 className={styles.title}>Hobbies</h2>
+          <h2 className={'title'}>Hobbies</h2>
           <ul className={styles.list}>
             <li>
-              Creating <span className={styles.highlight}>innovative</span> pet
+              Creating <span className={'highlight'}>innovative</span> pet
               projects (just like this one)
             </li>
             <li>Helping younglings in university</li>
             <li>Playing musical instruments</li>
           </ul>
           <hr />
-          <h2 className={styles.title}>Summary</h2>
+          <h2 className={'title'}>Summary</h2>
           <p>
-            A dedicated and <span className={styles.highlight}>innovative</span>{' '}
-            tech enthusiast, merging a passion for software development with
-            creative musical pursuits. Constantly seeking new challenges and
+            A dedicated and <span className={'highlight'}>innovative</span> tech
+            enthusiast, merging a passion for software development with creative
+            musical pursuits. Constantly seeking new challenges and
             opportunities to grow.
           </p>
         </Term>

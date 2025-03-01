@@ -6,12 +6,14 @@ interface ITermCursorProps {
   command: string;
   text?: string;
   prefix?: string;
+  postfix?: string;
   state?: 'error' | 'success' | 'uncompleted';
 }
 
 export const TermCursor = ({
   command,
   text,
+  postfix,
   prefix,
   state,
 }: ITermCursorProps) => {
@@ -26,6 +28,7 @@ export const TermCursor = ({
       >
         {command}
       </span>{' '}
+      <span className={styles['highlight-prefix']}>{prefix}</span>{' '}
       <span
         className={clsx({
           [styles['highlight-found']]: state === 'success',
@@ -33,7 +36,7 @@ export const TermCursor = ({
       >
         {text}
       </span>
-      <span>{prefix}</span>
+      <span>{postfix}</span>
     </p>
   );
 };
