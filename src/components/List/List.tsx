@@ -1,12 +1,5 @@
+import { IProject } from 'types';
 import { Directory } from './Directory';
-
-export interface IProject {
-  name: string;
-  href: string;
-  description?: string;
-  status?: 'active' | 'cancelled' | 'finished' | 'in progress';
-  children?: IProject[];
-}
 
 interface ListProps {
   root: IProject;

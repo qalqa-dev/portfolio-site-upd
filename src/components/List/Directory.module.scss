@@ -8,6 +8,6 @@ $border-radius: 5px;
 
 .top {
   width: $size;
-  height: $size / 2.5;
+  height: calc($size / 2.5);
   border-radius: 2px $border-radius 0 0;
 }

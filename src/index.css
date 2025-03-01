@@ -87,3 +87,15 @@ h1 {
   font-size: 80px;
   line-height: 1.1;
 }
+
+.highlight {
+  font-weight: 600;
+  color: var(--color-mauve);
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  width: 100%;
+  display: inline;
+}

@@ -1,36 +1,6 @@
 .main {
   max-width: 1300px;
   font-size: 18px;
-  .hero {
-    .title {
-      font-size: 120px;
-      font-weight: 500;
-    }
-  }
-
-  .about {
-    display: flex;
-    gap: 3vw;
-
-    .about__content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    hr {
-      border: none;
-      border-bottom: 2px dashed var(--color-text);
-      width: 100%;
-      margin: 10px 0;
-    }
-
-    .list {
-      & li::before {
-        content: "-";
-        margin-right: 5px;
-      }
-    }
-  }
 }
 
 .highlight {
@@ -43,7 +13,4 @@
   font-weight: 600;
   width: 100%;
   display: inline;
-}
-
-.stack {
 }

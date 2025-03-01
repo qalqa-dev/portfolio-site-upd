@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { IProject } from '../List/List';
 
+import { IProject } from 'types';
 import styles from './Preview.module.scss';
 
 interface PreviewProps {

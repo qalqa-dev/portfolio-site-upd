@@ -1,5 +1,7 @@
 import clsx from 'clsx';
+
 import styles from './TermCursor.module.scss';
+
 interface ITermCursorProps {
   command: string;
   text?: string;

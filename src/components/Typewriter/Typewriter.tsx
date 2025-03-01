@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+
 import styles from './Typewriter.module.scss';
 
 interface TypewriterProps {
