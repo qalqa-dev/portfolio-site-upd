@@ -73,7 +73,7 @@ export const AsciiArt = ({
   const [asciiRows, setAsciiRows] = useState<JSX.Element[]>([]);
   const [asciiWidth, setAsciiWidth] = useState<number>(0);
 
-  const enhanceColor = (r: number, g: number, b: number, factor = 1.3) => {
+  const enhanceColor = (r: number, g: number, b: number, factor = 1.5) => {
     const avg = (r + g + b) / 3;
     return {
       r: Math.min(255, avg + (r - avg) * factor),
