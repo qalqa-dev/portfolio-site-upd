@@ -173,7 +173,7 @@ function App() {
             </Term>
           </div>
         </section>
-        <section className={styles.stack + ' mb-10 flex flex-col gap-5'}>
+        <section className={styles.stack + ' mb-5 flex flex-col gap-5'}>
           <Term heading="qalqa/Stack/fe">
             <TermCursor command="neostack" state="success" prefix="--fe" />
             <div className="flex mb-10">
@@ -588,7 +588,7 @@ function App() {
             </div>
           </Term>
         </section>
-        <section>
+        <section className="mb-5">
           <Term heading="qalqa/Projects" className="">
             <TermCursor command="ls" state="success" />
             <div className="flex w-full">
@@ -597,6 +597,27 @@ function App() {
               </div>
               <Preview project={hoveredProject} />
             </div>
+          </Term>
+        </section>
+        <section>
+          <Term heading="qalqa/Contacts">
+            <TermCursor command="env" state="success" />
+            <p>
+              <span className={styles.highlight}>EMAIL</span>=
+              <a href="mailto:andreybas04@gmail.com">andreybas04@gmail.com</a>
+            </p>
+            <p>
+              <span className={styles.highlight}>GITHUB</span>=
+              <a href="https://github.com/qalqaa">qalqaa</a>
+            </p>
+            <p>
+              <span className={styles.highlight}>TELEGRAM</span>=
+              <a href="https://t.me/qalqaa">qalqaa</a>
+            </p>
+            <p>
+              <span className={styles.highlight}>VK</span>=
+              <a href="https://vk.com/qalqaa">qalqaa</a>
+            </p>
           </Term>
         </section>
       </main>
