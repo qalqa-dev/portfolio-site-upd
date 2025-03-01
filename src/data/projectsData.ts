@@ -1,4 +1,4 @@
-import { IProject } from '../components/List/List';
+import { IProject } from 'types';
 
 export const projectsData: IProject = {
   name: '.',

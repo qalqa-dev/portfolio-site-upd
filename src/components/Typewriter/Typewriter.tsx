@@ -10,7 +10,7 @@ interface TypewriterProps {
   className?: string;
 }
 
-const Typewriter = ({
+export const Typewriter = ({
   text,
   typingSpeed = 100,
   pauseDuration = 4000,
@@ -79,5 +79,3 @@ const Typewriter = ({
     </div>
   );
 };
-
-export default Typewriter;

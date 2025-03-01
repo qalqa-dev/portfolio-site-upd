@@ -1,6 +1,4 @@
-import { Term } from 'components';
-
-import Typewriter from 'components/Typewriter/Typewriter';
+import { Term, Typewriter } from 'components';
 import styles from './Hero.module.scss';
 
 export const Hero = () => {

@@ -1,8 +1,7 @@
-import { List } from '@/components/List/List';
-import { Preview } from '@/components/Preview/Preview';
-import { projectsData } from '@/data/projectsData';
-import { Term, TermCursor } from 'components';
 import { useState } from 'react';
+
+import { projectsData } from '@/data/projectsData';
+import { List, Preview, Term, TermCursor } from 'components';
 import { IProject } from 'types';
 
 export const Projects = () => {
