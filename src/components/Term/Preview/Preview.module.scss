@@ -1,0 +1,28 @@
+.status,
+.description {
+  font-weight: 700;
+}
+
+.status {
+  font-size: 14px;
+}
+
+.highlight {
+  color: var(--color-mauve);
+}
+
+.finished {
+  color: var(--color-green);
+}
+
+.inProgress {
+  color: var(--color-yelow);
+}
+
+.cancelled {
+  color: var(--color-red);
+}
+
+.active {
+  color: var(--color-blue);
+}

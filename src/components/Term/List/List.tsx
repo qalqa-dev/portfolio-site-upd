@@ -3,6 +3,8 @@ import { Directory } from './Directory';
 export interface IProject {
   name: string;
   href: string;
+  description?: string;
+  status?: 'active' | 'cancelled' | 'finished' | 'in progress';
   children?: IProject[];
 }
 
@@ -11,6 +13,7 @@ interface ListProps {
   level?: number;
   isLast?: boolean;
   parentHasMoreSiblings?: boolean[];
+  onHover: (project: IProject | null) => void;
 }
 
 export const List = ({
@@ -18,10 +21,17 @@ export const List = ({
   level = 0,
   isLast = false,
   parentHasMoreSiblings = [],
+  onHover,
 }: ListProps) => {
   return (
     <div>
-      <div className="flex items-center">
+      <div
+        className="flex items-center"
+        onMouseEnter={() =>
+          root.href !== '#' && root.href !== '#' && onHover(root)
+        }
+        onMouseLeave={() => onHover(null)}
+      >
         {parentHasMoreSiblings.map((hasMoreSiblings, index) => (
           <div
             key={index}
@@ -38,7 +48,10 @@ export const List = ({
             }}
           ></div>
         ))}
-        <a className="flex gap-1 underline" href={root.href}>
+        <a
+          className={`flex gap-1  ${root.href === '#' ? '' : 'underline'}`}
+          href={root.href}
+        >
           <Directory color="#cba6f7" />
           {root.name}
         </a>
@@ -50,6 +63,7 @@ export const List = ({
           level={level + 1}
           isLast={index === root.children!.length - 1}
           parentHasMoreSiblings={[...parentHasMoreSiblings, !isLast]}
+          onHover={onHover}
         />
       ))}
     </div>
