@@ -1,9 +1,57 @@
 import styles from './App.module.scss';
 import { AsciiArt } from './components/AsciiArt';
 import { AsciiBar } from './components/Term/AsciiBar';
+import { IProject, List } from './components/Term/List/List';
 import { Term } from './components/Term/Term';
 import { TermCursor } from './components/Term/TermCusor/TermCursor';
 import Typewriter from './components/Typewriter/Typewriter';
+
+const testData: IProject = {
+  name: '.',
+  href: '#',
+  children: [
+    {
+      name: 'qalqa-ui',
+      href: 'https://github.com/qalqaDevSpace/qalqa-ui',
+      children: [
+        {
+          name: 'Nexx (cancelled)',
+          href: 'https://github.com/qalqaDevSpace/Nexx-tracker',
+        },
+      ],
+    },
+    {
+      name: 'web-course-site',
+      href: 'https://github.com/slavaver/web-course-site',
+    },
+    {
+      name: 'qalqa-sneaker-shop',
+      href: 'https://github.com/qalqaa/qalqa-sneaker-shop',
+      children: [
+        {
+          name: 'qalqa-sneaker-shop-be',
+          href: 'https://github.com/qalqaa/qalqa-sneaker',
+        },
+      ],
+    },
+    {
+      name: '3d-printer-ui',
+      href: 'https://github.com/FrontendCourseMP/lab-7-8-qalqaa',
+    },
+    {
+      name: 'vscode-minimalism',
+      href: 'https://github.com/qalqaa/vscode-minimalism',
+    },
+    {
+      name: 'turiki (colab)',
+      href: 'https://github.com/fgugnin22/turiki',
+    },
+    {
+      name: 'mouse-study-platform (abandoned)',
+      href: '#/project-b',
+    },
+  ],
+};
 
 function App() {
   return (
@@ -31,7 +79,7 @@ function App() {
                 mirror
               />
             </Term>
-            <Term className="pt-10">
+            <Term className="pt-10" heading="qalqa/About">
               <TermCursor command="cat" text="about_qalqa.md" state="success" />
               <hr />
               <h2 className={styles.title}>Data</h2>
@@ -510,6 +558,14 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
+          </Term>
+        </section>
+        <section>
+          <Term heading="qalqa/Projects" className="">
+            <TermCursor command="ls" state="success" />
+            <div className="pl-5">
+              <List root={testData}></List>
             </div>
           </Term>
         </section>
