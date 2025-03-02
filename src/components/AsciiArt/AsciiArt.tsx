@@ -1,24 +1,6 @@
 import { JSX, useEffect, useRef, useState } from 'react';
 
-import { PALETTE } from 'types';
-
-const getNearestPaletteColor = (r: number, g: number, b: number): string => {
-  let minDistance = Infinity;
-  let nearestColor = PALETTE[0].hex;
-  for (const color of PALETTE) {
-    const dr = r - color.r;
-    const dg = g - color.g;
-    const db = b - color.b;
-    const distance = dr * dr + dg * dg + db * db;
-    if (distance < minDistance) {
-      minDistance = distance;
-      nearestColor = color.hex;
-    }
-  }
-  return nearestColor;
-};
-
-const ASCII_CHARS = '@%#*+=-:. ';
+const ASCII_CHARS = 'QWERTYUIOP{}AZSXDFGHJKL:ZXCVBNM<>>?@%#*+=-:. ';
 
 interface AsciiArtProps {
   imageSrc: string;
@@ -36,15 +18,6 @@ export const AsciiArt = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [asciiRows, setAsciiRows] = useState<JSX.Element[]>([]);
   const [asciiWidth, setAsciiWidth] = useState<number>(0);
-
-  const enhanceColor = (r: number, g: number, b: number, factor = 1.5) => {
-    const avg = (r + g + b) / 3;
-    return {
-      r: Math.min(255, avg + (r - avg) * factor),
-      g: Math.min(255, avg + (g - avg) * factor),
-      b: Math.min(255, avg + (b - avg) * factor),
-    };
-  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -74,32 +47,27 @@ export const AsciiArt = ({
 
         for (let x = 0; x < width; x++) {
           const index = (y * width + x) * 4;
-          let r = imageData[index];
-          let g = imageData[index + 1];
-          let b = imageData[index + 2];
+          const r = imageData[index];
+          const g = imageData[index + 1];
+          const b = imageData[index + 2];
           const a = imageData[index + 3];
 
-          const enhanced = enhanceColor(r, g, b);
-          r = enhanced.r;
-          g = enhanced.g;
-          b = enhanced.b;
-
           let asciiChar: string;
-          let nearestColor: string;
+          let color: string;
 
           if (a === 0) {
             asciiChar = ' ';
-            nearestColor = 'transparent';
+            color = 'transparent';
           } else {
             const brightness = (r + g + b) / 3;
             const charIndex = Math.floor(
               (brightness / 255) * (ASCII_CHARS.length - 1),
             );
             asciiChar = ASCII_CHARS[charIndex];
-            nearestColor = getNearestPaletteColor(r, g, b);
+            color = `rgb(${r}, ${g}, ${b})`;
           }
 
-          if (nearestColor === currentColor) {
+          if (color === currentColor) {
             currentText += asciiChar;
           } else {
             if (currentText !== '') {
@@ -112,7 +80,7 @@ export const AsciiArt = ({
                 </span>,
               );
             }
-            currentColor = nearestColor;
+            currentColor = color;
             currentText = asciiChar;
           }
         }

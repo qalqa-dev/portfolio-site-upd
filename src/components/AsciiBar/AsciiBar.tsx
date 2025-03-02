@@ -7,29 +7,26 @@ export const AsciiBar = ({ value }: AsciiProgressBarProps) => {
   const filledLength = Math.round((value / 100) * width);
   const emptyLength = width - filledLength;
 
-  const PALETTE = [
-    { name: 'red', hex: '#f38ba8', r: 243, g: 139, b: 168 },
-    { name: 'yellow', hex: '#f9e2af', r: 249, g: 226, b: 175 },
-    { name: 'green', hex: '#a6e3a1', r: 166, g: 227, b: 161 },
-  ];
-
   const filled = `${'█'.repeat(filledLength)}`;
   const empty = '░'.repeat(emptyLength);
 
-  const barColor = PALETTE.find((color) => {
-    switch (color.name) {
-      case 'red':
-        return value < 31;
-      case 'yellow':
-        return value >= 31 && value < 80;
-      case 'green':
-        return value >= 80;
+  const barColor = () => {
+    switch (true) {
+      case value < 30:
+        return 'red';
+      case value < 70:
+        return 'yellow';
+      default:
+        return 'green';
     }
-  });
+  };
 
   return (
     <>
-      <pre className="w-fit md:w-[271px]" style={{ color: barColor?.hex }}>
+      <pre
+        className={`w-fit md:w-[271px] `}
+        style={{ color: `var(--color-${barColor()})` }}
+      >
         <span>{`${filled}${empty} `}</span>
         <span>{value}%</span>
       </pre>

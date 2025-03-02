@@ -20,7 +20,7 @@ export const SkillBar = ({
   return (
     <div className="flex gap-3 w-full">
       <div className="hidden lg:block">
-        <AsciiArt imageSrc={`/${imgName}.png`} scale={0.1} size={5} />
+        <AsciiArt imageSrc={`/${imgName}.png`} scale={0.07} size={7} />
       </div>
       <div>
         <h2 className={'title'}>{skillName}</h2>

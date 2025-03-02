@@ -41,7 +41,7 @@
   --color-red: #f38ba8;
   --color-maroon: #eba0ac;
   --color-peach: #fab387;
-  --color-yelow: #f9e2af;
+  --color-yellow: #f9e2af;
   --color-green: #a6e3a1;
   --color-teal: #81c8be;
   --color-sky: #99d1db;
@@ -76,6 +76,41 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-rosewater: #dc8a78;
+    --color-flamingo: #dd7878;
+    --color-pink: #ea76cb;
+    --color-mauve: #8839ef;
+    --color-red: #d20f39;
+    --color-maroon: #e64553;
+    --color-peach: #fe640b;
+    --color-yellow: #df8e1d;
+    --color-green: #40a02b;
+    --color-teal: #179299;
+    --color-sky: #04a5e5;
+    --color-sapphire: #209fb5;
+    --color-blue: #1e66f5;
+    --color-lavender: #7287fd;
+    --color-text: #4c4f69;
+    --color-subtext1: #5c5f77;
+    --color-subtext0: #6c6f85;
+    --color-overlay2: #7c7f93;
+    --color-overlay1: #8c8fa1;
+    --color-overlay0: #9ca0b0;
+    --color-surface2: #acb0be;
+    --color-surface1: #bcc0cc;
+    --color-surface0: #ccd0da;
+    --color-base: #eff1f5;
+    --color-mantle: #e6e9ef;
+    --color-mauve-tr: rgba(136, 57, 239, 0.5);
+    --color-mantle-tr: rgb(230, 233, 239, 0.8);
+    --color-crust: #dce0e8;
+    color: var(--color-text);
+    background-color: var(--color-base);
+  }
+}
+
 h1 {
   font-size: 80px;
   line-height: 1.1;
@@ -87,7 +122,7 @@ h1 {
 }
 
 .title {
-  font-size: clamp(16px, 2vw, 24px) !important;
+  font-size: clamp(16px, vw, 24px) !important;
   font-weight: 600;
   width: 100%;
 }
