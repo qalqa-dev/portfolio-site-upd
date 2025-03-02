@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { About, Hero, Projects, StackBack, StackFront } from 'sections';
 import styles from './App.module.scss';

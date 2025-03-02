@@ -14,7 +14,7 @@ export const Hero = ({ scroll, scrollRange }: SectionsProps) => {
           ></TermCursor>
         )}
         <div
-          className="flex w-full h-[30vh] justify-center items-center text-center"
+          className="flex flex-col w-full h-[30vh] justify-center items-center text-center"
           style={{
             opacity: 1 - (scroll / scrollRange!.end) * 0.5,
           }}
@@ -25,6 +25,9 @@ export const Hero = ({ scroll, scrollRange }: SectionsProps) => {
               text={['/dev', '/react', '/angular', '/vue', '/python']}
             />
           </h1>
+          <p className="text-[20px] text-[var(--color-subtext0)]">
+            //Scroll down for continue
+          </p>
         </div>
       </Term>
     </section>
