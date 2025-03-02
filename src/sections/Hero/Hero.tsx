@@ -3,6 +3,9 @@ import { Term, TermCursor, Typewriter } from 'components';
 import styles from './Hero.module.scss';
 
 export const Hero = ({ scroll, scrollRange }: SectionsProps) => {
+  const handleTextChange = (text: string) => {
+    document.title = `qalqa${text}`;
+  };
   return (
     <section className={styles.hero}>
       <Term heading="Hello, my name is">
@@ -21,7 +24,10 @@ export const Hero = ({ scroll, scrollRange }: SectionsProps) => {
         >
           <h1 className={styles.title}>
             qalqa
-            <Typewriter text={['/dev', '/web', '/fe', '/be', '/ui']} />
+            <Typewriter
+              onCallback={handleTextChange}
+              text={['/dev', '/web', '/fe', '/be', '/ui']}
+            />
           </h1>
           <p className="text-[12px] md:text-[18px] lg:text-[20px] text-[var(--color-subtext0)]">
             //Scroll down for continue

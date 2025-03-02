@@ -1,9 +1,13 @@
 import { SectionsProps } from '@/types/Section';
 import clsx from 'clsx';
 import { AsciiArt, Term, TermCursor } from 'components';
+import { useEffect } from 'react';
 import styles from './About.module.scss';
 
 export const About = ({ scroll, scrollRange }: SectionsProps) => {
+  useEffect(() => {
+    document.title = 'qalqa/about';
+  }, []);
   return (
     <section className={styles.about}>
       <div className="flex">
@@ -33,7 +37,7 @@ export const About = ({ scroll, scrollRange }: SectionsProps) => {
         </Term>
         <Term
           className={`w-full ${styles['about-term']}`}
-          heading="qalqa/About"
+          heading="qalqa/about"
         >
           {scroll <= 1100 && (
             <TermCursor

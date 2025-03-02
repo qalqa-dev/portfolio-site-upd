@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { projectsData } from '@/data/projectsData';
 import { SectionsProps } from '@/types/Section';
@@ -19,11 +19,14 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
   const contactsHeight = transitionFactor * 100;
   const contactsMargin = transitionFactor * 20;
 
+  useEffect(() => {
+    document.title = 'qalqa/projects';
+  }, []);
   return (
     <section className={styles['projects-section']}>
       <div className={clsx('flex flex-col', styles['term-container'])}>
         <Term
-          heading="qalqa/Projects"
+          heading="qalqa/projects"
           className={styles['projects-term']}
           customStyles={{ marginBottom: `${contactsMargin}px` }}
         >
@@ -57,7 +60,7 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
         </Term>
         {scroll >= 8100 && (
           <Term
-            heading="qalqa/Contacts"
+            heading="qalqa/contacts"
             className={styles['contacts-term']}
             customStyles={{
               height: `${contactsHeight}%`,

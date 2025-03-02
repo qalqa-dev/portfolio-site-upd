@@ -8,6 +8,7 @@ interface TypewriterProps {
   typingSpeed?: number;
   pauseDuration?: number;
   className?: string;
+  onCallback?: (currentText: string) => void; // Добавляем onCallback
 }
 
 export const Typewriter = ({
@@ -15,6 +16,7 @@ export const Typewriter = ({
   typingSpeed = 100,
   pauseDuration = 4000,
   className,
+  onCallback,
 }: TypewriterProps) => {
   const [displayedText, setDisplayedText] = useState('');
   const [index, setIndex] = useState(0);
@@ -35,6 +37,9 @@ export const Typewriter = ({
           setIndex(index + 1);
           setIsPrinted(true);
           setDisplayedText(currentText.slice(0, index + 1));
+          if (onCallback) {
+            onCallback(currentText.slice(0, index + 1)); // Вызов onCallback при обновлении текста
+          }
         }, typingSpeed);
       } else {
         setIsPrinted(true);
@@ -49,6 +54,9 @@ export const Typewriter = ({
           setIsPrinted(true);
           setIndex(index - 1);
           setDisplayedText(currentText.slice(0, index - 1));
+          if (onCallback) {
+            onCallback(currentText.slice(0, index - 1)); // Вызов onCallback при обновлении текста
+          }
         }, typingSpeed / 2);
       } else {
         timerRef.current = window.setTimeout(() => {
@@ -58,6 +66,8 @@ export const Typewriter = ({
         }, pauseDuration / 3);
       }
     }
+
+    return () => clearTimeout(timerRef.current);
   }, [
     index,
     isDeleting,
@@ -66,6 +76,7 @@ export const Typewriter = ({
     typingSpeed,
     pauseDuration,
     text.length,
+    onCallback, // Добавляем onCallback в зависимости
   ]);
 
   return (

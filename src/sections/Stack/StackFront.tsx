@@ -1,13 +1,17 @@
 import { SectionsProps } from '@/types/Section';
 import clsx from 'clsx';
 import { SkillBar, Term, TermCursor } from 'components';
+import { useEffect } from 'react';
 import styles from './Stack.module.scss';
 
 export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
+  useEffect(() => {
+    document.title = 'qalqa/stack/fe';
+  }, []);
   return (
     <>
       <section className={styles.stack}>
-        <Term heading="qalqa/Stack/fe">
+        <Term heading="qalqa/stack/fe">
           {scroll <= 3200 && (
             <TermCursor
               command="neostack"
