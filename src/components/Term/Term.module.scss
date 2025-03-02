@@ -5,16 +5,16 @@
   margin: 0 auto;
   position: relative;
   padding: 40px 15px 15px 15px;
-  height: 65vh;
+  height: 900px;
 }
 
 .term {
   .term-heading {
     position: absolute;
-    width: 30%;
+    width: 100%;
     top: 13px;
     left: 50%;
-    font-size: 20px;
+    font-size: clamp(12px, 3vw, 20px);
     font-weight: 500;
     text-align: center;
     transform: translateX(-50%);
@@ -25,15 +25,18 @@
     height: 15px;
     border-radius: 100%;
     background: var(--color-close-circle);
+    box-shadow: 0 0 5px var(--color-close-circle);
     top: 15px;
     left: 15px;
     &:nth-child(2) {
       background: var(--color-hide-circle);
+      box-shadow: 0 0 5px var(--color-hide-circle);
       top: 15px;
       left: 40px;
     }
     &:nth-child(3) {
       background: var(--color-maximize-circle);
+      box-shadow: 0 0 5px var(--color-maximize-circle);
       bottom: 15px;
       left: 65px;
     }

@@ -21,11 +21,9 @@ export const Hero = ({ scroll, scrollRange }: SectionsProps) => {
         >
           <h1 className={styles.title}>
             qalqa
-            <Typewriter
-              text={['/dev', '/react', '/angular', '/vue', '/python']}
-            />
+            <Typewriter text={['/dev', '/web', '/fe', '/be', '/ui']} />
           </h1>
-          <p className="text-[20px] text-[var(--color-subtext0)]">
+          <p className="text-[12px] md:text-[18px] lg:text-[20px] text-[var(--color-subtext0)]">
             //Scroll down for continue
           </p>
         </div>

@@ -87,7 +87,7 @@ h1 {
 }
 
 .title {
-  font-size: 22px;
+  font-size: clamp(16px, 2vw, 24px) !important;
   font-weight: 600;
   width: 100%;
 }

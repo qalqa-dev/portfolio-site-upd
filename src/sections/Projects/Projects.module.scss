@@ -1,3 +1,11 @@
+.projects-section {
+  font-size: clamp(16px, 1.5vw, 18px);
+
+  @media (max-width: 768px) {
+    font-size: clamp(10px, 2vw, 12px);
+  }
+}
+
 .projects {
   transition:
     opacity 0.3s ease-in-out,
@@ -11,7 +19,7 @@
 }
 
 .term-container {
-  height: 65vh;
+  height: 900px;
 }
 
 .projects-term {

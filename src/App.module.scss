@@ -1,11 +1,11 @@
 .main {
-  max-width: 1300px;
   font-size: 18px;
+  box-sizing: border-box;
 }
 
 .stack-area {
   width: 100%;
-  height: 720vh;
+  height: 9500px;
 }
 
 .stack-container {
@@ -27,6 +27,8 @@
   --line: 1px;
   --color: var(--color-crust);
 
+  animation: bg-animate 10s infinite linear;
+
   background-image: linear-gradient(
       -90deg,
       transparent calc(var(--gap) - var(--line)),
@@ -42,9 +44,20 @@
   background-size: var(--gap) var(--gap);
 }
 
+@keyframes bg-animate {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: var(--gap) var(--gap);
+  }
+}
+
 .section {
   position: absolute;
   width: 100%;
   top: 50%;
   transform: translateY(-50%);
+  padding: 10px;
+  box-sizing: border-box;
 }

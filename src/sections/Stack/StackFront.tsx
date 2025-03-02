@@ -6,7 +6,7 @@ import styles from './Stack.module.scss';
 export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
   return (
     <>
-      <section className={'stack'}>
+      <section className={styles.stack}>
         <Term heading="qalqa/Stack/fe">
           {scroll <= 3200 && (
             <TermCursor
@@ -38,7 +38,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                     : Math.max(1 - (scroll - 4000) / 400, 0),
               }}
             >
-              <div className="flex mb-10">
+              <div className="flex flex-col gap-3 md:flex-row mb-3 md:mb-10">
                 <SkillBar
                   skillName="JavaScript"
                   levelScore={85}
@@ -56,7 +56,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   imgName="ts"
                 />
               </div>
-              <div className="flex mb-10">
+              <div className="flex flex-col gap-3 md:flex-row mb-2 md:mb-10">
                 <SkillBar
                   skillName="React"
                   levelScore={90}
@@ -74,7 +74,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   imgName="nextjs"
                 />
               </div>
-              <div className="flex">
+              <div className="flex flex-col gap-3 md:flex-row">
                 <SkillBar
                   skillName="Angular"
                   levelScore={70}

@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { IProject } from 'types';
 import { Directory } from './Directory';
 
@@ -16,14 +17,40 @@ export const List = ({
   parentHasMoreSiblings = [],
   onHover,
 }: ListProps) => {
+  // Обработчики для десктопа
+  const handleMouseEnter = useCallback(() => {
+    if (root.href !== '#') onHover(root);
+  }, [root, onHover]);
+
+  const handleMouseLeave = useCallback(() => {
+    onHover(null);
+  }, [onHover]);
+
+  // Обработчики для мобильных устройств
+  const handleTouchStart = useCallback(
+    (event: React.TouchEvent) => {
+      event.stopPropagation(); // предотвращаем всплытие
+      if (root.href !== '#') onHover(root);
+    },
+    [root, onHover],
+  );
+
+  const handleTouchEnd = useCallback(
+    (event: React.TouchEvent) => {
+      event.stopPropagation();
+      setTimeout(() => onHover(null), 300); // небольшая задержка, чтобы избежать морганий
+    },
+    [onHover],
+  );
+
   return (
     <div>
       <div
         className="flex items-center"
-        onMouseEnter={() =>
-          root.href !== '#' && root.href !== '#' && onHover(root)
-        }
-        onMouseLeave={() => onHover(null)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         {parentHasMoreSiblings.map((hasMoreSiblings, index) => (
           <div
@@ -32,7 +59,7 @@ export const List = ({
             style={{
               width: `${level + 14}px`,
               borderLeft:
-                hasMoreSiblings && index == 0 ? '1px solid #c9d1d9' : 'none',
+                hasMoreSiblings && index === 0 ? '1px solid #c9d1d9' : 'none',
               borderBottom: '1px solid #c9d1d9',
               height: '27px',
               marginTop: '-27px',
@@ -42,7 +69,7 @@ export const List = ({
           ></div>
         ))}
         <a
-          className={`flex gap-1  ${root.href === '#' ? '' : 'underline'}`}
+          className={`flex gap-1 ${root.href === '#' ? '' : 'underline'}`}
           href={root.href}
         >
           <Directory color="#cba6f7" />

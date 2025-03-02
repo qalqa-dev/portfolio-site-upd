@@ -20,7 +20,7 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
   const contactsMargin = transitionFactor * 20;
 
   return (
-    <section>
+    <section className={styles['projects-section']}>
       <div className={clsx('flex flex-col', styles['term-container'])}>
         <Term
           heading="qalqa/Projects"
@@ -44,12 +44,12 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
             />
           )}
           <div
-            className={'flex w-full ' + styles.projects}
+            className={'flex flex-col md:flex-row w-full ' + styles.projects}
             style={{
               opacity: scroll > 6700 ? 1 : 0,
             }}
           >
-            <div className="pl-5 w-3/5">
+            <div className="md:pl-5 w-full text-nowrap">
               <List root={projectsData} onHover={setHoveredProject} />
             </div>
             <Preview project={hoveredProject} />

@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   .title {
-    font-size: 120px;
+    font-size: clamp(52px, 15vw, 140px);
     font-weight: 500;
   }
 }

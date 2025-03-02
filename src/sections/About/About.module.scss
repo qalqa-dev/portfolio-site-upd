@@ -10,6 +10,9 @@
   .term-split {
     width: 0;
     padding: 0;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   hr {
@@ -20,6 +23,7 @@
   }
 
   .about-content > * {
+    font-size: clamp(14px, 2vw, 18px);
     transition:
       opacity 0.3s ease-in-out,
       transform 0.2s ease-in-out;

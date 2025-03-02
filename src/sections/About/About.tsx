@@ -16,13 +16,13 @@ export const About = ({ scroll, scrollRange }: SectionsProps) => {
           customStyles={{
             width: `${
               scroll < 2100
-                ? Math.min(scroll - 490, 100)
-                : Math.max(100 - (scroll - 2100) * (100 / 400), 0)
+                ? Math.min(scroll - 490, 45)
+                : Math.max(45 - (scroll - 2100) * (45 / 400), 0)
             }%`,
             marginRight: `${
               scroll < 2100
-                ? Math.min(scroll - 490, 20)
-                : Math.max(20 - (scroll - 2100) * (20 / 400), 0)
+                ? Math.min(scroll - 490, 10)
+                : Math.max(10 - (scroll - 2100) * (10 / 400), 0)
             }px`,
           }}
         >
@@ -31,7 +31,10 @@ export const About = ({ scroll, scrollRange }: SectionsProps) => {
           </p>
           <AsciiArt imageSrc="/kitten.png" scale={0.7} size={5} mirror />
         </Term>
-        <Term className="pt-10" heading="qalqa/About">
+        <Term
+          className={`w-full ${styles['about-term']}`}
+          heading="qalqa/About"
+        >
           {scroll <= 1100 && (
             <TermCursor
               command="cat"

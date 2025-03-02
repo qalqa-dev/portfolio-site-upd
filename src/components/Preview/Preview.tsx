@@ -14,7 +14,7 @@ export const Preview = ({ project }: PreviewProps) => {
 
   return (
     <div className="p-4 w-full">
-      <h2 className="text-[24px] font-bold">
+      <h2 className="text-[14px] md:text-[16px] lg:text-[24px] font-bold">
         {project.name}{' '}
         {project.status && (
           <span

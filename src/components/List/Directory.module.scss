@@ -11,3 +11,16 @@ $border-radius: 5px;
   height: calc($size / 2.5);
   border-radius: 2px $border-radius 0 0;
 }
+
+@media (max-width: 768px) {
+  .body {
+    width: $size * 2;
+    height: $size * 1.5;
+    border-radius: 0 calc($border-radius / 2) calc($border-radius / 2) calc($border-radius / 2);
+  }
+
+  .top {
+    width: $size * 0.7;
+    height: calc($size / 4);
+  }
+}

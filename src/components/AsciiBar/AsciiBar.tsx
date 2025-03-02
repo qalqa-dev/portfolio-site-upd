@@ -29,8 +29,8 @@ export const AsciiBar = ({ value }: AsciiProgressBarProps) => {
 
   return (
     <>
-      <pre style={{ color: barColor?.hex, width: 271 }}>
-        {`${filled}${empty} `}
+      <pre className="w-fit md:w-[271px]" style={{ color: barColor?.hex }}>
+        <span>{`${filled}${empty} `}</span>
         <span>{value}%</span>
       </pre>
     </>

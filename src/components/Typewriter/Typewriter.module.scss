@@ -10,7 +10,7 @@
 .cursor {
   display: inline-block;
   width: 6px;
-  height: 80px;
+  height: clamp(20px, 10vw, 120px);
   background: var(--color-text);
   margin-left: 2px;
   border-radius: 4px;
