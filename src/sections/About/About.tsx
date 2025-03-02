@@ -26,6 +26,9 @@ export const About = ({ scroll, scrollRange }: SectionsProps) => {
             }px`,
           }}
         >
+          <p className="text-[20px] text-[var(--color-subtext0)] text-nowrap">
+            //It's me tho
+          </p>
           <AsciiArt imageSrc="/kitten.png" scale={0.7} size={5} mirror />
         </Term>
         <Term className="pt-10" heading="qalqa/About">

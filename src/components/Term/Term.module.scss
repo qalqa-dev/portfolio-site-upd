@@ -1,8 +1,8 @@
 .term {
-  background: var(--color-mantle);
+  background: var(--color-mantle-tr);
+  backdrop-filter: blur(10px);
   border-radius: 30px;
   margin: 0 auto;
-  overflow: hidden;
   position: relative;
   padding: 40px 15px 15px 15px;
   height: 65vh;
@@ -45,5 +45,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
 }

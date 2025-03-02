@@ -37,6 +37,7 @@
   --color-flamingo: #f2cdcd;
   --color-pink: #f5c2e7;
   --color-mauve: #cba6f7;
+  --color-mauve-tr: rgba(202, 166, 247, 0.5);
   --color-red: #f38ba8;
   --color-maroon: #eba0ac;
   --color-peach: #fab387;
@@ -58,6 +59,7 @@
   --color-surface0: #1e1e2e;
   --color-base: #1e1e2e;
   --color-mantle: #181825;
+  --color-mantle-tr: rgba(24, 24, 37, 0.8);
   --color-crust: #11111b;
 
   --color-close-circle: #ff605c;
@@ -73,15 +75,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  justify-content: center;
-  min-height: 100vh;
-} */
 
 h1 {
   font-size: 80px;

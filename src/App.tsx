@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { About, Hero, Projects, StackBack, StackFront } from 'sections';
 import styles from './App.module.scss';
@@ -55,6 +56,7 @@ function App() {
   return (
     <>
       <main className={styles['stack-area']}>
+        <div className={clsx(styles['stack-bg'])} />
         <div className={styles['stack-container']}>
           {section === 'hero' && (
             <div className={styles.section}>
