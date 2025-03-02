@@ -1,7 +1,7 @@
-import { SectionsProps } from '@/types/Section';
 import clsx from 'clsx';
 import { SkillBar, Term, TermCursor } from 'components';
 import { useEffect } from 'react';
+import { SectionsProps } from 'types';
 import styles from './Stack.module.scss';
 
 export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {

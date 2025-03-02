@@ -1,5 +1,5 @@
-import { SectionsProps } from '@/types/Section';
 import { Term, TermCursor, Typewriter } from 'components';
+import { SectionsProps } from 'types';
 import styles from './Hero.module.scss';
 
 export const Hero = ({ scroll, scrollRange }: SectionsProps) => {

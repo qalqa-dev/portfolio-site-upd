@@ -1,6 +1,6 @@
-import { IScrollRange } from '@/types/Scroll';
 import clsx from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
+import { IScrollRange } from 'types';
 import styles from './TermCursor.module.scss';
 
 interface ITermCursorProps {

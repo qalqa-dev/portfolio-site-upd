@@ -1,14 +1,12 @@
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
-
-import { projectsData } from '@/data/projectsData';
-import { SectionsProps } from '@/types/Section';
-import { List, Preview, Term, TermCursor } from 'components';
-import { IProject } from 'types';
 
 import { GithubIcon } from '@/assets/svgs/GithubIcon';
 import { TelegramIcon } from '@/assets/svgs/TelegramIcon';
 import { VkIcon } from '@/assets/svgs/VkIcon';
-import clsx from 'clsx';
+import { projectsData } from '@/data/projectsData';
+import { List, Preview, Term, TermCursor } from 'components';
+import { IProject, SectionsProps } from 'types';
 import styles from './Projects.module.scss';
 
 export const Projects = ({ scroll, scrollRange }: SectionsProps) => {

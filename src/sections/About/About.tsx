@@ -1,7 +1,7 @@
-import { SectionsProps } from '@/types/Section';
 import clsx from 'clsx';
 import { AsciiArt, Term, TermCursor } from 'components';
 import { useEffect } from 'react';
+import { SectionsProps } from 'types';
 import styles from './About.module.scss';
 
 export const About = ({ scroll, scrollRange }: SectionsProps) => {
