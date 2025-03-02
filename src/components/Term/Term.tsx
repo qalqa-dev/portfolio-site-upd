@@ -4,9 +4,13 @@ export const Term: React.FC<{
   children?: React.ReactNode;
   heading?: string;
   className?: string;
-}> = ({ children, heading, className }) => {
+  customStyles?: React.CSSProperties;
+}> = ({ children, heading, className, customStyles }) => {
   return (
-    <div className={`${styles.term} flex flex-col ${className}`}>
+    <div
+      className={`${styles.term} flex flex-col ${className}`}
+      style={{ ...customStyles }}
+    >
       <div className={styles['term-btn']}></div>
       <div className={styles['term-btn']}></div>
       <div className={styles['term-btn']}></div>

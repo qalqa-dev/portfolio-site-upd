@@ -1,11 +1,24 @@
-import { Term, Typewriter } from 'components';
+import { SectionsProps } from '@/types/Section';
+import { Term, TermCursor, Typewriter } from 'components';
 import styles from './Hero.module.scss';
 
-export const Hero = () => {
+export const Hero = ({ scroll, scrollRange }: SectionsProps) => {
   return (
-    <section className={styles.hero + ' mb-5'}>
+    <section className={styles.hero}>
       <Term heading="Hello, my name is">
-        <div className="flex w-full h-[30vh] justify-center items-center text-center">
+        {scroll > 100 && (
+          <TermCursor
+            command="clear"
+            scroll={scroll}
+            scrollRange={scrollRange}
+          ></TermCursor>
+        )}
+        <div
+          className="flex w-full h-[30vh] justify-center items-center text-center"
+          style={{
+            opacity: 1 - (scroll / scrollRange!.end) * 0.5,
+          }}
+        >
           <h1 className={styles.title}>
             qalqa
             <Typewriter

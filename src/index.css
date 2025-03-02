@@ -74,14 +74,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+/* body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   justify-content: center;
   min-height: 100vh;
-}
+} */
 
 h1 {
   font-size: 80px;
@@ -97,5 +97,4 @@ h1 {
   font-size: 22px;
   font-weight: 600;
   width: 100%;
-  display: inline;
 }

@@ -1,0 +1,11 @@
+.skills {
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.2s ease-in-out;
+  transform: translateY(20px);
+  opacity: 0;
+}
+.open {
+  opacity: 1;
+  transform: translateY(0px);
+}
