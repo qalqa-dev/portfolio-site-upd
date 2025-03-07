@@ -42,7 +42,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                     : Math.max(1 - (scroll - 5100) / 400, 0),
               }}
             >
-              <div className="flex flex-col md:flex-row gap-3 mb-3 md:mb-10">
+              <div className="flex flex-col md:flex-row gap-1 mb-1 md:mb-10">
                 <SkillBar
                   skillName="Python"
                   levelScore={70}
@@ -60,7 +60,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                   imgName="php"
                 />
               </div>
-              <div className="flex flex-col md:flex-row gap-3 mb-3 md:mb-10">
+              <div className="flex flex-col md:flex-row gap-1 mb-1 md:mb-10">
                 <SkillBar
                   skillName="django"
                   levelScore={70}
@@ -78,7 +78,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                   imgName="laravel"
                 />
               </div>
-              <div className="flex flex-col md:flex-row gap-3 mb-3 md:mb-10">
+              <div className="flex flex-col md:flex-row gap-1 md:mb-10">
                 <SkillBar
                   skillName="PostgreSQL"
                   levelScore={50}

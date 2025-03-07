@@ -1,17 +1,15 @@
-.projects-section {
-  font-size: clamp(16px, 1.5vw, 18px);
-
-  @media (max-width: 768px) {
-    font-size: clamp(10px, 2vw, 12px);
-  }
-}
-
 .projects {
+  font-size: clamp(16px, 1.5vw, 18px);
   transition:
     opacity 0.3s ease-in-out,
     transform 0.2s ease-in-out;
   transform: translateY(20px);
   opacity: 0;
+
+  @media (max-width: 768px) {
+    font-size: clamp(10px, 2vw, 12px);
+    margin-bottom: auto;
+  }
 }
 .open {
   opacity: 1;
@@ -19,7 +17,11 @@
 }
 
 .term-container {
-  height: 900px;
+  height: 97vh;
+
+  @media (width >= 80rem) {
+    height: 80vh;
+  }
 }
 
 .projects-term {
@@ -30,5 +32,5 @@
 .contacts-term {
   height: 100%;
   width: 100%;
-  font-size: clamp(16px, 1.5vw, 18px);
+  font-size: clamp(14px, 1.5vw, 18px);
 }

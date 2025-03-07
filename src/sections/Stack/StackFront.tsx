@@ -42,7 +42,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                     : Math.max(1 - (scroll - 4000) / 400, 0),
               }}
             >
-              <div className="flex flex-col gap-3 md:flex-row mb-3 md:mb-10">
+              <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
                 <SkillBar
                   skillName="JavaScript"
                   levelScore={85}
@@ -60,7 +60,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   imgName="ts"
                 />
               </div>
-              <div className="flex flex-col gap-3 md:flex-row mb-2 md:mb-10">
+              <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
                 <SkillBar
                   skillName="React"
                   levelScore={90}
@@ -78,7 +78,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   imgName="nextjs"
                 />
               </div>
-              <div className="flex flex-col gap-3 md:flex-row">
+              <div className="flex flex-col gap-1 md:flex-row">
                 <SkillBar
                   skillName="Angular"
                   levelScore={70}

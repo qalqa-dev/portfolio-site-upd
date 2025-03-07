@@ -13,7 +13,7 @@ export const Preview = ({ project }: PreviewProps) => {
   }
 
   return (
-    <div className="p-4 w-full flex flex-col gap-3">
+    <div className="pb-5 md:p-5 w-full flex flex-col md:gap-3">
       <h2 className="text-[14px] md:text-[16px] lg:text-[24px] font-bold">
         {project.name}{' '}
         {project.status && (

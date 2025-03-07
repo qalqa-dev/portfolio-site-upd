@@ -20,6 +20,9 @@
     border-bottom: 2px dashed var(--color-text);
     width: 100%;
     margin: 10px 0;
+    @media (max-width: 768px) {
+      margin: 3px 0;
+    }
   }
 
   .about-content > * {

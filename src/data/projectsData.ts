@@ -42,11 +42,11 @@ export const projectsData: IProject = {
       ],
     },
     {
-      name: '3d-printer-ui',
+      name: 'printer-ui',
       repo_href: 'https://github.com/qalqaa/printer-ui',
       deploy_href: 'https://printer-ui.vercel.app/',
       description:
-        'At first it was a web programming lab at a university, but then I decided to have some fun and add a State Manager, tests, add Offline Mode and a bunch of other features just to practice on what I already have and not start a project for nothing.',
+        'At first it was a web programming lab at a university, but then I decided to have some fun and add a State Manager, tests, add Offline Mode and a bunch of other features.',
       status: 'finished',
     },
     {
@@ -68,7 +68,7 @@ export const projectsData: IProject = {
       repo_href: 'https://github.com/qalqaa/mouse-stud-platform',
       status: 'cancelled',
       description:
-        'The course platform was supposed to fulfill its direct purpose, but at some point my friend with whom I was doing this pet project got a job and I got bored finishing it, because I practiced everything I needed',
+        'The course platform was supposed to fulfill its direct purpose, but at some point my friend with whom I was doing this pet project got a job and I got bored finishing it',
     },
   ],
 };
