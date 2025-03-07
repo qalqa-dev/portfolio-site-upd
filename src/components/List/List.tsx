@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { IProject } from 'types';
 import { Directory } from './Directory';
 
@@ -7,7 +6,7 @@ interface ListProps {
   level?: number;
   isLast?: boolean;
   parentHasMoreSiblings?: boolean[];
-  onHover: (project: IProject | null) => void;
+  onClick: (project: IProject | null) => void;
 }
 
 export const List = ({
@@ -15,42 +14,13 @@ export const List = ({
   level = 0,
   isLast = false,
   parentHasMoreSiblings = [],
-  onHover,
+  onClick,
 }: ListProps) => {
-  // Обработчики для десктопа
-  const handleMouseEnter = useCallback(() => {
-    if (root.href !== '#') onHover(root);
-  }, [root, onHover]);
-
-  const handleMouseLeave = useCallback(() => {
-    onHover(null);
-  }, [onHover]);
-
-  // Обработчики для мобильных устройств
-  const handleTouchStart = useCallback(
-    (event: React.TouchEvent) => {
-      event.stopPropagation(); // предотвращаем всплытие
-      if (root.href !== '#') onHover(root);
-    },
-    [root, onHover],
-  );
-
-  const handleTouchEnd = useCallback(
-    (event: React.TouchEvent) => {
-      event.stopPropagation();
-      setTimeout(() => onHover(null), 300); // небольшая задержка, чтобы избежать морганий
-    },
-    [onHover],
-  );
-
   return (
     <div>
       <div
         className="flex items-center"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
+        onClick={() => root.repo_href !== 'root' && onClick(root)}
       >
         {parentHasMoreSiblings.map((hasMoreSiblings, index) => (
           <div
@@ -69,8 +39,9 @@ export const List = ({
           ></div>
         ))}
         <a
-          className={`flex gap-1 ${root.href === '#' ? '' : 'underline'}`}
-          href={root.href}
+          className={`flex gap-1 cursor-pointer ${
+            root.repo_href === 'root' ? '' : 'underline'
+          }`}
         >
           <Directory color="#cba6f7" />
           {root.name}
@@ -78,12 +49,12 @@ export const List = ({
       </div>
       {root.children?.map((child, index) => (
         <List
-          key={child.href}
+          key={child.repo_href}
           root={child}
           level={level + 1}
           isLast={index === root.children!.length - 1}
           parentHasMoreSiblings={[...parentHasMoreSiblings, !isLast]}
-          onHover={onHover}
+          onClick={onClick}
         />
       ))}
     </div>

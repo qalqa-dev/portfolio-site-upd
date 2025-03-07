@@ -16,7 +16,7 @@
 }
 
 .inProgress {
-  color: var(--color-yelow);
+  color: var(--color-yellow);
 }
 
 .cancelled {
@@ -25,4 +25,31 @@
 
 .active {
   color: var(--color-blue);
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn {
+  &-repo {
+    background-color: var(--color-mauve);
+    color: var(--color-base);
+    &:hover {
+      box-shadow: 0 0 5px var(--color-mauve);
+      color: var(--color-overlay2);
+    }
+  }
+  &-deploy {
+    border: 1px solid var(--color-green);
+    color: var(--color-green);
+    &:hover {
+      box-shadow: 0 0 5px var(--color-green);
+      text-shadow: 0 0 5px var(--color-green);
+    }
+  }
 }

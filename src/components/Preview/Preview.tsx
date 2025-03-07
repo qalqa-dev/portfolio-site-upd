@@ -9,11 +9,11 @@ interface PreviewProps {
 
 export const Preview = ({ project }: PreviewProps) => {
   if (!project) {
-    return <div className="p-4 w-full">Hover to project for preview</div>;
+    return <div className="p-4 w-full">Click to project for preview</div>;
   }
 
   return (
-    <div className="p-4 w-full">
+    <div className="p-4 w-full flex flex-col gap-3">
       <h2 className="text-[14px] md:text-[16px] lg:text-[24px] font-bold">
         {project.name}{' '}
         {project.status && (
@@ -38,6 +38,22 @@ export const Preview = ({ project }: PreviewProps) => {
           {project.description}
         </p>
       )}
+      <div className="flex gap-2">
+        <button
+          onClick={() => window.open(project.repo_href)}
+          className={styles['btn-repo']}
+        >
+          Go to repo
+        </button>
+        {project.deploy_href && (
+          <button
+            onClick={() => window.open(project.deploy_href)}
+            className={styles['btn-deploy']}
+          >
+            Go to deploy
+          </button>
+        )}
+      </div>
     </div>
   );
 };

@@ -51,7 +51,7 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
             }}
           >
             <div className="md:pl-5 w-full text-nowrap">
-              <List root={projectsData} onHover={setHoveredProject} />
+              <List root={projectsData} onClick={setHoveredProject} />
             </div>
             <Preview project={hoveredProject} />
           </div>
