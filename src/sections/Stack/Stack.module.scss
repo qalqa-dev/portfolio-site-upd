@@ -1,16 +1,17 @@
 .skills {
   font-size: clamp(16px, 1.5vw, 18px);
-
-  @media (max-width: 768px) {
-    font-size: clamp(10px, 2vw, 12px);
-  }
   transition:
     opacity 0.3s ease-in-out,
     transform 0.2s ease-in-out;
   transform: translateY(20px);
-  opacity: 0;
+  opacity  : 0;
+
+  @media (max-width: 768px) {
+    font-size: clamp(10px, 2vw, 12px);
+  }
 }
+
 .open {
-  opacity: 1;
+  opacity  : 1;
   transform: translateY(0px);
 }

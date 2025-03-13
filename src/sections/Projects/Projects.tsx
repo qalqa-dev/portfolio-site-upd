@@ -15,7 +15,7 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
 
   const transitionFactor = Math.min(Math.max((scroll - 8100) / 100, 0), 1);
   const contactsHeight = transitionFactor * 100;
-  const contactsMargin = transitionFactor * 20;
+  const contactsMargin = transitionFactor * 10;
 
   useEffect(() => {
     document.title = 'qalqa/projects';
