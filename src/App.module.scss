@@ -1,46 +1,23 @@
-.main {
-  font-size: 18px;
-  box-sizing: border-box;
-}
-
-.stack-area {
-  width: 100%;
-  height: calc(8224px + 100vh);
-}
-
-.stack-container {
-  height: 100vh;
-  max-width: 1300px;
-  position: relative;
-  margin: 0 auto;
-  position: sticky;
-  top: 0;
-}
-
-.stack-bg {
-  width: 100%;
-  height: 100%;
+.app-background {
+  width   : 100%;
+  height  : 100%;
   position: fixed;
 
   background: var(--color-base);
-  --gap: 10em;
-  --line: 1px;
-  --color: var(--color-surface1);
+  --gap     : 10em;
+  --line    : 1px;
+  --color   : var(--color-surface1);
 
   animation: bg-animate 10s infinite linear;
 
-  background-image: linear-gradient(
-      -90deg,
+  background-image: linear-gradient(-90deg,
       transparent calc(var(--gap) - var(--line)),
       var(--color) calc(var(--gap) - var(--line) + 1px),
-      var(--color) var(--gap)
-    ),
-    linear-gradient(
-      0deg,
+      var(--color) var(--gap)),
+    linear-gradient(0deg,
       transparent calc(var(--gap) - var(--line)),
       var(--color) calc(var(--gap) - var(--line) + 1px),
-      var(--color) var(--gap)
-    );
+      var(--color) var(--gap));
   background-size: var(--gap) var(--gap);
 }
 
@@ -48,16 +25,8 @@
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: var(--gap) var(--gap);
   }
-}
-
-.section {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px;
-  box-sizing: border-box;
 }

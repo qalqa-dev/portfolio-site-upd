@@ -2,23 +2,23 @@
 
 @font-face {
   font-family: "Geist Sans";
-  src: url("./assets/fonts/Geist-v1.4.01/webfonts/Geist[wght].woff2") format("woff2");
+  src        : url("./assets/fonts/Geist-v1.4.01/webfonts/Geist[wght].woff2") format("woff2");
   font-weight: 100 900;
-  font-style: normal;
+  font-style : normal;
 }
 
 @font-face {
   font-family: "Geist Mono";
-  src: url("./assets/fonts/GeistMono-1.4.01/webfonts/GeistMono[wght].woff2") format("woff2");
+  src        : url("./assets/fonts/GeistMono-1.4.01/webfonts/GeistMono[wght].woff2") format("woff2");
   font-weight: 100 900;
-  font-style: normal;
+  font-style : normal;
 }
 
 @font-face {
   font-family: "JetBrains Mono";
-  src: url("./assets/fonts/JetBrainsMono/JetBrainsMono[wght].ttf") format("woff2");
+  src        : url("./assets/fonts/JetBrainsMono/JetBrainsMono[wght].ttf") format("woff2");
   font-weight: 100 900;
-  font-style: normal;
+  font-style : normal;
 }
 
 :root {
@@ -33,96 +33,107 @@
 
   color-scheme: light dark;
 
-  --color-rosewater: #f5e0dc;
-  --color-flamingo: #f2cdcd;
-  --color-pink: #f5c2e7;
-  --color-mauve: #cba6f7;
-  --color-mauve-tr: rgba(202, 166, 247, 0.5);
-  --color-red: #f38ba8;
-  --color-maroon: #eba0ac;
-  --color-peach: #fab387;
-  --color-yellow: #f9e2af;
-  --color-green: #a6e3a1;
-  --color-teal: #81c8be;
-  --color-sky: #99d1db;
-  --color-sapphire: #85c1dc;
-  --color-blue: #8aadf4;
-  --color-lavender: #b7bdf8;
-  --color-text: #c9d1d9;
-  --color-subtext1: #8b949e;
-  --color-subtext0: #8b949e;
-  --color-overlay2: #3b4252;
-  --color-overlay1: #414868;
-  --color-overlay0: #1e1e2e;
-  --color-surface2: #3b4252;
-  --color-surface1: #414868;
-  --color-surface0: #1e1e2e;
-  --color-base: #1e1e2e;
-  --color-mantle: #181825;
-  --color-mantle-tr: rgba(24, 24, 37, 0.8);
-  --color-crust: #11111b;
+  --color-rosewater : #f5e0dc;
+  --color-flamingo  : #f2cdcd;
+  --color-pink      : #f5c2e7;
+  --color-mauve     : #cba6f7;
+  --color-mauve-tr  : rgba(202, 166, 247, 0.5);
+  --color-red       : #f38ba8;
+  --color-maroon    : #eba0ac;
+  --color-peach     : #fab387;
+  --color-yellow    : #f9e2af;
+  --color-green     : #a6e3a1;
+  --color-teal      : #81c8be;
+  --color-sky       : #99d1db;
+  --color-sapphire  : #85c1dc;
+  --color-blue      : #8aadf4;
+  --color-lavender  : #b7bdf8;
+  --color-text      : #c9d1d9;
+  --color-subtext1  : #8b949e;
+  --color-subtext0  : #8b949e;
+  --color-overlay2  : #3b4252;
+  --color-overlay1  : #414868;
+  --color-overlay0  : #1e1e2e;
+  --color-surface2  : #3b4252;
+  --color-surface1  : #414868;
+  --color-surface0  : #1e1e2e;
+  --color-base      : #1e1e2e;
+  --color-mantle    : #181825;
+  --color-mantle-tr : rgba(24, 24, 37, 0.8);
+  --color-mantle-xtr: rgba(24, 24, 37, 0.1);
+  --color-crust     : #11111b;
 
-  --color-close-circle: #ff605c;
-  --color-hide-circle: #ffbd44;
+  --color-close-circle   : #ff605c;
+  --color-hide-circle    : #ffbd44;
   --color-maximize-circle: #00ca4e;
 
-  color: var(--color-text);
+  --color-dock-background: var(--color-overlay1);
+  --color-dock-border    : var(--color-surface1);
+  --color-dock-icon      : var(--color-text);
+
+  --dock-background           : var(var(--color-mantle-xtr));
+  --color-dock-icon-background: #282c34;
+
+  color           : var(--color-text);
   background-color: var(--color-base);
 
-  scroll-behavior: smooth;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  scroll-behavior        : smooth;
+  font-synthesis         : none;
+  text-rendering         : optimizeLegibility;
+  -webkit-font-smoothing : antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-rosewater: #dc8a78;
-    --color-flamingo: #dd7878;
-    --color-pink: #ea76cb;
-    --color-mauve: #8839ef;
-    --color-red: #d20f39;
-    --color-maroon: #e64553;
-    --color-peach: #fe640b;
-    --color-yellow: #df8e1d;
-    --color-green: #40a02b;
-    --color-teal: #179299;
-    --color-sky: #04a5e5;
-    --color-sapphire: #209fb5;
-    --color-blue: #1e66f5;
-    --color-lavender: #7287fd;
-    --color-text: #4c4f69;
-    --color-subtext1: #5c5f77;
-    --color-subtext0: #6c6f85;
-    --color-overlay2: #7c7f93;
-    --color-overlay1: #8c8fa1;
-    --color-overlay0: #9ca0b0;
-    --color-surface2: #acb0be;
-    --color-surface1: #bcc0cc;
-    --color-surface0: #ccd0da;
-    --color-base: #eff1f5;
-    --color-mantle: #e6e9ef;
-    --color-mauve-tr: rgba(136, 57, 239, 0.5);
-    --color-mantle-tr: rgb(230, 233, 239, 0.8);
-    --color-crust: #dce0e8;
-    color: var(--color-text);
-    background-color: var(--color-base);
+    --color-rosewater : #dc8a78;
+    --color-flamingo  : #dd7878;
+    --color-pink      : #ea76cb;
+    --color-mauve     : #8839ef;
+    --color-red       : #d20f39;
+    --color-maroon    : #e64553;
+    --color-peach     : #fe640b;
+    --color-yellow    : #df8e1d;
+    --color-green     : #40a02b;
+    --color-teal      : #179299;
+    --color-sky       : #04a5e5;
+    --color-sapphire  : #209fb5;
+    --color-blue      : #1e66f5;
+    --color-lavender  : #7287fd;
+    --color-text      : #4c4f69;
+    --color-subtext1  : #5c5f77;
+    --color-subtext0  : #6c6f85;
+    --color-overlay2  : #7c7f93;
+    --color-overlay1  : #8c8fa1;
+    --color-overlay0  : #9ca0b0;
+    --color-surface2  : #acb0be;
+    --color-surface1  : #bcc0cc;
+    --color-surface0  : #ccd0da;
+    --color-base      : #eff1f5;
+    --color-mantle    : #e6e9ef;
+    --color-mauve-tr  : rgba(136, 57, 239, 0.5);
+    --color-mantle-tr : rgb(230, 233, 239, 0.8);
+    --color-mantle-xtr: rgb(230, 233, 239, 0.4);
+    --color-crust     : #dce0e8;
+    color             : var(--color-text);
+    background-color  : var(--color-base);
+
+    --color-dock-icon-background: #fff;
   }
 }
 
 h1 {
-  font-size: 80px;
+  font-size  : 80px;
   line-height: 1.1;
 }
 
 .highlight {
   font-weight: 600;
-  color: var(--color-mauve);
+  color      : var(--color-mauve);
 }
 
 .title {
-  font-size: clamp(16px, vw, 24px) !important;
+  font-size  : clamp(16px, vw, 24px) !important;
   font-weight: 600;
-  width: 100%;
+  width      : 100%;
 }

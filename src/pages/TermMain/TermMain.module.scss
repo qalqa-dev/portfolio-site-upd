@@ -1,0 +1,22 @@
+.section {
+  position  : absolute;
+  width     : 100%;
+  top       : 50%;
+  transform : translateY(-50%);
+  padding   : 10px;
+  box-sizing: border-box;
+}
+
+.stack-area {
+  width : 100%;
+  height: calc(8224px + 100vh);
+}
+
+.stack-container {
+  height   : 100vh;
+  max-width: 1300px;
+  position : relative;
+  margin   : 0 auto;
+  position : sticky;
+  top      : 0;
+}

@@ -11,6 +11,7 @@ export default defineConfig({
       components: path.resolve(__dirname, '/src/components'),
       sections: path.resolve(__dirname, '/src/sections'),
       types: path.resolve(__dirname, '/src/types'),
+      utils: path.resolve(__dirname, '/src/utils'),
     },
   },
 });
