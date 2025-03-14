@@ -33,13 +33,38 @@
 
 
   .title {
-    font-family: 'San Francisco Rounded', 'San Francisco';
+    font-family: 'San Francisco Rounded', ;
     font-size  : clamp(32px, 15vw, 60px);
-    font-weight: 700;
+    font-weight: 600;
     text-align : center;
   }
 
-  .content {
+  .webview {
+    padding: 10px;
+    width  : 100%;
+
+    .content {
+      display: flex;
+      padding: 40px;
+
+      .text {
+        max-width   : 55%;
+        font-size   : 24px;
+        margin-right: auto;
+
+        p {
+          margin-bottom: 10px;
+        }
+      }
+
+
+
+      .highlight {
+        color      : var(--color-mauve);
+        font-weight: 600;
+      }
+    }
+
     .img {
       background-color: var(--color-mantle);
       border-radius   : 15px;
