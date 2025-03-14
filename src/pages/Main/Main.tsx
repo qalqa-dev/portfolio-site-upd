@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GithubIcon } from '@/assets/svgs/GithubIcon';
 import { TelegramIcon } from '@/assets/svgs/TelegramIcon';
 import { VkIcon } from '@/assets/svgs/VkIcon';
@@ -8,6 +9,7 @@ import RollingText from '@/components/RollingText/RollingText';
 import { Safari } from '@/components/Safari/Safari';
 import { projectsData } from '@/data/projectsData';
 import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
+import Lenis from 'lenis';
 import styles from './Main.module.scss';
 export const Main = () => {
   const getTechPercentage = (
@@ -19,6 +21,10 @@ export const Main = () => {
       ((level * 2.4 + affinity * 0.5 + usage * 0.1) / 3).toFixed(1),
     );
   };
+
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
 
   return (
     <>
