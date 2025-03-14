@@ -6,7 +6,6 @@
 
 .hero {
   position       : relative;
-  width          : 768px;
   margin         : 0 auto;
   height         : 100vh;
   display        : flex;
@@ -17,6 +16,13 @@
     font-family: 'San Francisco Mono', 'San Francisco';
     font-size  : clamp(32px, 15vw, 60px);
     font-weight: 500;
+  }
+
+  .description {
+    margin-top : -50px;
+    font-family: 'San Francisco Mono', 'San Francisco';
+    font-size  : clamp(24px, 3vw, 32px);
+    font-weight: 400;
   }
 }
 

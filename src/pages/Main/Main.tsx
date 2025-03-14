@@ -1,4 +1,4 @@
-import { Term } from '@/components';
+import { Typewriter } from '@/components';
 import RollingText from '@/components/RollingText/RollingText';
 import { Safari } from '@/components/Safari/Safari';
 import styles from './Main.module.scss';
@@ -7,11 +7,22 @@ export const Main = () => {
     <>
       <div className={styles.container}>
         <section className={styles.hero}>
-          <Term className="w-full">
+          <Safari>
             <h1 className={styles.title}>
               <RollingText text="qalqa"></RollingText>
             </h1>
-          </Term>
+            <p className={styles.description}>
+              <Typewriter
+                text={[
+                  'full-stack developer',
+                  'frontend developer',
+                  'backend developer',
+                ]}
+                initialPause={2600}
+                typingSpeed={50}
+              ></Typewriter>
+            </p>
+          </Safari>
         </section>
         <section className={styles.about}>
           <div className={styles['about-container']}>

@@ -7,14 +7,16 @@ interface TypewriterProps {
   text: string[];
   typingSpeed?: number;
   pauseDuration?: number;
+  initialPause?: number;
   className?: string;
-  onCallback?: (currentText: string) => void; // Добавляем onCallback
+  onCallback?: (currentText: string) => void;
 }
 
 export const Typewriter = ({
   text,
   typingSpeed = 100,
   pauseDuration = 4000,
+  initialPause = 0,
   className,
   onCallback,
 }: TypewriterProps) => {
@@ -27,43 +29,48 @@ export const Typewriter = ({
   const timerRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
+    if (initialPause > 0) {
+      timerRef.current = window.setTimeout(() => {
+        setIsPrinted(true);
+      }, initialPause);
+    } else {
+      setIsPrinted(true);
+    }
+
     return () => clearTimeout(timerRef.current);
-  }, []);
+  }, [initialPause]);
 
   useEffect(() => {
-    if (!isDeleting) {
-      if (index < currentText.length) {
-        timerRef.current = window.setTimeout(() => {
-          setIndex(index + 1);
-          setIsPrinted(true);
-          setDisplayedText(currentText.slice(0, index + 1));
-          if (onCallback) {
-            onCallback(currentText.slice(0, index + 1)); // Вызов onCallback при обновлении текста
-          }
-        }, typingSpeed);
+    if (isPrinted) {
+      if (!isDeleting) {
+        if (index < currentText.length) {
+          timerRef.current = window.setTimeout(() => {
+            setIndex(index + 1);
+            setDisplayedText(currentText.slice(0, index + 1));
+            if (onCallback) {
+              onCallback(currentText.slice(0, index + 1));
+            }
+          }, typingSpeed);
+        } else {
+          timerRef.current = window.setTimeout(() => {
+            setIsDeleting(true);
+          }, pauseDuration);
+        }
       } else {
-        setIsPrinted(true);
-        timerRef.current = window.setTimeout(() => {
-          setIsPrinted(false);
-          setIsDeleting(true);
-        }, pauseDuration);
-      }
-    } else {
-      if (index > 0) {
-        timerRef.current = window.setTimeout(() => {
-          setIsPrinted(true);
-          setIndex(index - 1);
-          setDisplayedText(currentText.slice(0, index - 1));
-          if (onCallback) {
-            onCallback(currentText.slice(0, index - 1)); // Вызов onCallback при обновлении текста
-          }
-        }, typingSpeed / 2);
-      } else {
-        timerRef.current = window.setTimeout(() => {
-          setIsDeleting(false);
-          setIsPrinted(false);
-          setCurrentTextIndex((currentTextIndex + 1) % text.length);
-        }, pauseDuration / 3);
+        if (index > 0) {
+          timerRef.current = window.setTimeout(() => {
+            setIndex(index - 1);
+            setDisplayedText(currentText.slice(0, index - 1));
+            if (onCallback) {
+              onCallback(currentText.slice(0, index - 1));
+            }
+          }, typingSpeed / 2);
+        } else {
+          timerRef.current = window.setTimeout(() => {
+            setIsDeleting(false);
+            setCurrentTextIndex((currentTextIndex + 1) % text.length);
+          }, pauseDuration / 3);
+        }
       }
     }
 
@@ -76,7 +83,8 @@ export const Typewriter = ({
     typingSpeed,
     pauseDuration,
     text.length,
-    onCallback, // Добавляем onCallback в зависимости
+    onCallback,
+    isPrinted,
   ]);
 
   return (

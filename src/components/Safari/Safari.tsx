@@ -51,7 +51,7 @@ export const Safari: React.FC<{
         </div>
         <div className={styles['url-container']}>
           <IoIosSearch />
-          <p>{openedLink}</p>
+          <p>{openedLink || 'Search or enter website name'}</p>
         </div>
       </div>
       {children && <div className={styles['safari-content']}>{children}</div>}
