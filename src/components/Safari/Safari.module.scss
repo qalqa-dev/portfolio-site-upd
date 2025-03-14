@@ -8,17 +8,17 @@
 
 .safari {
   .url-container {
-    display         : flex;
-    gap             : 5px;
-    align-items     : center;
-    width           : fit-content;
-    padding         : 5px 100px;
-    background-color: var(--safari-url-background);
-    border-radius   : 8px;
-    justify-content : center;
-    position        : absolute;
-    left            : 50%;
-    transform       : translateX(-50%);
+    display        : flex;
+    gap            : 5px;
+    align-items    : center;
+    width          : fit-content;
+    padding        : 5px 100px;
+    background     : var(--safari-url-background);
+    border-radius  : 8px;
+    justify-content: center;
+    position       : absolute;
+    left           : 50%;
+    transform      : translateX(-50%);
   }
 
   .heading {

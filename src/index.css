@@ -39,7 +39,7 @@
   --color-base      : #1e1e2e;
   --color-mantle    : #181825;
   --color-mantle-tr : rgba(24, 24, 37, 0.8);
-  --color-mantle-xtr: rgba(24, 24, 37, 0.1);
+  --color-mantle-xtr: rgba(24, 24, 37, 0.4);
   --color-crust     : #11111b;
 
   --color-close-circle   : #ff605c;
@@ -50,12 +50,12 @@
   --color-dock-border    : var(--color-surface1);
   --color-dock-icon      : var(--color-text);
 
-  --dock-background           : var(var(--color-mantle-xtr));
+  --color-dock-background     : var(--color-mantle-xtr);
   --color-dock-icon-background: #282c34;
 
   --safari-heading-background: var(--color-mantle);
   --safari-url-background    : var(--color-crust);
-  --safari-content-background: --color-mantle-tr;
+  --safari-content-background: var(--color-mantle-tr);
 
   color           : var(--color-text);
   background-color: var(--color-base);
@@ -101,6 +101,7 @@
     color             : var(--color-text);
     background-color  : var(--color-base);
 
+    --color-dock-background     : var(--color-mantle-xtr);
     --color-dock-icon-background: #fff;
   }
 }

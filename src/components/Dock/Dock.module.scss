@@ -33,16 +33,16 @@
 }
 
 .dock {
-  position        : fixed;
-  bottom          : 10px;
-  left            : 50%;
-  transform       : translateX(-50%);
-  border-radius   : 22px;
-  padding         : 9px;
-  background-image: var(--dock-background);
-  box-shadow      : rgba(255, 255, 255, 0.17) 0px 0px 0px 1px inset;
-  z-index         : 99;
-  backdrop-filter : blur(2px);
+  position       : fixed;
+  bottom         : 10px;
+  left           : 50%;
+  transform      : translateX(-50%);
+  border-radius  : 22px;
+  padding        : 9px;
+  background     : var(--color-dock-background);
+  box-shadow     : rgba(255, 255, 255, 0.17) 0px 0px 0px 1px inset;
+  z-index        : 99;
+  backdrop-filter: blur(2px);
 }
 
 .dock ul {
