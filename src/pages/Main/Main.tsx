@@ -1,3 +1,6 @@
+import { GithubIcon } from '@/assets/svgs/GithubIcon';
+import { TelegramIcon } from '@/assets/svgs/TelegramIcon';
+import { VkIcon } from '@/assets/svgs/VkIcon';
 import { Typewriter } from '@/components';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import { ProjectList } from '@/components/ProjectCard/ProjectList';
@@ -154,6 +157,48 @@ export const Main = () => {
                 <div className={styles.content}>
                   <h2 className={styles.title}>Projects</h2>
                   <ProjectList projects={projectsData} />
+                </div>
+              </div>
+            </Safari>
+          </div>
+        </section>
+        <section className={styles.contacts}>
+          <div className={styles['contacts-container']}>
+            <Safari openedLink="https://qalqa.com/contacts">
+              <div className={styles.webview}>
+                <div className={styles.content}>
+                  <h2 className={styles.title}>Contacts</h2>
+                  <div>
+                    <a
+                      href="mailto:andreybas04@gmail.com"
+                      className="flex gap-1"
+                    >
+                      <span className={'highlight flex items-center gap-3'}>
+                        <i>✉️</i>Email:{' '}
+                      </span>
+                      andreybas04@gmail.com
+                    </a>
+                    <a href="https://github.com/qalqaa" className="flex gap-1">
+                      <span className="highlight flex items-center gap-3">
+                        <GithubIcon width={'1.25rem'} height={'1.25rem'} />
+                        Github:{' '}
+                      </span>
+                      qalqaa
+                    </a>
+                    <a href="https://t.me/qalqaa" className="flex gap-1">
+                      <span className={'highlight flex items-center gap-3'}>
+                        <TelegramIcon width={'1rem'} height={'1rem'} />
+                        Telegram:{' '}
+                      </span>
+                      qalqaa
+                    </a>
+                    <a href="https://vk.com/qalqaa" className="flex gap-1">
+                      <span className={'highlight flex items-center gap-3'}>
+                        <VkIcon width={'1rem'} height={'1rem'} /> VK:{' '}
+                      </span>
+                      qalqaa
+                    </a>
+                  </div>
                 </div>
               </div>
             </Safari>

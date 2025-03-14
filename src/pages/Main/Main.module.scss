@@ -107,3 +107,14 @@
     gap           : 20px;
   }
 }
+
+.contacts {
+  .content {
+    display       : flex;
+    flex-direction: column;
+  }
+
+  width         : 100%;
+  margin-bottom : 10vh;
+
+}
