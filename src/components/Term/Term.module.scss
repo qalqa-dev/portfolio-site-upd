@@ -1,52 +1,56 @@
 .term {
-  background: var(--color-mantle-tr);
+  background     : var(--color-mantle-tr);
   backdrop-filter: blur(10px);
-  border-radius: 30px;
-  margin: 0 auto;
-  position: relative;
-  padding: 40px 15px 15px 15px;
+  border-radius  : 30px;
+  margin         : 0 auto;
+  position       : relative;
+  padding        : 40px 15px 15px 15px;
 }
 
 .term {
   .term-heading {
-    position: absolute;
-    width: 100%;
-    top: 13px;
-    left: 50%;
-    font-size: clamp(12px, 3vw, 20px);
+    position   : absolute;
+    width      : 100%;
+    top        : 13px;
+    left       : 50%;
+    font-size  : clamp(12px, 3vw, 20px);
     font-weight: 500;
-    text-align: center;
-    transform: translateX(-50%);
+    text-align : center;
+    transform  : translateX(-50%);
   }
+
   .term-btn {
-    position: absolute;
-    width: 15px;
-    height: 15px;
+    position     : absolute;
+    width        : 15px;
+    height       : 15px;
     border-radius: 100%;
-    background: var(--color-close-circle);
-    box-shadow: 0 0 5px var(--color-close-circle);
-    top: 15px;
-    left: 15px;
+    background   : var(--color-close-circle);
+    box-shadow   : 0 0 5px var(--color-close-circle);
+    top          : 15px;
+    left         : 15px;
+
     &:nth-child(2) {
       background: var(--color-hide-circle);
       box-shadow: 0 0 5px var(--color-hide-circle);
-      top: 15px;
-      left: 40px;
+      top       : 15px;
+      left      : 40px;
     }
+
     &:nth-child(3) {
       background: var(--color-maximize-circle);
       box-shadow: 0 0 5px var(--color-maximize-circle);
-      bottom: 15px;
-      left: 65px;
+      bottom    : 15px;
+      left      : 65px;
     }
   }
+
   .term-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width          : 100%;
+    height         : 100%;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
     justify-content: center;
-    overflow: hidden;
+    overflow       : hidden;
   }
 }

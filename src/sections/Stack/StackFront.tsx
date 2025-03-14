@@ -11,7 +11,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
   return (
     <>
       <section className={styles.stack}>
-        <Term heading="qalqa/stack/fe">
+        <Term heading="qalqa/stack/fe" className="h-[97vh] xl:h-[80vh]">
           {scroll <= 3200 && (
             <TermCursor
               command="neostack"

@@ -8,7 +8,7 @@ export const Hero = ({ scroll, scrollRange }: SectionsProps) => {
   };
   return (
     <section className={styles.hero}>
-      <Term heading="Hello, my name is">
+      <Term className="h-[97vh] xl:h-[80vh]" heading="Hello, my name is">
         {scroll > 100 && (
           <TermCursor
             command="clear"

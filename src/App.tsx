@@ -7,7 +7,7 @@ import { TermMain } from './pages/TermMain/TermMain';
 export const App = () => (
   <>
     <main>
-      <div className={styles['app-background']} />
+      <div className={styles['app-background'] + ' z-[-1]'} />
       <BrowserRouter>
         <Dock></Dock>
         <Routes>

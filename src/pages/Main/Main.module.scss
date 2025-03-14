@@ -1,0 +1,49 @@
+.container {
+  max-width  : 1300px;
+  margin     : 0 auto;
+  font-family: 'San Francisco', 'Geist Sans', sans-serif;
+}
+
+.hero {
+  position       : relative;
+  width          : 768px;
+  margin         : 0 auto;
+  height         : 100vh;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  .title {
+    font-family: 'San Francisco Mono', 'San Francisco';
+    font-size  : clamp(32px, 15vw, 60px);
+    font-weight: 500;
+  }
+}
+
+
+.about {
+  height: 100vh;
+  width : 100%;
+
+  .about-container {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+  }
+
+
+  .title {
+    font-family: 'San Francisco Rounded', 'San Francisco';
+    font-size  : clamp(32px, 15vw, 60px);
+    font-weight: 700;
+    text-align : center;
+  }
+
+  .content {
+    .img {
+      background-color: var(--color-mantle);
+      border-radius   : 15px;
+    }
+  }
+
+}

@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Geist Sans";
+  src        : url("./assets/fonts/Geist-v1.4.01/webfonts/Geist[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src        : url("./assets/fonts/GeistMono-1.4.01/webfonts/GeistMono[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src        : url("./assets/fonts/JetBrainsMono/JetBrainsMono[wght].ttf") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@font-face {
+  font-family: "San Francisco";
+  src        : url("./assets/fonts/SanFrancisco/SF-Pro.ttf") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@mixin font-face($name, $weight, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src        : url("./assets/fonts/SanFrancisco/Rounded/#{$file}.otf") format("woff2");
+    font-weight: $weight;
+    font-style : normal;
+  }
+}
+
+@include font-face("San Francisco Rounded", 100, "SF-Pro-Rounded-UltraLight");
+@include font-face("San Francisco Rounded", 200, "SF-Pro-Rounded-Thin");
+@include font-face("San Francisco Rounded", 300, "SF-Pro-Rounded-Light");
+@include font-face("San Francisco Rounded", 400, "SF-Pro-Rounded-Regular");
+@include font-face("San Francisco Rounded", 500, "SF-Pro-Rounded-Medium");
+@include font-face("San Francisco Rounded", 600, "SF-Pro-Rounded-Semibold");
+@include font-face("San Francisco Rounded", 700, "SF-Pro-Rounded-Bold");
+@include font-face("San Francisco Rounded", 800, "SF-Pro-Rounded-Heavy");
+@include font-face("San Francisco Rounded", 900, "SF-Pro-Rounded-Black");
+
+@mixin font-face($name, $weight, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src        : url("./assets/fonts/SanFrancisco/Mono/#{$file}.otf") format("woff2");
+    font-weight: $weight;
+    font-style : normal;
+  }
+}
+
+@include font-face("San Francisco Mono", 100, "SF-Mono-UltraLight");
+@include font-face("San Francisco Mono", 200, "SF-Mono-Thin");
+@include font-face("San Francisco Mono", 300, "SF-Mono-Light");
+@include font-face("San Francisco Mono", 400, "SF-Mono-Regular");
+@include font-face("San Francisco Mono", 500, "SF-Mono-Medium");
+@include font-face("San Francisco Mono", 600, "SF-Mono-Semibold");
+@include font-face("San Francisco Mono", 700, "SF-Mono-Bold");
+@include font-face("San Francisco Mono", 800, "SF-Mono-Heavy");
+@include font-face("San Francisco Mono", 900, "SF-Mono-Black");

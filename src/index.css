@@ -1,26 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Geist Sans";
-  src        : url("./assets/fonts/Geist-v1.4.01/webfonts/Geist[wght].woff2") format("woff2");
-  font-weight: 100 900;
-  font-style : normal;
-}
-
-@font-face {
-  font-family: "Geist Mono";
-  src        : url("./assets/fonts/GeistMono-1.4.01/webfonts/GeistMono[wght].woff2") format("woff2");
-  font-weight: 100 900;
-  font-style : normal;
-}
-
-@font-face {
-  font-family: "JetBrains Mono";
-  src        : url("./assets/fonts/JetBrainsMono/JetBrainsMono[wght].ttf") format("woff2");
-  font-weight: 100 900;
-  font-style : normal;
-}
-
 :root {
   font-family:
     Geist Mono,
@@ -73,6 +52,10 @@
 
   --dock-background           : var(var(--color-mantle-xtr));
   --color-dock-icon-background: #282c34;
+
+  --safari-heading-background: var(--color-mantle);
+  --safari-url-background    : var(--color-crust);
+  --safari-content-background: --color-mantle-tr;
 
   color           : var(--color-text);
   background-color: var(--color-base);

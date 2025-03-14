@@ -1,0 +1,116 @@
+.safari {
+
+  margin       : 0 auto;
+  position     : relative;
+  border-radius: 15px;
+  overflow     : hidden;
+}
+
+.safari {
+  .url-container {
+    display         : flex;
+    gap             : 5px;
+    align-items     : center;
+    width           : fit-content;
+    padding         : 5px 100px;
+    background-color: var(--safari-url-background);
+    border-radius   : 8px;
+    justify-content : center;
+    position        : absolute;
+    left            : 50%;
+    transform       : translateX(-50%);
+  }
+
+  .heading {
+    width           : 100%;
+    font-size       : clamp(12px, 3vw, 20px);
+    font-weight     : 500;
+    text-align      : center;
+    display         : flex;
+    align-items     : center;
+    padding         : 15px 30px;
+    background-color: var(--safari-heading-background);
+    justify-content : space-between;
+    backdrop-filter : blur(10px);
+    box-shadow      : 5px 10px 5px var(--color-mauve-tr);
+
+
+
+    .window-container {
+      width       : fit-content;
+      display     : flex;
+      align-items : center;
+      gap         : 12.5px;
+      margin-right: 25%;
+
+
+
+      .window-control-btn {
+
+        width        : 15px;
+        height       : 15px;
+        border-radius: 100%;
+        background   : var(--color-close-circle);
+        box-shadow   : 0 0 5px var(--color-close-circle);
+        top          : 15px;
+        left         : 15px;
+
+        &:nth-child(2) {
+          background: var(--color-hide-circle);
+          box-shadow: 0 0 5px var(--color-hide-circle);
+          top       : 15px;
+          left      : 40px;
+        }
+
+        &:nth-child(3) {
+          background: var(--color-maximize-circle);
+          box-shadow: 0 0 5px var(--color-maximize-circle);
+          bottom    : 15px;
+          left      : 65px;
+        }
+      }
+    }
+
+    .share-container {
+      display     : flex;
+      align-items : center;
+      margin-right: 10%;
+
+      .divider {
+        width           : 1px;
+        height          : 20px;
+        margin-inline   : 8px;
+        background-color: var(--color-text);
+        opacity         : 0.5;
+      }
+    }
+
+    .tab-control-container {
+      display: flex;
+      opacity: 0.3;
+    }
+
+
+
+    .actions-list {
+      display    : flex;
+      align-items: center;
+      gap        : 5px;
+    }
+  }
+
+
+
+
+  .safari-content {
+    width          : 100%;
+    height         : 100%;
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+    overflow       : hidden;
+    background     : var(--safari-content-background);
+    backdrop-filter: blur(10px);
+  }
+}

@@ -25,7 +25,7 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
       <div className={clsx('flex flex-col', styles['term-container'])}>
         <Term
           heading="qalqa/projects"
-          className={styles['projects-term']}
+          className={styles['projects-term'] + ' h-[97vh] xl:h-[80vh]'}
           customStyles={{ marginBottom: `${contactsMargin}px` }}
         >
           {scroll < 6700 && (

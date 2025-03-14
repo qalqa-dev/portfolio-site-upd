@@ -8,7 +8,7 @@ export const Term: React.FC<{
 }> = ({ children, heading, className, customStyles }) => {
   return (
     <div
-      className={`${styles.term} flex flex-col h-[97vh] xl:h-[80vh] ${className}`}
+      className={`${styles.term} flex flex-col  ${className}`}
       style={{ ...customStyles }}
     >
       <div className={styles['term-btn']}></div>

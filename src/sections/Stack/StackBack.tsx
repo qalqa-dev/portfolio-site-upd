@@ -11,7 +11,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
   return (
     <>
       <section className={styles.stack}>
-        <Term heading="qalqa/stack/be">
+        <Term heading="qalqa/stack/be" className="h-[97vh] xl:h-[80vh]">
           {scroll <= 5100 && (
             <TermCursor
               command="neostack"
