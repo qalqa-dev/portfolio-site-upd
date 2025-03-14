@@ -2,7 +2,10 @@
   padding         : 16px;
   border-radius   : 8px;
   box-shadow      : 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: var(--color-mantle)
+  background-color: var(--color-mantle);
+  display         : flex;
+  flex-direction  : column;
+  justify-content : space-between;
 }
 
 .title {
@@ -12,7 +15,6 @@
 
 .description {
   font-size : 0.875rem;
-  color     : #666;
   margin-top: 4px;
 }
 
@@ -53,7 +55,6 @@ button {
 
     &:hover {
       box-shadow: 0 0 5px var(--color-mauve);
-      color     : var(--color-overlay2);
     }
   }
 
