@@ -1,0 +1,25 @@
+.progress-bar-container {
+  width           : 100%;
+  background-color: var(--color-crust);
+  border-radius   : 10px;
+  overflow        : hidden;
+  position        : relative;
+  height          : 20px;
+}
+
+.progress-bar {
+  height       : inherit;
+  border-radius: 10px;
+  transition   : width 0.3s ease-in-out;
+}
+
+.percentage {
+  position : absolute;
+  top      : 50%;
+  left     : 50%;
+  transform: translate(-50%, -50%);
+
+  &.invert {
+    color: var(--color-base);
+  }
+}

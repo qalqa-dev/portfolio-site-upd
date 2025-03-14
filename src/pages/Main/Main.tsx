@@ -1,8 +1,20 @@
 import { Typewriter } from '@/components';
+import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import RollingText from '@/components/RollingText/RollingText';
 import { Safari } from '@/components/Safari/Safari';
+import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
 import styles from './Main.module.scss';
 export const Main = () => {
+  const getTechPercentage = (
+    level: number,
+    affinity: number,
+    usage: number,
+  ): number => {
+    return parseFloat(
+      ((level * 2.4 + affinity * 0.5 + usage * 0.1) / 3).toFixed(1),
+    );
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -11,7 +23,7 @@ export const Main = () => {
             <h1 className={styles.title}>
               <RollingText text="qalqa"></RollingText>
             </h1>
-            <p className={styles.description}>
+            <div className={styles.description}>
               <Typewriter
                 text={[
                   'full-stack developer',
@@ -21,7 +33,7 @@ export const Main = () => {
                 initialPause={2600}
                 typingSpeed={50}
               ></Typewriter>
-            </p>
+            </div>
           </Safari>
         </section>
         <section className={styles.about}>
@@ -81,9 +93,52 @@ export const Main = () => {
                     width={500}
                     height={500}
                     className={styles.img}
-                    src=""
+                    src="/qalqa.png"
                     alt="Pidor"
                   />
+                </div>
+              </div>
+            </Safari>
+          </div>
+        </section>
+        <section className={styles.stack}>
+          <div className={styles['stack-container']}>
+            <Safari openedLink="https://qalqa.com/stack">
+              <div className={styles.webview}>
+                <div className={styles.text}>
+                  <h2 className={styles.title}>Stack</h2>
+                  <div className="w-full">
+                    <h3 className={styles.subtitle}>Frontend</h3>
+                    <ul>
+                      {currentStackFrontend.map((item, index) => (
+                        <li key={index}>
+                          <h4 className={styles.skillName}>{item.skillName}</h4>
+                          <ProgressBar
+                            percentage={getTechPercentage(
+                              item.levelScore,
+                              item.affinityScore,
+                              item.usageScore,
+                            )}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                    <h3 className={styles.subtitle}>Backend</h3>
+                    <ul>
+                      {currentStackBackend.map((item, index) => (
+                        <li key={index}>
+                          <h4 className={styles.skillName}>{item.skillName}</h4>
+                          <ProgressBar
+                            percentage={getTechPercentage(
+                              item.levelScore,
+                              item.affinityScore,
+                              item.usageScore,
+                            )}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </Safari>
