@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { GithubIcon } from '@/assets/svgs/GithubIcon';
 import { TelegramIcon } from '@/assets/svgs/TelegramIcon';
 import { VkIcon } from '@/assets/svgs/VkIcon';
@@ -24,6 +23,10 @@ export const Main = () => {
 
   const lenis = new Lenis({
     autoRaf: true,
+  });
+
+  lenis.on('scroll', ({ scroll }) => {
+    document.documentElement.style.setProperty('--scroll', `${scroll}`);
   });
 
   return (
