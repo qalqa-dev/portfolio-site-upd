@@ -13,6 +13,16 @@
   align-items    : center;
   margin-bottom  : 10vh;
 
+  .webview {
+    padding-bottom: 100px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items   : center;
+  }
+
+
   .title {
     font-family: 'San Francisco Mono', 'San Francisco';
     font-size  : clamp(32px, 15vw, 60px);

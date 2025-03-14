@@ -34,19 +34,23 @@ export const Main = () => {
       <div className={styles.container}>
         <section className={styles.hero}>
           <Safari>
-            <h1 className={styles.title}>
-              <RollingText text="qalqa"></RollingText>
-            </h1>
-            <div className={styles.description}>
-              <Typewriter
-                text={[
-                  'full-stack developer',
-                  'frontend developer',
-                  'backend developer',
-                ]}
-                initialPause={2600}
-                typingSpeed={50}
-              ></Typewriter>
+            <div className={styles.webview}>
+              <div className={styles.content}>
+                <h1 className={styles.title}>
+                  <RollingText text="qalqa"></RollingText>
+                </h1>
+                <div className={styles.description}>
+                  <Typewriter
+                    text={[
+                      'full-stack developer',
+                      'frontend developer',
+                      'backend developer',
+                    ]}
+                    initialPause={2600}
+                    typingSpeed={50}
+                  ></Typewriter>
+                </div>
+              </div>
             </div>
           </Safari>
         </section>
