@@ -1,7 +1,9 @@
 import { Typewriter } from '@/components';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
+import { ProjectList } from '@/components/ProjectCard/ProjectList';
 import RollingText from '@/components/RollingText/RollingText';
 import { Safari } from '@/components/Safari/Safari';
+import { projectsData } from '@/data/projectsData';
 import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
 import styles from './Main.module.scss';
 export const Main = () => {
@@ -105,40 +107,53 @@ export const Main = () => {
           <div className={styles['stack-container']}>
             <Safari openedLink="https://qalqa.com/stack">
               <div className={styles.webview}>
-                <div className={styles.text}>
-                  <h2 className={styles.title}>Stack</h2>
-                  <div className="w-full">
-                    <h3 className={styles.subtitle}>Frontend</h3>
-                    <ul>
-                      {currentStackFrontend.map((item, index) => (
-                        <li key={index}>
-                          <h4 className={styles.skillName}>{item.skillName}</h4>
-                          <ProgressBar
-                            percentage={getTechPercentage(
-                              item.levelScore,
-                              item.affinityScore,
-                              item.usageScore,
-                            )}
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                    <h3 className={styles.subtitle}>Backend</h3>
-                    <ul>
-                      {currentStackBackend.map((item, index) => (
-                        <li key={index}>
-                          <h4 className={styles.skillName}>{item.skillName}</h4>
-                          <ProgressBar
-                            percentage={getTechPercentage(
-                              item.levelScore,
-                              item.affinityScore,
-                              item.usageScore,
-                            )}
-                          />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <h2 className={styles.title}>Stack</h2>
+                <div className="w-full">
+                  <h3 className={styles.subtitle}>Frontend</h3>
+                  <ul>
+                    {currentStackFrontend.map((item, index) => (
+                      <li key={index}>
+                        <h4 className={styles.skillName}>{item.skillName}</h4>
+                        <ProgressBar
+                          percentage={getTechPercentage(
+                            item.levelScore,
+                            item.affinityScore,
+                            item.usageScore,
+                          )}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                  <h3 className={styles.subtitle}>Backend</h3>
+                  <ul>
+                    {currentStackBackend.map((item, index) => (
+                      <li key={index}>
+                        <h4 className={styles.skillName}>{item.skillName}</h4>
+                        <ProgressBar
+                          percentage={getTechPercentage(
+                            item.levelScore,
+                            item.affinityScore,
+                            item.usageScore,
+                          )}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                  <p className={styles.hint}>
+                    //Full tech-stack u can saw on github or on term version
+                  </p>
+                </div>
+              </div>
+            </Safari>
+          </div>
+        </section>
+        <section className={styles.projects}>
+          <div className={styles['projects-container']}>
+            <Safari openedLink="https://qalqa.com/projects">
+              <div className={styles.webview}>
+                <div className={styles.content}>
+                  <h2 className={styles.title}>Projects</h2>
+                  <ProjectList projects={projectsData} />
                 </div>
               </div>
             </Safari>
