@@ -30,21 +30,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       )}
       <div className="w-full flex flex-col justify-between">
         <div>
-          <h2 className="text-[14px] md:text-[16px] lg:text-[24px] font-bold">
-            {project.name}{' '}
-            {project.status && (
-              <span
-                className={clsx(styles.status, 'capitalize', {
-                  [styles.finished]: project.status === 'finished',
-                  [styles.inProgress]: project.status === 'in progress',
-                  [styles.cancelled]: project.status === 'cancelled',
-                  [styles.active]: project.status === 'active',
-                })}
-              >
-                {project.status}
-              </span>
-            )}
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className={styles.title}>{project.name} </h2>
+            <span>
+              {project.status && (
+                <span
+                  className={clsx(styles.status, 'capitalize', {
+                    [styles.finished]: project.status === 'finished',
+                    [styles.inProgress]: project.status === 'in progress',
+                    [styles.cancelled]: project.status === 'cancelled',
+                    [styles.active]: project.status === 'active',
+                  })}
+                >
+                  {project.status}
+                </span>
+              )}
+            </span>
+          </div>
           <p className={styles.description}>{project.description}</p>
         </div>
         <div className={styles.links}>
@@ -53,7 +55,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             className={styles['btn-repo'] + ' flex items-center justify-center'}
           >
             <p>Repository</p>
-            <IoIosArrowRoundForward size={28} />
+            <IoIosArrowRoundForward size={32} />
           </button>
         </div>
       </div>
