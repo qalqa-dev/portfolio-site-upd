@@ -12,7 +12,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div
       className={clsx(styles.card, 'flex flex-col md:flex-row', {
-        ['col-span-2']: project.deploy_href,
+        ['md:col-span-2']: project.deploy_href,
         ['order-[-1]']: project.deploy_href,
       })}
     >

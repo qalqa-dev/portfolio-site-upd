@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './rollingText.module.scss';
+import styles from './RollingText.module.scss';
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 

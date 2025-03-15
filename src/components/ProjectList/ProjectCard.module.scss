@@ -1,6 +1,6 @@
 .card {
   padding         : 16px;
-  border-radius   : 8px;
+  border-radius   : 15px;
   box-shadow      : 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: var(--color-base);
   display         : flex;
@@ -54,6 +54,7 @@
 }
 
 .description {
+  color     : var(--color-subtext1);
   font-size : clamp(16px, 3vw, 24px);
   margin-top: 4px;
 }

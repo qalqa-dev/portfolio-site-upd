@@ -1,13 +1,12 @@
-import { GithubIcon } from '@/assets/svgs/GithubIcon';
-import { TelegramIcon } from '@/assets/svgs/TelegramIcon';
-import { VkIcon } from '@/assets/svgs/VkIcon';
 import { Typewriter } from '@/components';
+import { MacIconWrapper } from '@/components/MacIcon/MacIconWrapper';
 import ProgressBar from '@/components/ProgressBar/ProgressBar';
 import { ProjectList } from '@/components/ProjectCard/ProjectList';
 import RollingText from '@/components/RollingText/RollingText';
 import { Safari } from '@/components/Safari/Safari';
 import { projectsData } from '@/data/projectsData';
 import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
+import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
 import styles from './Main.module.scss';
 export const Main = () => {
   const getTechPercentage = (
@@ -36,7 +35,7 @@ export const Main = () => {
             <div className={styles.webview}>
               <div className={styles.content}>
                 <h1 className={styles.title}>
-                  <RollingText text="qalqa"></RollingText>
+                  <RollingText text="qalqa" />
                 </h1>
                 <div className={styles.description}>
                   <Typewriter
@@ -57,10 +56,16 @@ export const Main = () => {
           <div className={styles['about-container']}>
             <Safari openedLink="https://qalqa.com/about">
               <div className={styles.webview}>
-                <div className={styles.content}>
+                <h2 className={styles.title}>About me</h2>
+                <div className={styles.content + ' flex-col lg:flex-row'}>
+                  <img
+                    width={500}
+                    height={500}
+                    className={styles.img}
+                    src="/qalqa.png"
+                    alt="Pidor"
+                  />
                   <div className={styles.text}>
-                    <h2 className={styles.title}>About me</h2>
-
                     <p>
                       Hey, I’m Andrey!{' '}
                       <span className={styles.highlight}>Full-stack</span> dev
@@ -105,14 +110,6 @@ export const Main = () => {
                       environment. Let’s connect!
                     </p>
                   </div>
-
-                  <img
-                    width={500}
-                    height={500}
-                    className={styles.img}
-                    src="/qalqa.png"
-                    alt="Pidor"
-                  />
                 </div>
               </div>
             </Safari>
@@ -123,9 +120,9 @@ export const Main = () => {
             <Safari openedLink="https://qalqa.com/stack">
               <div className={styles.webview}>
                 <h2 className={styles.title}>Stack</h2>
-                <div className="w-full">
-                  <h3 className={styles.subtitle}>Frontend</h3>
-                  <ul>
+                <div className="w-full gap-5 flex flex-col md:flex-row">
+                  <ul className="w-full">
+                    <h3 className={styles.subtitle}>Frontend</h3>
                     {currentStackFrontend.map((item, index) => (
                       <li key={index}>
                         <h4 className={styles.skillName}>{item.skillName}</h4>
@@ -139,8 +136,8 @@ export const Main = () => {
                       </li>
                     ))}
                   </ul>
-                  <h3 className={styles.subtitle}>Backend</h3>
-                  <ul>
+                  <ul className="w-full">
+                    <h3 className={styles.subtitle}>Backend</h3>
                     {currentStackBackend.map((item, index) => (
                       <li key={index}>
                         <h4 className={styles.skillName}>{item.skillName}</h4>
@@ -154,10 +151,10 @@ export const Main = () => {
                       </li>
                     ))}
                   </ul>
-                  <p className={styles.hint}>
-                    //Full tech-stack u can saw on github or on term version
-                  </p>
                 </div>
+                <p className={styles.hint}>
+                  //Full tech-stack u can saw on github or on term version
+                </p>
               </div>
             </Safari>
           </div>
@@ -180,37 +177,41 @@ export const Main = () => {
               <div className={styles.webview}>
                 <div className={styles.content}>
                   <h2 className={styles.title}>Contacts</h2>
-                  <div>
-                    <a
-                      href="mailto:andreybas04@gmail.com"
-                      className="flex gap-1"
-                    >
-                      <span className={'highlight flex items-center gap-3'}>
-                        <i>✉️</i>Email:{' '}
-                      </span>
-                      andreybas04@gmail.com
-                    </a>
-                    <a href="https://github.com/qalqaa" className="flex gap-1">
-                      <span className="highlight flex items-center gap-3">
-                        <GithubIcon width={'1.25rem'} height={'1.25rem'} />
-                        Github:{' '}
-                      </span>
-                      qalqaa
-                    </a>
-                    <a href="https://t.me/qalqaa" className="flex gap-1">
-                      <span className={'highlight flex items-center gap-3'}>
-                        <TelegramIcon width={'1rem'} height={'1rem'} />
-                        Telegram:{' '}
-                      </span>
-                      qalqaa
-                    </a>
-                    <a href="https://vk.com/qalqaa" className="flex gap-1">
-                      <span className={'highlight flex items-center gap-3'}>
-                        <VkIcon width={'1rem'} height={'1rem'} /> VK:{' '}
-                      </span>
-                      qalqaa
-                    </a>
-                  </div>
+                  <ul className="flex flex-col gap-3 justify-center md:flex-row">
+                    <li className={styles.iconItem}>
+                      <MacIconWrapper>
+                        <a
+                          href="https://github.com/qalqa"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaGithubAlt />
+                        </a>
+                      </MacIconWrapper>
+                    </li>
+                    <li className={styles.iconItem}>
+                      <MacIconWrapper>
+                        <a
+                          href="https://t.me/qalqa"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaTelegramPlane />
+                        </a>
+                      </MacIconWrapper>
+                    </li>
+                    <li className={styles.iconItem}>
+                      <MacIconWrapper>
+                        <a
+                          href="https://vk.com/qalqa"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaVk />
+                        </a>
+                      </MacIconWrapper>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </Safari>

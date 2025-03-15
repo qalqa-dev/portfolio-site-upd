@@ -12,13 +12,15 @@
     gap            : 5px;
     align-items    : center;
     width          : fit-content;
-    padding        : 5px 100px;
+    padding        : 5px 5px;
     background     : var(--safari-url-background);
     border-radius  : 8px;
     justify-content: center;
     position       : absolute;
     left           : 50%;
+    width          : 50%;
     transform      : translateX(-50%);
+    font-size      : clamp(12px, 2vw, 20px);
   }
 
   .heading {
@@ -71,35 +73,34 @@
       }
     }
 
-    .share-container {
-      display     : flex;
-      align-items : center;
-      margin-right: 10%;
+  }
 
-      .divider {
-        width           : 1px;
-        height          : 20px;
-        margin-inline   : 8px;
-        background-color: var(--color-text);
-        opacity         : 0.5;
-      }
-    }
+  .share-container {
+    display     : flex;
+    align-items : center;
+    margin-right: 10%;
 
-    .tab-control-container {
-      display: flex;
-      opacity: 0.3;
-    }
-
-
-
-    .actions-list {
-      display    : flex;
-      align-items: center;
-      gap        : 5px;
+    .divider {
+      width           : 1px;
+      height          : 20px;
+      margin-inline   : 8px;
+      background-color: var(--color-text);
+      opacity         : 0.5;
     }
   }
 
+  .tab-control-container {
+    display: flex;
+    opacity: 0.3;
+  }
 
+
+
+  .actions-list {
+    display    : flex;
+    align-items: center;
+    gap        : 5px;
+  }
 
 
   .safari-content {
@@ -112,5 +113,43 @@
     overflow       : hidden;
     background     : var(--safari-content-background);
     backdrop-filter: blur(10px);
+  }
+
+  @media (max-width: 1200px) {
+
+    .actions-container {
+      display: none;
+    }
+
+    .tab-control-container {
+      display: none;
+    }
+
+    .share-container {
+      display: none;
+    }
+
+    .window-container {
+      display: none;
+    }
+
+    .url-container {
+      box-sizing: border-box;
+      width     : 70%;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .url-container {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 500px) {
+
+    .url-container {
+      display: none;
+    }
   }
 }

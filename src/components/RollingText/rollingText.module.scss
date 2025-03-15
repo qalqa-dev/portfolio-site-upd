@@ -1,12 +1,12 @@
 .rolling-text-container {
   display  : flex;
-  font-size: 10rem;
+  font-size: clamp(50px, 20vw, 140px);
   position : relative;
 }
 
 .rolling-column {
   overflow          : hidden;
-  height            : 18rem;
+  height            : clamp(100px, 30vw, 210px);
   display           : flex;
   align-items       : center;
   position          : relative;
@@ -26,9 +26,11 @@
   display        : flex;
   align-items    : center;
   justify-content: center;
+  font-weight    : 400;
   opacity        : 0.6;
 }
 
 .rolling-char:nth-child(21) {
-  opacity: 1;
+  opacity    : 1;
+  font-weight: 500;
 }
