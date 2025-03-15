@@ -8,7 +8,6 @@ import RollingText from '@/components/RollingText/RollingText';
 import { Safari } from '@/components/Safari/Safari';
 import { projectsData } from '@/data/projectsData';
 import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
-import Lenis from 'lenis';
 import styles from './Main.module.scss';
 export const Main = () => {
   const getTechPercentage = (
@@ -21,13 +20,13 @@ export const Main = () => {
     );
   };
 
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
+  // const lenis = new Lenis({
+  //   autoRaf: true,
+  // });
 
-  lenis.on('scroll', ({ scroll }) => {
-    document.documentElement.style.setProperty('--scroll', `${scroll}`);
-  });
+  // lenis.on('scroll', ({ scroll }) => {
+  //   document.documentElement.style.setProperty('--scroll', `${scroll}`);
+  // });
 
   return (
     <>

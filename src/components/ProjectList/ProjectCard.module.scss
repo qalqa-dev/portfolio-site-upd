@@ -4,9 +4,49 @@
   box-shadow      : 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: var(--color-mantle);
   display         : flex;
-  flex-direction  : column;
+  gap             : 16px;
   justify-content : space-between;
+  position        : relative;
+
+  .preview {
+    width        : 100%;
+    position     : relative;
+    border-radius: 10px;
+    overflow     : hidden;
+
+    .preview-img {
+      position: relative;
+      width   : 100%;
+    }
+
+    &:hover {
+      .backdrop {
+        opacity: 1;
+      }
+    }
+
+    .backdrop {
+      opacity        : 0;
+      transition     : opacity 0.2s ease-in-out;
+      position       : absolute;
+      top            : 0;
+      left           : 0;
+      width          : 100%;
+      height         : 100%;
+      display        : flex;
+      align-items    : center;
+      justify-content: center;
+      z-index        : 1;
+      background     : var(--color-mantle-xtr);
+      backdrop-filter: blur(10px);
+    }
+
+
+  }
+
 }
+
+
 
 .title {
   font-size  : 1.25rem;
@@ -67,6 +107,19 @@ button {
       text-shadow: 0 0 5px var(--color-green);
     }
   }
+}
+
+.backdrop {
+  position       : absolute;
+  top            : 0;
+  left           : 0;
+  width          : 100%;
+  height         : 100%;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  color          : var(--color-mauve);
+  font-size      : 1.5rem;
 }
 
 .status {
