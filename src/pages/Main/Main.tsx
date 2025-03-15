@@ -177,7 +177,7 @@ export const Main = () => {
               <div className={styles.webview}>
                 <div className={styles.content}>
                   <h2 className={styles.title}>Contacts</h2>
-                  <ul className="flex flex-col gap-3 justify-center md:flex-row">
+                  <ul className="flex flex-col gap-3 md:gap-12 justify-center md:flex-row">
                     <li className={styles.iconItem}>
                       <MacIconWrapper>
                         <a

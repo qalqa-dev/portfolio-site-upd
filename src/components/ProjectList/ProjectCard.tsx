@@ -11,8 +11,8 @@ type ProjectCardProps = {
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div
-      className={clsx(styles.card, 'flex flex-col md:flex-row', {
-        ['md:col-span-2']: project.deploy_href,
+      className={clsx(styles.card, 'flex flex-col lg:flex-row', {
+        ['lg:col-span-2']: project.deploy_href,
         ['order-[-1]']: project.deploy_href,
       })}
     >
