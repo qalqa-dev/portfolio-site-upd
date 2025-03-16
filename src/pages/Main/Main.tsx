@@ -32,6 +32,11 @@ export const Main = () => {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    if (lenisRef.current && lenisRef.current.destroy) {
+      lenisRef.current.destroy();
+      lenisRef.current = null;
+    }
+
     if (smoothScroll) {
       lenisRef.current = new Lenis({
         autoRaf: true,

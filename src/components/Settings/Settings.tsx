@@ -36,7 +36,7 @@ export const Settings = () => {
           </button>
           <button
             onClick={() =>
-              dispatch(setSmoothScroll(smoothScroll ? false : true))
+              dispatch(setSmoothScroll(smoothScroll === true ? false : true))
             }
           >
             Toggle Smooth Scroll

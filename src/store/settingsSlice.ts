@@ -10,6 +10,11 @@ interface SettingsState {
   language: Language;
 }
 
+const getInitialSmoothScroll = (): boolean => {
+  const savedSmoothScroll = localStorage.getItem('smoothScroll');
+  return savedSmoothScroll === 'true';
+};
+
 const getInitialTheme = (): Theme => {
   const savedTheme = localStorage.getItem('theme') as Theme | null;
   if (savedTheme) return savedTheme;
@@ -20,7 +25,7 @@ const getInitialTheme = (): Theme => {
 
 const initialState: SettingsState = {
   settingsState: false,
-  smoothScroll: false,
+  smoothScroll: getInitialSmoothScroll(),
   theme: getInitialTheme(),
   language: 'en',
 };
@@ -34,6 +39,7 @@ const settingsSlice = createSlice({
     },
     setSmoothScroll(state, action: PayloadAction<boolean>) {
       state.smoothScroll = action.payload;
+      localStorage.setItem('smoothScroll', action.payload.toString());
     },
     setTheme: (state, action: PayloadAction<Theme>) => {
       state.theme = action.payload;
