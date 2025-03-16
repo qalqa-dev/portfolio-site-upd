@@ -7,6 +7,7 @@ import { Safari } from '@/components/Safari/Safari';
 import { projectsData } from '@/data/projectsData';
 import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
 import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
+import { IoIosMail } from 'react-icons/io';
 import styles from './Main.module.scss';
 export const Main = () => {
   const getTechPercentage = (
@@ -58,13 +59,13 @@ export const Main = () => {
               <div className={styles.webview}>
                 <h2 className={styles.title}>About me</h2>
                 <div className={styles.content + ' flex-col lg:flex-row'}>
-                  <img
+                  {/* <img
                     width={500}
                     height={500}
                     className={styles.img}
                     src="/qalqa.png"
                     alt="Pidor"
-                  />
+                  /> */}
                   <div className={styles.text}>
                     <p>
                       Hey, I’m Andrey!{' '}
@@ -96,15 +97,6 @@ export const Main = () => {
                       </span>
                       , which is now actively used.
                     </p>
-
-                    <p>
-                      I’ve also developed the{' '}
-                      <span className={styles.highlight}>
-                        frontend for a large CRM system
-                      </span>{' '}
-                      for an insurance company in Kazakhstan.
-                    </p>
-
                     <p>
                       Excited for new challenges and growth in a fast-paced
                       environment. Let’s connect!
@@ -177,11 +169,22 @@ export const Main = () => {
               <div className={styles.webview}>
                 <div className={styles.content}>
                   <h2 className={styles.title}>Contacts</h2>
-                  <ul className="flex flex-col gap-3 md:gap-12 justify-center md:flex-row">
+                  <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     <li className={styles.iconItem}>
                       <MacIconWrapper>
                         <a
-                          href="https://github.com/qalqa"
+                          href="mailto:andreybas04@gmail.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <IoIosMail />
+                        </a>
+                      </MacIconWrapper>
+                    </li>
+                    <li className={styles.iconItem}>
+                      <MacIconWrapper>
+                        <a
+                          href="https://github.com/qalqaa"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -192,7 +195,7 @@ export const Main = () => {
                     <li className={styles.iconItem}>
                       <MacIconWrapper>
                         <a
-                          href="https://t.me/qalqa"
+                          href="https://t.me/qalqaa"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -203,7 +206,7 @@ export const Main = () => {
                     <li className={styles.iconItem}>
                       <MacIconWrapper>
                         <a
-                          href="https://vk.com/qalqa"
+                          href="https://vk.com/qalqaa"
                           target="_blank"
                           rel="noopener noreferrer"
                         >

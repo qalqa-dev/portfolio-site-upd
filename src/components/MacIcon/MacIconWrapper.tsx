@@ -9,11 +9,7 @@ type MacIconWrapperProps = {
 
 export const MacIconWrapper = ({ children, isActive }: MacIconWrapperProps) => {
   return (
-    <div
-      className={clsx(styles['wrapper'], {
-        [styles.active]: isActive,
-      })}
-    >
+    <div className={clsx(styles.wrapper, { [styles.active]: isActive })}>
       {children}
     </div>
   );

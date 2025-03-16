@@ -11,6 +11,7 @@
   align-items    : center;
   justify-content: center;
   box-sizing     : border-box;
+  border-radius  : 20%;
 }
 
 .active {
@@ -19,12 +20,13 @@
   &::after {
     content         : "";
     position        : absolute;
-    width           : 8px;
-    height          : 8px;
-    top             : 110%;
+    width           : 10%;
+    height          : 10%;
+    top             : 105%;
     left            : 50%;
     transform       : translateX(-50%);
     border-radius   : 100%;
+    z-index         : 100;
     background-color: var(--color-text);
   }
 }
