@@ -10,6 +10,7 @@ import { RootState } from '@/store/store';
 import { t } from 'i18next';
 import Lenis from 'lenis';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
@@ -52,22 +53,25 @@ export const Main = () => {
     }
   }, [smoothScroll]);
 
-  const [markdownContent, setMarkdownContent] = useState<string>('');
+  const [aboutContent, setAboutContent] = useState<string>('');
 
-  const fetchMarkdown = async () => {
-    try {
-      const response = await fetch('/src/data/about/about-en.md');
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const fetchAboutContent = async () => {
+      const locale = i18n.language === 'ru-RU' ? 'ru' : 'en';
+      const response = await fetch(
+        '/src/locales/about/about.' + locale + '.md',
+      );
       if (!response.ok) {
         throw new Error('Failed to load the markdown file');
       }
-      const text = await response.text();
-      setMarkdownContent(text);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+      const markdown = await response.text();
+      setAboutContent(markdown);
+    };
 
-  fetchMarkdown();
+    fetchAboutContent();
+  }, [i18n.language]);
 
   return (
     <>
@@ -98,10 +102,10 @@ export const Main = () => {
           <div className={styles['about-container']}>
             <Safari openedLink="https://qalqa.com/about">
               <div className={styles.webview}>
-                <h2 className={styles.title}>About me</h2>
+                <h2 className={styles.title}>{t('about-title')}</h2>
                 <div className={styles.content + ' flex-col lg:flex-row'}>
                   <div className={styles.text}>
-                    <ReactMarkdown>{markdownContent}</ReactMarkdown>
+                    <ReactMarkdown>{aboutContent}</ReactMarkdown>
                   </div>
                 </div>
               </div>
@@ -112,7 +116,7 @@ export const Main = () => {
           <div className={styles['stack-container']}>
             <Safari openedLink="https://qalqa.com/stack">
               <div className={styles.webview}>
-                <h2 className={styles.title}>Stack</h2>
+                <h2 className={styles.title}>{t('stack-title')}</h2>
                 <div className="w-full gap-5 flex flex-col md:flex-row">
                   <ul className="w-full">
                     <h3 className={styles.subtitle}>Frontend</h3>
@@ -157,7 +161,7 @@ export const Main = () => {
             <Safari openedLink="https://qalqa.com/projects">
               <div className={styles.webview}>
                 <div className={styles.content}>
-                  <h2 className={styles.title}>Projects</h2>
+                  <h2 className={styles.title}>{t('projects-title')}</h2>
                   <ProjectList projects={projectsData} />
                 </div>
               </div>
@@ -169,7 +173,7 @@ export const Main = () => {
             <Safari openedLink="https://qalqa.com/contacts">
               <div className={styles.webview}>
                 <div className={styles.content}>
-                  <h2 className={styles.title}>Contacts</h2>
+                  <h2 className={styles.title}>{t('contacts-title')}</h2>
                   <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                     <li className={styles.iconItem}>
                       <MacIconWrapper>
