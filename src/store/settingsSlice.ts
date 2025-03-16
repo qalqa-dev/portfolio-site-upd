@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type Theme = 'light' | 'dark';
-type Language = 'en' | 'ru';
 
 interface SettingsState {
   settingsState: boolean;
   smoothScroll: boolean;
   theme: Theme;
-  language: Language;
+  language: string;
 }
 
 const getInitialSmoothScroll = (): boolean => {
@@ -27,7 +26,7 @@ const initialState: SettingsState = {
   settingsState: false,
   smoothScroll: getInitialSmoothScroll(),
   theme: getInitialTheme(),
-  language: 'en',
+  language: localStorage.getItem('i18nextLng') || 'en-US',
 };
 
 const settingsSlice = createSlice({
@@ -51,7 +50,7 @@ const settingsSlice = createSlice({
       localStorage.setItem('theme', state.theme);
       document.documentElement.setAttribute('data-theme', state.theme);
     },
-    setLanguage: (state, action: PayloadAction<Language>) => {
+    setLanguage: (state, action: PayloadAction<string>) => {
       state.language = action.payload;
     },
   },
