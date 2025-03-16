@@ -1,0 +1,10 @@
+.container {
+  position  : fixed;
+  z-index   : 99;
+  width     : 50vw;
+  height    : 50vh;
+  top       : 25%;
+  left      : 50%;
+  transform : translateX(-50%);
+  background: var(--color-mantle);
+}

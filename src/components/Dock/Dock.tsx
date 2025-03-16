@@ -1,6 +1,9 @@
+import { setSettingsState } from '@/store/settingsSlice';
+import { RootState } from '@/store/store';
 import { useRef } from 'react';
 import { GiStoneBlock } from 'react-icons/gi';
 import { PiGearFill, PiHouseFill, PiTerminalWindowFill } from 'react-icons/pi';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router';
 import { scaleValue } from 'utils/scale';
 import { MacIconWrapper } from '../MacIcon/MacIconWrapper';
@@ -10,6 +13,10 @@ const maxAdditionalSize = 5;
 
 export const Dock = () => {
   const dockRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+  const settingsState = useSelector(
+    (state: RootState) => state.settings.settingsState,
+  );
 
   const location = useLocation();
 
@@ -68,11 +75,11 @@ export const Dock = () => {
           <span className={styles.tooltip}>Craft</span>
         </li>
         <li className={styles.app} onMouseMove={handleAppHover}>
-          <Link to="/settings">
+          <a onClick={() => dispatch(setSettingsState(!settingsState))}>
             <MacIconWrapper isActive={getActiveTab('/settings')}>
               <PiGearFill />
             </MacIconWrapper>
-          </Link>
+          </a>
           <span className={styles.tooltip}>Settings</span>
         </li>
       </ul>
