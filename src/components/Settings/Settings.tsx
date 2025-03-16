@@ -1,10 +1,16 @@
-import { setLanguage, toggleTheme } from '@/store/settingsSlice';
+import {
+  setLanguage,
+  setSmoothScroll,
+  toggleTheme,
+} from '@/store/settingsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from 'store/store';
 import styles from './Settings.module.scss';
 
 export const Settings = () => {
-  const { theme, language } = useSelector((state: RootState) => state.settings);
+  const { theme, language, smoothScroll } = useSelector(
+    (state: RootState) => state.settings,
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   const settingsState = useSelector(
@@ -18,6 +24,7 @@ export const Settings = () => {
           <h2>Settings</h2>
           <p>Current theme: {theme}</p>
           <p>Current language: {language}</p>
+          <p>Current smooth scroll: {smoothScroll ? 'ON' : 'OFF'}</p>
 
           <button onClick={() => dispatch(toggleTheme())}>Toggle Theme</button>
           <button
@@ -26,6 +33,13 @@ export const Settings = () => {
             }
           >
             Toggle Language
+          </button>
+          <button
+            onClick={() =>
+              dispatch(setSmoothScroll(smoothScroll ? false : true))
+            }
+          >
+            Toggle Smooth Scroll
           </button>
         </div>
       )}

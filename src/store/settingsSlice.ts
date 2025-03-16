@@ -5,6 +5,7 @@ type Language = 'en' | 'ru';
 
 interface SettingsState {
   settingsState: boolean;
+  smoothScroll: boolean;
   theme: Theme;
   language: Language;
 }
@@ -19,6 +20,7 @@ const getInitialTheme = (): Theme => {
 
 const initialState: SettingsState = {
   settingsState: false,
+  smoothScroll: false,
   theme: getInitialTheme(),
   language: 'en',
 };
@@ -29,6 +31,9 @@ const settingsSlice = createSlice({
   reducers: {
     setSettingsState(state, action: PayloadAction<boolean>) {
       state.settingsState = action.payload;
+    },
+    setSmoothScroll(state, action: PayloadAction<boolean>) {
+      state.smoothScroll = action.payload;
     },
     setTheme: (state, action: PayloadAction<Theme>) => {
       state.theme = action.payload;
@@ -46,6 +51,11 @@ const settingsSlice = createSlice({
   },
 });
 
-export const { setSettingsState, setTheme, toggleTheme, setLanguage } =
-  settingsSlice.actions;
+export const {
+  setSettingsState,
+  setTheme,
+  toggleTheme,
+  setLanguage,
+  setSmoothScroll,
+} = settingsSlice.actions;
 export default settingsSlice.reducer;

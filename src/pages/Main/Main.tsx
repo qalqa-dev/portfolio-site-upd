@@ -6,9 +6,14 @@ import RollingText from '@/components/RollingText/RollingText';
 import { Safari } from '@/components/Safari/Safari';
 import { projectsData } from '@/data/projectsData';
 import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
+import { RootState } from '@/store/store';
+import Lenis from 'lenis';
+import { useEffect, useRef } from 'react';
 import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
+import { useSelector } from 'react-redux';
 import styles from './Main.module.scss';
+
 export const Main = () => {
   const getTechPercentage = (
     level: number,
@@ -20,13 +25,25 @@ export const Main = () => {
     );
   };
 
-  // const lenis = new Lenis({
-  //   autoRaf: true,
-  // });
+  const smoothScroll = useSelector(
+    (state: RootState) => state.settings.smoothScroll,
+  );
 
-  // lenis.on('scroll', ({ scroll }) => {
-  //   document.documentElement.style.setProperty('--scroll', `${scroll}`);
-  // });
+  const lenisRef = useRef<Lenis | null>(null);
+
+  useEffect(() => {
+    if (smoothScroll) {
+      lenisRef.current = new Lenis({
+        autoRaf: true,
+        duration: 1.5,
+        smoothWheel: true,
+      });
+      lenisRef.current.start();
+    } else {
+      lenisRef.current?.destroy();
+      lenisRef.current = null;
+    }
+  }, [smoothScroll]);
 
   return (
     <>
