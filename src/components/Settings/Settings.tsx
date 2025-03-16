@@ -1,4 +1,4 @@
-import { setLanguage, setTheme } from '@/store/settingsSlice';
+import { setLanguage, toggleTheme } from '@/store/settingsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from 'store/store';
 import styles from './Settings.module.scss';
@@ -10,6 +10,7 @@ export const Settings = () => {
   const settingsState = useSelector(
     (state: RootState) => state.settings.settingsState,
   );
+
   return (
     <>
       {settingsState && (
@@ -18,13 +19,7 @@ export const Settings = () => {
           <p>Current theme: {theme}</p>
           <p>Current language: {language}</p>
 
-          <button
-            onClick={() =>
-              dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))
-            }
-          >
-            Toggle Theme
-          </button>
+          <button onClick={() => dispatch(toggleTheme())}>Toggle Theme</button>
           <button
             onClick={() =>
               dispatch(setLanguage(language === 'en' ? 'ru' : 'en'))
