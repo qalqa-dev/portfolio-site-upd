@@ -7,10 +7,12 @@ import { Safari } from '@/components/Safari/Safari';
 import { projectsData } from '@/data/projectsData';
 import { currentStackBackend, currentStackFrontend } from '@/data/stackData';
 import { RootState } from '@/store/store';
+import { t } from 'i18next';
 import Lenis from 'lenis';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
+import ReactMarkdown from 'react-markdown';
 import { useSelector } from 'react-redux';
 import styles from './Main.module.scss';
 
@@ -50,6 +52,23 @@ export const Main = () => {
     }
   }, [smoothScroll]);
 
+  const [markdownContent, setMarkdownContent] = useState<string>('');
+
+  const fetchMarkdown = async () => {
+    try {
+      const response = await fetch('/src/data/about/about-en.md');
+      if (!response.ok) {
+        throw new Error('Failed to load the markdown file');
+      }
+      const text = await response.text();
+      setMarkdownContent(text);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchMarkdown();
+
   return (
     <>
       <div className={styles.container}>
@@ -63,9 +82,9 @@ export const Main = () => {
                 <div className={styles.description}>
                   <Typewriter
                     text={[
-                      'full-stack developer',
-                      'frontend developer',
-                      'backend developer',
+                      t('hero-description-1'),
+                      t('hero-description-2'),
+                      t('hero-description-3'),
                     ]}
                     initialPause={2600}
                     typingSpeed={50}
@@ -81,48 +100,8 @@ export const Main = () => {
               <div className={styles.webview}>
                 <h2 className={styles.title}>About me</h2>
                 <div className={styles.content + ' flex-col lg:flex-row'}>
-                  {/* <img
-                    width={500}
-                    height={500}
-                    className={styles.img}
-                    src="/qalqa.png"
-                    alt="Pidor"
-                  /> */}
                   <div className={styles.text}>
-                    <p>
-                      Hey, I’m Andrey!{' '}
-                      <span className={styles.highlight}>Full-stack</span> dev
-                      with <span className={styles.highlight}>two years</span>{' '}
-                      of commercial development experience and I'm on the
-                      lookout for opportunities in{' '}
-                      <span className={styles.highlight}>big tech</span>.
-                      Originally from{' '}
-                      <span className={styles.highlight}>Belarus</span>, now
-                      based in <span className={styles.highlight}>Moscow</span>.
-                    </p>
-
-                    <p>
-                      I’m actively making{' '}
-                      <span className={styles.highlight}>pet projects</span> and{' '}
-                      <span className={styles.highlight}>mentoring</span>{' '}
-                      first-year students at my university .
-                    </p>
-
-                    <p>
-                      I study web development at{' '}
-                      <span className={styles.highlight}>
-                        Moscow Polytechnic University
-                      </span>
-                      , where I led the development of a website for our{' '}
-                      <span className={styles.highlight}>
-                        web tech department
-                      </span>
-                      , which is now actively used.
-                    </p>
-                    <p>
-                      Excited for new challenges and growth in a fast-paced
-                      environment. Let’s connect!
-                    </p>
+                    <ReactMarkdown>{markdownContent}</ReactMarkdown>
                   </div>
                 </div>
               </div>

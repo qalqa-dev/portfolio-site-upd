@@ -30,10 +30,9 @@ export const Settings = () => {
     <>
       {settingsState && (
         <div className={styles.container}>
-          <h2>Settings</h2>
+          <h2>{t('settings-title')}</h2>
           <p>Current theme: {theme}</p>
           <p>Current language: {language}</p>
-          <p>{t('welcome')}</p>
           <p>Current smooth scroll: {smoothScroll ? 'ON' : 'OFF'}</p>
 
           <button onClick={() => dispatch(toggleTheme())}>Toggle Theme</button>
