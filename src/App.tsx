@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router';
-import styles from './App.module.scss';
 import { Dock } from './components/Dock/Dock';
 import { Settings } from './components/Settings/Settings';
+import { Wallpapers } from './components/Wallpapers/Wallpapers';
 import { Main } from './pages/Main/Main';
 import { TermMain } from './pages/TermMain/TermMain';
 import { setTheme } from './store/settingsSlice';
@@ -17,10 +17,14 @@ export const App = () => {
     dispatch(setTheme(theme));
   });
 
+  const wallpapers = useSelector(
+    (state: RootState) => state.settings.wallpapers,
+  );
+
   return (
     <>
       <main>
-        <div className={styles['app-background'] + ' z-[-1]'} />
+        <Wallpapers imageUrl={wallpapers} />
         <BrowserRouter>
           <Dock />
           <Settings />

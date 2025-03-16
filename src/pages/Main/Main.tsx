@@ -149,9 +149,7 @@ export const Main = () => {
                     ))}
                   </ul>
                 </div>
-                <p className={styles.hint}>
-                  //Full tech-stack u can saw on github or on term version
-                </p>
+                <p className={styles.hint}>{t('stack-hint')}</p>
               </div>
             </Safari>
           </div>

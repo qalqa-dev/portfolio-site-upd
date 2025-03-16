@@ -7,6 +7,7 @@ interface SettingsState {
   smoothScroll: boolean;
   theme: Theme;
   language: string;
+  wallpapers?: string;
 }
 
 const getInitialSmoothScroll = (): boolean => {
@@ -53,6 +54,9 @@ const settingsSlice = createSlice({
     setLanguage: (state, action: PayloadAction<string>) => {
       state.language = action.payload;
     },
+    setWallpapers: (state, action: PayloadAction<string>) => {
+      state.wallpapers = action.payload;
+    },
   },
 });
 
@@ -62,5 +66,6 @@ export const {
   toggleTheme,
   setLanguage,
   setSmoothScroll,
+  setWallpapers,
 } = settingsSlice.actions;
 export default settingsSlice.reducer;

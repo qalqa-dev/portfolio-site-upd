@@ -1,6 +1,7 @@
 import {
   setLanguage,
   setSmoothScroll,
+  setWallpapers,
   toggleTheme,
 } from '@/store/settingsSlice';
 import { useTranslation } from 'react-i18next';
@@ -39,6 +40,13 @@ export const Settings = () => {
           <button onClick={toggleLanguage}>Toggle Language</button>
           <button onClick={() => dispatch(setSmoothScroll(!smoothScroll))}>
             Toggle Smooth Scroll
+          </button>
+          <button
+            onClick={() =>
+              dispatch(setWallpapers('/src/assets/wallpapers/Sonoma.png'))
+            }
+          >
+            Set Sonoma Wallpapers
           </button>
         </div>
       )}
