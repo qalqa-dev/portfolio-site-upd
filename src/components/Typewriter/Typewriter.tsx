@@ -8,6 +8,7 @@ interface TypewriterProps {
   typingSpeed?: number;
   pauseDuration?: number;
   initialPause?: number;
+  cursorWith?: number;
   className?: string;
   onCallback?: (currentText: string) => void;
 }
@@ -17,6 +18,7 @@ export const Typewriter = ({
   typingSpeed = 100,
   pauseDuration = 4000,
   initialPause = 0,
+  cursorWith = 6,
   className,
   onCallback,
 }: TypewriterProps) => {
@@ -25,6 +27,8 @@ export const Typewriter = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPrinted, setIsPrinted] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [cursorVisible, setCursorVisible] = useState(false);
+
   const currentText = text[currentTextIndex];
   const timerRef = useRef<number | undefined>(undefined);
 
@@ -32,6 +36,7 @@ export const Typewriter = ({
     if (initialPause > 0) {
       timerRef.current = window.setTimeout(() => {
         setIsPrinted(true);
+        setCursorVisible(true);
       }, initialPause);
     } else {
       setIsPrinted(true);
@@ -91,8 +96,10 @@ export const Typewriter = ({
     <div className={clsx(styles.typewriter, className)}>
       <span>{displayedText}</span>
       <div
+        style={{ width: `${cursorWith}px` }}
         className={clsx(styles.cursor, {
           [styles.blink]: isPrinted,
+          [styles.visible]: cursorVisible,
         })}
       ></div>
     </div>

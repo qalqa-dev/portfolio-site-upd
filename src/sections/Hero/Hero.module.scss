@@ -20,5 +20,7 @@
     font-family: 'San Francisco Mono', 'San Francisco';
     font-size  : clamp(16px, 3vw, 32px);
     font-weight: 400;
+    text-align : center;
+    height     : clamp(16px, 3vw, 32px);
   }
 }

@@ -14,10 +14,15 @@
   background   : var(--color-text);
   margin-left  : 2px;
   border-radius: 4px;
+  opacity      : 0;
 
   &.blink {
     animation      : pulse 1s infinite ease-in-out;
     animation-delay: 0.5s;
+  }
+
+  &.visible {
+    opacity: 1;
   }
 }
 

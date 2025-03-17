@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 
 import { Safari } from 'components';
+import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './About.module.scss';
 
@@ -12,12 +13,12 @@ export const About = () => {
 
   const { i18n } = useTranslation();
 
+  const { ref, inView } = useInView();
+
   useEffect(() => {
     const fetchAboutContent = async () => {
       const locale = i18n.language === 'ru-RU' ? 'ru' : 'en';
-      console.log(locale);
       const response = await fetch('/locales/about/about.' + locale + '.md');
-      console.log(response);
       if (!response.ok) {
         throw new Error('Failed to load the markdown file');
       }
@@ -28,7 +29,14 @@ export const About = () => {
     fetchAboutContent();
   }, [i18n.language]);
   return (
-    <section className={styles.about}>
+    <section
+      className={styles.about}
+      ref={ref}
+      style={{
+        animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+        opacity: inView ? 1 : 0,
+      }}
+    >
       <div className={styles['about-container']}>
         <Safari openedLink="https://qalqa.com/about">
           <div className={sectionsStyles.webview}>

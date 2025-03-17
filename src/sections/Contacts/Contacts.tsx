@@ -3,12 +3,21 @@ import { t } from 'i18next';
 import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 
+import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './Contacts.module.scss';
 
 export const Contacts = () => {
+  const { ref, inView } = useInView();
   return (
-    <section className={styles.contacts}>
+    <section
+      className={styles.contacts}
+      ref={ref}
+      style={{
+        animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+        opacity: inView ? 1 : 0,
+      }}
+    >
       <div className={styles['contacts-container']}>
         <Safari openedLink="https://qalqa.com/contacts">
           <div className={sectionsStyles.webview}>

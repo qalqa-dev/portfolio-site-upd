@@ -2,6 +2,7 @@ import { ProgressBar, Safari } from 'components';
 import { currentStackBackend, currentStackFrontend } from 'data';
 import { t } from 'i18next';
 
+import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './Stack.module.scss';
 
@@ -15,8 +16,18 @@ export const Stack = () => {
       ((level * 2.4 + affinity * 0.5 + usage * 0.1) / 3).toFixed(1),
     );
   };
+
+  const { ref, inView } = useInView();
+
   return (
-    <section className={styles.stack}>
+    <section
+      className={styles.stack}
+      ref={ref}
+      style={{
+        animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+        opacity: inView ? 1 : 0,
+      }}
+    >
       <div className={styles['stack-container']}>
         <Safari openedLink="https://qalqa.com/stack">
           <div className={sectionsStyles.webview}>

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import { IoIosArrowRoundForward, IoIosEye } from 'react-icons/io';
+import { useInView } from 'react-intersection-observer';
 import { IProject } from 'types';
 import styles from './ProjectCard.module.scss';
 
@@ -9,12 +10,18 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const { ref, inView } = useInView({ threshold: 0.1 });
   return (
     <div
       className={clsx(styles.card, 'flex flex-col lg:flex-row', {
         ['lg:col-span-2']: project.deploy_href,
         ['order-[-1]']: project.deploy_href,
       })}
+      ref={ref}
+      style={{
+        animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+        opacity: inView ? 1 : 0,
+      }}
     >
       {project.deploy_href && (
         <a href={project.deploy_href} className={styles.preview}>

@@ -147,3 +147,13 @@ h1 {
   font-weight: 600;
   width      : 100%;
 }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
