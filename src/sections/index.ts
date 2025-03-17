@@ -7,5 +7,3 @@ export * from './Stack';
 export * from './Projects';
 
 export * from './Contacts';
-
-import './index.scss';

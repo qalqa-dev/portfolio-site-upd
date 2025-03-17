@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 
 import { Safari } from 'components';
+import sectionsStyles from 'sections/sections.module.scss';
 import styles from './About.module.scss';
 
 export const About = () => {
@@ -30,8 +31,8 @@ export const About = () => {
     <section className={styles.about}>
       <div className={styles['about-container']}>
         <Safari openedLink="https://qalqa.com/about">
-          <div className="webview">
-            <h2 className="title">{t('about-title')}</h2>
+          <div className={sectionsStyles.webview}>
+            <h2 className={sectionsStyles.title}>{t('about-title')}</h2>
             <div className={styles.content + ' flex-col lg:flex-row'}>
               <div className={styles.text}>
                 <ReactMarkdown>{aboutContent}</ReactMarkdown>

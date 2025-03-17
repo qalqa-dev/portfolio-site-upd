@@ -1,5 +1,6 @@
 import { RollingText, Safari, Typewriter } from '@/components';
 import { t } from 'i18next';
+
 import styles from './Hero.module.scss';
 
 export const Hero = () => {
