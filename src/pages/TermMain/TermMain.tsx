@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { About, Hero, Projects, StackBack, StackFront } from 'sections';
+import { About, Hero, Projects, StackBack, StackFront } from 'sections-term';
 import styles from './TermMain.module.scss';
 
 export function TermMain() {

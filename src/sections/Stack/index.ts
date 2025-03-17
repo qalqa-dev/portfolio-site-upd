@@ -1,2 +1,1 @@
-export * from './StackBack';
-export * from './StackFront';
+export * from './Stack';

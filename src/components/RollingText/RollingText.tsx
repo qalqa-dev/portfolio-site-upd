@@ -3,7 +3,7 @@ import styles from './RollingText.module.scss';
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-const RollingText = ({ text }: { text: string }) => {
+export const RollingText = ({ text }: { text: string }) => {
   const [displayedText, setDisplayedText] = useState<string[][]>(
     text.split('').map(() => []),
   );
@@ -64,5 +64,3 @@ const RollingText = ({ text }: { text: string }) => {
     </div>
   );
 };
-
-export default RollingText;

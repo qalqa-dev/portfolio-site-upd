@@ -1,33 +1,30 @@
 .hero {
-  position: relative;
+  position       : relative;
+  margin         : 0 auto;
+  height         : 100vh;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  margin-bottom  : 10vh;
+
+  .webview {
+    padding-bottom: 100px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items   : center;
+  }
+
 
   .title {
-    font-size    : clamp(52px, 15vw, 140px);
-    font-weight  : 500;
-    margin-bottom: 20px;
-  }
-}
+    font-family: 'San Francisco Mono', 'San Francisco';
 
-.about {
-  display: flex;
-  gap    : 3vw;
-
-  .about__content {
-    display       : flex;
-    flex-direction: column;
   }
 
-  hr {
-    border       : none;
-    border-bottom: 2px dashed var(--color-text);
-    width        : 100%;
-    margin       : 10px 0;
-  }
-
-  .list {
-    & li::before {
-      content     : "-";
-      margin-right: 5px;
-    }
+  .description {
+    font-family: 'San Francisco Mono', 'San Francisco';
+    font-size  : clamp(16px, 3vw, 32px);
+    font-weight: 400;
   }
 }

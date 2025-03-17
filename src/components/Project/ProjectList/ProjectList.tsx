@@ -1,5 +1,5 @@
 import { IProject } from '@/types';
-import { ProjectCard } from '../ProjectList/ProjectCard';
+import { ProjectCard } from '../ProjectCard/ProjectCard';
 
 type ProjectListProps = {
   projects: IProject;

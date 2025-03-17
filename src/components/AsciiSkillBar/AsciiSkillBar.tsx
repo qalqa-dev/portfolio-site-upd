@@ -1,6 +1,6 @@
 import { AsciiArt, AsciiBar } from 'components';
 
-interface SkillBarProps {
+interface AsciiSkillBar {
   skillName: string;
   levelScore: number;
   affinityScore: number;
@@ -9,14 +9,14 @@ interface SkillBarProps {
   imgName: string;
 }
 
-export const SkillBar = ({
+export const AsciiSkillBar = ({
   skillName,
   levelScore,
   affinityScore,
   usageScore,
   littleSummary,
   imgName,
-}: SkillBarProps) => {
+}: AsciiSkillBar) => {
   return (
     <div className="flex gap-3 w-full">
       <div className="hidden lg:block">

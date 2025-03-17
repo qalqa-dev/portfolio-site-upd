@@ -1,0 +1,33 @@
+.hero {
+  position: relative;
+
+  .title {
+    font-size    : clamp(52px, 15vw, 140px);
+    font-weight  : 500;
+    margin-bottom: 20px;
+  }
+}
+
+.about {
+  display: flex;
+  gap    : 3vw;
+
+  .about__content {
+    display       : flex;
+    flex-direction: column;
+  }
+
+  hr {
+    border       : none;
+    border-bottom: 2px dashed var(--color-text);
+    width        : 100%;
+    margin       : 10px 0;
+  }
+
+  .list {
+    & li::before {
+      content     : "-";
+      margin-right: 5px;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { SkillBar, Term, TermCursor } from 'components';
+import { AsciiSkillBar, Term, TermCursor } from 'components';
 import { useEffect } from 'react';
 import { SectionsProps } from 'types';
 import styles from './Stack.module.scss';
@@ -43,7 +43,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
               }}
             >
               <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
-                <SkillBar
+                <AsciiSkillBar
                   skillName="JavaScript"
                   levelScore={85}
                   affinityScore={50}
@@ -51,7 +51,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   littleSummary="More like something I have to use when working with legacy code. But don't forget who we all owe it to!"
                   imgName="js"
                 />
-                <SkillBar
+                <AsciiSkillBar
                   skillName="TypeScript"
                   levelScore={90}
                   affinityScore={100}
@@ -61,7 +61,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                 />
               </div>
               <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
-                <SkillBar
+                <AsciiSkillBar
                   skillName="React"
                   levelScore={90}
                   affinityScore={80}
@@ -69,7 +69,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   littleSummary="At the moment, my main framework is for its simplicity and flexibility. Virtual DOM - makes things"
                   imgName="react"
                 />
-                <SkillBar
+                <AsciiSkillBar
                   skillName="NextJs"
                   levelScore={40}
                   affinityScore={80}
@@ -79,7 +79,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                 />
               </div>
               <div className="flex flex-col gap-1 md:flex-row">
-                <SkillBar
+                <AsciiSkillBar
                   skillName="Angular"
                   levelScore={70}
                   affinityScore={50}
@@ -87,7 +87,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   littleSummary="In the past, this was my main framework, but now it's too overloaded for my tasks."
                   imgName="angular"
                 />
-                <SkillBar
+                <AsciiSkillBar
                   skillName="Vue"
                   levelScore={50}
                   affinityScore={50}

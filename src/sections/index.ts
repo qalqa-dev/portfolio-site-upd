@@ -1,4 +1,11 @@
-export * from './About';
 export * from './Hero';
-export * from './Projects';
+
+export * from './About';
+
 export * from './Stack';
+
+export * from './Projects';
+
+export * from './Contacts';
+
+import './index.scss';

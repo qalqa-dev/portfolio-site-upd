@@ -6,7 +6,7 @@ interface ProgressBarProps {
   percentage: number;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ percentage }) => {
+export const ProgressBar: React.FC<ProgressBarProps> = ({ percentage }) => {
   const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
 
   return (
@@ -32,5 +32,3 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ percentage }) => {
     </>
   );
 };
-
-export default ProgressBar;

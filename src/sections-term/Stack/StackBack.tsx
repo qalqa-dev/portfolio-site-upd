@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { SkillBar, Term, TermCursor } from 'components';
+import { AsciiSkillBar, Term, TermCursor } from 'components';
 import { useEffect } from 'react';
 import { SectionsProps } from 'types';
 import styles from './Stack.module.scss';
@@ -43,7 +43,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
               }}
             >
               <div className="flex flex-col md:flex-row gap-1 mb-1 md:mb-10">
-                <SkillBar
+                <AsciiSkillBar
                   skillName="Python"
                   levelScore={70}
                   affinityScore={90}
@@ -51,7 +51,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                   littleSummary="I started learning it at school so far, but still it's my main BE lang"
                   imgName="python"
                 />
-                <SkillBar
+                <AsciiSkillBar
                   skillName="php"
                   levelScore={40}
                   affinityScore={30}
@@ -61,7 +61,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                 />
               </div>
               <div className="flex flex-col md:flex-row gap-1 mb-1 md:mb-10">
-                <SkillBar
+                <AsciiSkillBar
                   skillName="django"
                   levelScore={70}
                   affinityScore={75}
@@ -69,7 +69,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                   littleSummary="A little bit overloaded, a little legacy too, but it's pretty good for my proposes"
                   imgName="django"
                 />
-                <SkillBar
+                <AsciiSkillBar
                   skillName="Laravel"
                   levelScore={40}
                   affinityScore={50}
@@ -79,7 +79,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                 />
               </div>
               <div className="flex flex-col md:flex-row gap-1 md:mb-10">
-                <SkillBar
+                <AsciiSkillBar
                   skillName="PostgreSQL"
                   levelScore={50}
                   affinityScore={50}
@@ -87,7 +87,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                   littleSummary="Strongest SQL database with a lot of plugins, sPostgresql is the only one that I use besides sqlite"
                   imgName="postgre"
                 />
-                <SkillBar
+                <AsciiSkillBar
                   skillName="Docker"
                   levelScore={50}
                   affinityScore={50}
