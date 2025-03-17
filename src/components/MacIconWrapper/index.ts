@@ -1,0 +1,1 @@
+export { MacIconWrapper } from './MacIconWrapper';

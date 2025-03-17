@@ -1,1 +1,1 @@
-export * from './AsciiSkillBar';
+export { AsciiSkillBar } from './AsciiSkillBar';

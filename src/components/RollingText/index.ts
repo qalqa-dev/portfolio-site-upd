@@ -1,1 +1,1 @@
-export * from './RollingText';
+export { RollingText } from './RollingText';

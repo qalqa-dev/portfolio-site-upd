@@ -15,6 +15,7 @@ export default defineConfig({
       ['utils']: path.resolve(__dirname, '/src/utils'),
       ['store']: path.resolve(__dirname, '/src/store'),
       ['data']: path.resolve(__dirname, '/src/data'),
+      ['locales']:  path.resolve(__dirname, '/src/locales'),
     },
   },
 });

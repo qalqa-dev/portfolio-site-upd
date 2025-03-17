@@ -1,1 +1,1 @@
-export * from './Term';
+export { Term } from './Term';

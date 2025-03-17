@@ -34,3 +34,11 @@
   opacity    : 1;
   font-weight: 500;
 }
+
+.final-text {
+  display    : flex;
+  font-size  : clamp(50px, 20vw, 140px);
+  height     : clamp(100px, 30vw, 210px);
+  align-items: center;
+  font-weight: 500;
+}

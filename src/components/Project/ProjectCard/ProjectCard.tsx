@@ -22,6 +22,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             <IoIosEye size={64} />
           </div>
           <img
+            loading="lazy"
             className={`rounded-[10px] ${styles['preview-img']}`}
             src={`/preview/${project.name}.png`}
             alt=""

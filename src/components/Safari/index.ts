@@ -1,1 +1,1 @@
-export * from './Safari';
+export { Safari } from './Safari';

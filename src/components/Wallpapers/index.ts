@@ -1,1 +1,1 @@
-export * from './Wallpapers';
+export { Wallpapers } from './Wallpapers';

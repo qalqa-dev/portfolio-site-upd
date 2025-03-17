@@ -10,6 +10,7 @@ export const RollingText = ({ text }: { text: string }) => {
   const [animationDone, setAnimationDone] = useState(
     text.split('').map(() => false),
   );
+  const [finalText, setFinalText] = useState<string | null>(null);
 
   useEffect(() => {
     text.split('').forEach((char, index) => {
@@ -39,6 +40,18 @@ export const RollingText = ({ text }: { text: string }) => {
       }, 500 + index * 200);
     });
   }, [text]);
+
+  useEffect(() => {
+    if (animationDone.every((done) => done)) {
+      setTimeout(() => {
+        setFinalText(text);
+      }, 1500);
+    }
+  }, [animationDone, text]);
+
+  if (finalText) {
+    return <span className={styles['final-text']}>{finalText}</span>;
+  }
 
   return (
     <div className={styles['rolling-text-container']}>

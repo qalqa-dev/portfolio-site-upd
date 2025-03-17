@@ -1,1 +1,1 @@
-export * from './AsciiBar';
+export { AsciiBar } from './AsciiBar';

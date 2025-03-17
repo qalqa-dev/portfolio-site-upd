@@ -1,1 +1,1 @@
-export * from './TermCursor';
+export { TermCursor } from './TermCursor';

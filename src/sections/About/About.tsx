@@ -15,9 +15,9 @@ export const About = () => {
   useEffect(() => {
     const fetchAboutContent = async () => {
       const locale = i18n.language === 'ru-RU' ? 'ru' : 'en';
-      const response = await fetch(
-        '/src/locales/about/about.' + locale + '.md',
-      );
+      console.log(locale);
+      const response = await fetch('/locales/about/about.' + locale + '.md');
+      console.log(response);
       if (!response.ok) {
         throw new Error('Failed to load the markdown file');
       }
