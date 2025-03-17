@@ -41,10 +41,12 @@
   --color-mantle-tr : rgba(24, 24, 37, 0.8);
   --color-mantle-xtr: rgba(24, 24, 37, 0.4);
   --color-crust     : #11111b;
+*/
+
 
   --color-close-circle   : #ff605c;
   --color-hide-circle    : #ffbd44;
-  --color-maximize-circle: #00ca4e; */
+  --color-maximize-circle: #00ca4e;
 
   --color-dock-background: var(--color-overlay1);
   --color-dock-border    : var(--color-surface1);
