@@ -105,6 +105,7 @@
   --color-flamingo  : #dd7878;
   --color-pink      : #ea76cb;
   --color-mauve     : #8839ef;
+  --color-mauve-tr  : rgba(136, 57, 239, 0.5);
   --color-red       : #d20f39;
   --color-maroon    : #e64553;
   --color-peach     : #fe640b;
@@ -126,7 +127,6 @@
   --color-surface0  : #ccd0da;
   --color-base      : #eff1f5;
   --color-mantle    : #e6e9ef;
-  --color-mauve-tr  : rgba(136, 57, 239, 0.5);
   --color-mantle-tr : rgb(230, 233, 239, 0.8);
   --color-mantle-xtr: rgb(230, 233, 239, 0.4);
   --color-crust     : #dce0e8;

@@ -10,7 +10,7 @@
 .progress-bar {
   height       : inherit;
   border-radius: 10px;
-  transition   : width 0.3s ease-in-out;
+  transition   : width 1s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .percentage {

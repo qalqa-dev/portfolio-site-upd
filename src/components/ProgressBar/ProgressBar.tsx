@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 import styles from './ProgressBar.module.scss';
 
 interface ProgressBarProps {
@@ -9,13 +10,15 @@ interface ProgressBarProps {
 export const ProgressBar: React.FC<ProgressBarProps> = ({ percentage }) => {
   const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
 
+  const { ref, inView } = useInView({ threshold: 1 });
+
   return (
     <>
-      <div className={styles['progress-bar-container']}>
+      <div ref={ref} className={styles['progress-bar-container']}>
         <div
           className={styles['progress-bar']}
           style={{
-            width: `${clampedPercentage}%`,
+            width: `${inView ? clampedPercentage : 0}%`,
             background: `linear-gradient(to right, var(--color-sky) 0%, var(--color-mauve) ${
               200 - clampedPercentage
             }%)`,
