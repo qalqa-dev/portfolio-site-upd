@@ -3,6 +3,7 @@ import { t } from 'i18next';
 import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 
+import { AppearingText } from '@/components/AppearingText/AppearingText';
 import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './Contacts.module.scss';
@@ -21,7 +22,9 @@ export const Contacts = () => {
       <div className={styles['contacts-container']}>
         <Safari openedLink="https://qalqa.com/contacts">
           <div className={sectionsStyles.webview}>
-            <h2 className={sectionsStyles.title}>{t('contacts-title')}</h2>
+            <h2 className={sectionsStyles.title}>
+              <AppearingText text={t('contacts-title')}></AppearingText>
+            </h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               <li className={styles.iconItem}>
                 <MacIconWrapper>

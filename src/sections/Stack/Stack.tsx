@@ -2,6 +2,7 @@ import { ProgressBar, Safari } from 'components';
 import { currentStackBackend, currentStackFrontend } from 'data';
 import { t } from 'i18next';
 
+import { AppearingText } from '@/components/AppearingText/AppearingText';
 import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './Stack.module.scss';
@@ -31,7 +32,9 @@ export const Stack = () => {
       <div className={styles['stack-container']}>
         <Safari openedLink="https://qalqa.com/stack">
           <div className={sectionsStyles.webview}>
-            <h2 className={sectionsStyles.title}>{t('stack-title')}</h2>
+            <h2 className={sectionsStyles.title}>
+              <AppearingText text={t('stack-title')} />
+            </h2>
             <div className="w-full gap-5 flex flex-col md:flex-row">
               <ul className="w-full">
                 <h3 className={styles.subtitle}>Frontend</h3>

@@ -1,9 +1,9 @@
-import { t } from 'i18next';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import ReactMarkdown from 'react-markdown';
 
+import { AppearingText } from '@/components/AppearingText/AppearingText';
 import { Safari } from 'components';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './About.module.scss';
@@ -36,7 +36,10 @@ export const About = () => {
       <div className={styles['about-container']}>
         <Safari openedLink="https://qalqa.com/about">
           <div className={sectionsStyles.webview}>
-            <h2 className={sectionsStyles.title}>{t('about-title')}</h2>
+            <h2 className={sectionsStyles.title}>
+              <AppearingText text="About Me" />
+            </h2>
+
             <div className={styles.content + ' flex-col lg:flex-row'}>
               <div
                 ref={ref}
