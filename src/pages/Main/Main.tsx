@@ -6,7 +6,7 @@ import { About, Contacts, Hero, Projects, Stack } from 'sections';
 import { RootState } from 'store';
 import styles from './Main.module.scss';
 
-export const Main = () => {
+const Main = () => {
   const smoothScroll = useSelector(
     (state: RootState) => state.settings.smoothScroll,
   );
@@ -44,3 +44,5 @@ export const Main = () => {
     </>
   );
 };
+
+export default Main;
