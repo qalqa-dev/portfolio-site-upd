@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Skeleton } from './components/Skeleton/Skeleton';
 import BaseLayout from './layouts/BaseLayout';
+import NotFound from './pages/NotFound/NotFound';
 import { RootState, setThemeWithoutStorage, Theme } from './store';
 
 export const App = () => {
@@ -49,6 +50,7 @@ export const App = () => {
               </Suspense>
             }
           >
+            <Route path="*" element={<NotFound />} />
             <Route index element={<Main />} />
             <Route path="term" element={<TermMain />} />
           </Route>
