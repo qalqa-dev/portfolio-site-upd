@@ -42,6 +42,7 @@ const settingsSlice = createSlice({
     setTheme: (state, action: PayloadAction<Theme>) => {
       state.theme = action.payload;
       localStorage.setItem('theme', action.payload);
+      if (action.payload === 'auto') return;
       document.documentElement.setAttribute('data-theme', action.payload);
     },
     setThemeWithoutStorage: (_state, action: PayloadAction<Theme>) => {

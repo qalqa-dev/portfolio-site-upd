@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router';
+import { Skeleton } from './components/Skeleton/Skeleton';
 import BaseLayout from './layouts/BaseLayout';
 import { RootState, setThemeWithoutStorage, Theme } from './store';
 
@@ -8,7 +9,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector((state: RootState) => state.settings.theme);
 
-  const [tempTheme, setTempTheme] = useState<Theme | null>(null);
+  const [tempTheme, setTempTheme] = useState<Theme>(theme);
 
   useEffect(() => {
     if (theme === 'auto') {
@@ -17,8 +18,10 @@ export const App = () => {
           ? 'dark'
           : 'light',
       );
+      dispatch(setThemeWithoutStorage(tempTheme));
+      return;
     }
-    dispatch(setThemeWithoutStorage(tempTheme || theme));
+    dispatch(setThemeWithoutStorage(theme));
   }, [theme, dispatch, tempTheme]);
 
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -36,23 +39,21 @@ export const App = () => {
 
   return (
     <>
-      <main>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <BaseLayout />
-                </Suspense>
-              }
-            >
-              <Route index element={<Main />} />
-              <Route path="term" element={<TermMain />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </main>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<Skeleton height={100} />}>
+                <BaseLayout />
+              </Suspense>
+            }
+          >
+            <Route index element={<Main />} />
+            <Route path="term" element={<TermMain />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };

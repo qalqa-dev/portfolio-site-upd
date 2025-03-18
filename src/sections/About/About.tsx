@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 
 import { AppearingText } from '@/components/AppearingText/AppearingText';
 import { Safari } from 'components';
+import { t } from 'i18next';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './About.module.scss';
 
@@ -18,9 +19,7 @@ export const About = () => {
   useEffect(() => {
     const fetchAboutContent = async () => {
       const locale = i18n.language === 'ru-RU' ? 'ru' : 'en';
-      console.log(locale);
       const response = await fetch('/locales/about/about.' + locale + '.md');
-      console.log(response);
       if (!response.ok) {
         throw new Error('Failed to load the markdown file');
       }
@@ -37,7 +36,7 @@ export const About = () => {
         <Safari openedLink="https://qalqa.com/about">
           <div className={sectionsStyles.webview}>
             <h2 className={sectionsStyles.title}>
-              <AppearingText text="About Me" />
+              <AppearingText text={t('about-title')} />
             </h2>
 
             <div className={styles.content + ' flex-col lg:flex-row'}>

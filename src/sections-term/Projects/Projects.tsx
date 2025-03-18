@@ -11,7 +11,6 @@ import styles from './Projects.module.scss';
 
 export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
   const [hoveredProject, setHoveredProject] = useState<IProject | null>(null);
-  console.log(scroll);
 
   const transitionFactor = Math.min(Math.max((scroll - 8100) / 100, 0), 1);
   const contactsHeight = transitionFactor * 100;
