@@ -52,21 +52,21 @@
         width        : 15px;
         height       : 15px;
         border-radius: 100%;
-        background   : var(--color-close-circle);
-        box-shadow   : 0 0 5px var(--color-close-circle);
+        background   : var(--color-overlay2);
+        box-shadow   : 0 0 5px var(--color-overlay2);
         top          : 15px;
         left         : 15px;
 
         &:nth-child(2) {
-          background: var(--color-hide-circle);
-          box-shadow: 0 0 5px var(--color-hide-circle);
+          background: var(--color-overlay2);
+          box-shadow: 0 0 5px var(--color-overlay2);
           top       : 15px;
           left      : 40px;
         }
 
         &:nth-child(3) {
-          background: var(--color-maximize-circle);
-          box-shadow: 0 0 5px var(--color-maximize-circle);
+          background: var(--color-overlay2);
+          box-shadow: 0 0 5px var(--color-overlay2);
           bottom    : 15px;
           left      : 65px;
         }
