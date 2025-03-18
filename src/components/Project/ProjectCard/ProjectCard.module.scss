@@ -56,8 +56,11 @@
 
 
 .title {
-  font-size  : clamp(24px, 3vw, 32px);
-  font-weight: 600;
+  font-size    : clamp(24px, 3vw, 32px);
+  font-weight  : 600;
+  text-wrap    : nowrap;
+  overflow     : hidden;
+  text-overflow: ellipsis;
 }
 
 .description {
@@ -137,4 +140,5 @@ button {
   color        : var(--color-base);
   font-size    : clamp(16px, 3vw, 24px);
   font-weight  : 600;
+  text-wrap    : nowrap;
 }

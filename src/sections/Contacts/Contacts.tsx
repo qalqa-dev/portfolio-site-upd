@@ -25,7 +25,7 @@ export const Contacts = () => {
             <h2 className={sectionsStyles.title}>
               <AppearingText text={t('contacts-title')}></AppearingText>
             </h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <ul className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
               <li className={styles.iconItem}>
                 <MacIconWrapper>
                   <a

@@ -19,7 +19,7 @@
 
   .text {
     width       : 100%;
-    font-size   : 24px;
+    font-size   : clamp(16px, 1.5vw, 18px);
     margin-right: auto;
 
     p {

@@ -38,7 +38,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       )}
       <div className="w-full flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <h2 className={styles.title}>{project.name} </h2>
             <span>
               {project.status && (

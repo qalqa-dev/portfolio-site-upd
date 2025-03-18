@@ -22,4 +22,10 @@
     text-align : center;
     height     : clamp(16px, 3vw, 32px);
   }
+
+  @media (max-width: 768px) {
+    .webview {
+      padding-bottom: 50px;
+    }
+  }
 }

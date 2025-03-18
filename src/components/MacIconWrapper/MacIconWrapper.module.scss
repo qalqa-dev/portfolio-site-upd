@@ -29,4 +29,13 @@
     z-index         : 100;
     background-color: var(--color-text);
   }
+
+
+
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+    border-radius: 10%;
+  }
 }

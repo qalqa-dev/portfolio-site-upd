@@ -10,3 +10,9 @@
   padding: 50px;
   width  : 100%;
 }
+
+@media (max-width: 768px) {
+  .webview {
+    padding: 10px;
+  }
+}

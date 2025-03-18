@@ -17,4 +17,19 @@
   }
 
 
+
+}
+
+
+@media (max-width: 1200px) {
+  .contacts {
+    .iconItem {
+      border-radius: 10%;
+
+      &:hover {
+        transform : scale(1.02);
+        box-shadow: 0 0 15px var(--color-mauve-tr);
+      }
+    }
+  }
 }
