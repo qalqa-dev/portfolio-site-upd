@@ -63,7 +63,7 @@ export const AppearancePage = () => {
             </li>
           </ul>
         </div>
-        <div className={styles.divider}></div>
+        <div className={styles.divider} />
         <div className={styles['single-section']}>
           <h3 className={styles['appearance-title']}>Smooth Scroll</h3>
           <Switch

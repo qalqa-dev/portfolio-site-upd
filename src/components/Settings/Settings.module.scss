@@ -75,6 +75,11 @@
   gap           : 10px;
   transition    : 0.2s ease-in-out;
 
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+
 
   .button {
     text-align : left;

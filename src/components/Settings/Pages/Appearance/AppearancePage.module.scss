@@ -8,6 +8,7 @@
   padding      : 15px;
   border-radius: 8px;
 
+
   .appearance-title {
     font-size  : clamp(14px, 10vw, 20px);
     font-weight: 500;
@@ -16,6 +17,10 @@
   .appearance-section {
     display        : flex;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   }
 
   .single-section:not(:last-child) {
@@ -33,6 +38,12 @@
 
   .appearance-list {
     display: flex;
+
+    @media (max-width: 768px) {
+      flex-wrap      : wrap;
+      align-items    : center;
+      justify-content: center;
+    }
 
     .theme-btn {
       font-size: clamp(14px, 10vw, 18px);

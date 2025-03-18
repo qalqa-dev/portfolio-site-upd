@@ -22,7 +22,7 @@ export const Settings = () => {
       {settingsState && (
         <div className={styles.container}>
           <div className={`${styles.settings} flex flex-col w-full`}>
-            <div className="flex w-full gap-5">
+            <div className="flex flex-col md:flex-row w-full gap-5">
               <div className={styles['left-menu']}>
                 <div className={styles['heading']}>
                   <div className="flex">
