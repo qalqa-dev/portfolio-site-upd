@@ -24,14 +24,28 @@
 
     p {
       margin-bottom: 10px;
+      text-wrap    : stable
     }
   }
-
-
 
   strong {
     color      : var(--color-mauve);
     font-weight: 600;
+  }
+
+  h3 {
+    font-size  : clamp(24px, 3vw, 32px);
+    font-weight: 600;
+  }
+
+  ul {
+    margin-left    : 20px;
+    list-style-type: disc;
+    margin-bottom  : 10px;
+  }
+
+  em {
+    font-style: italic;
   }
 }
 
