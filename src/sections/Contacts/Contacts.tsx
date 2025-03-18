@@ -4,12 +4,15 @@ import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
 import { IoIosMail } from 'react-icons/io';
 
 import { AppearingText } from '@/components/AppearingText/AppearingText';
+import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './Contacts.module.scss';
 
 export const Contacts = () => {
   const { ref, inView } = useInView();
+
+  useTranslation();
   return (
     <section
       className={styles.contacts}

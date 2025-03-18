@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { t } from 'i18next';
 import React from 'react';
 import { IoIosArrowRoundForward, IoIosEye } from 'react-icons/io';
 import { useInView } from 'react-intersection-observer';
@@ -39,7 +40,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className="w-full flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between gap-2">
-            <h2 className={styles.title}>{project.name} </h2>
+            <h2 className={styles.title}>
+              {t(`projects-${project.name}-title`)}{' '}
+            </h2>
             <span>
               {project.status && (
                 <span
@@ -55,7 +58,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               )}
             </span>
           </div>
-          <p className={styles.description}>{project.description}</p>
+          <p className={styles.description}>
+            {t(`projects-${project.name}-description`)}{' '}
+          </p>
         </div>
         <div className={styles.links}>
           <button

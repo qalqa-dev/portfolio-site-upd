@@ -1,6 +1,8 @@
 import { AppDispatch, RootState, setSettingsState } from '@/store';
 import clsx from 'clsx';
+import { t } from 'i18next';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IoGlobeOutline, IoInvertMode } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppearancePage } from './Pages/Appearance/AppearancePage';
@@ -16,6 +18,8 @@ export const Settings = () => {
   const [page, setPage] = useState(pages[0]);
 
   const dispatch = useDispatch<AppDispatch>();
+
+  useTranslation();
 
   return (
     <>
@@ -45,7 +49,7 @@ export const Settings = () => {
                   <i className={styles['appearance-icon']}>
                     <IoInvertMode />
                   </i>
-                  Appearance
+                  {t('settings-appearance')}
                 </button>
                 <button
                   className={clsx(styles.button, {
@@ -56,7 +60,7 @@ export const Settings = () => {
                   <i className={styles['language-icon']}>
                     <IoGlobeOutline />
                   </i>
-                  Language
+                  {t('settings-language')}
                 </button>
               </div>
               <div className={styles['right-menu']}>

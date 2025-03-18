@@ -3,6 +3,7 @@ import { currentStackBackend, currentStackFrontend } from 'data';
 import { t } from 'i18next';
 
 import { AppearingText } from '@/components/AppearingText/AppearingText';
+import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './Stack.module.scss';
@@ -19,6 +20,8 @@ export const Stack = () => {
   };
 
   const { ref, inView } = useInView();
+
+  useTranslation();
 
   return (
     <section
@@ -37,7 +40,7 @@ export const Stack = () => {
             </h2>
             <div className="w-full gap-5 flex flex-col md:flex-row">
               <ul className="w-full">
-                <h3 className={styles.subtitle}>Frontend</h3>
+                <h3 className={styles.subtitle}>{t('stack-frontend')}</h3>
                 {currentStackFrontend.map((item, index) => (
                   <li key={index}>
                     <h4 className={styles.skillName}>{item.skillName}</h4>
@@ -52,7 +55,7 @@ export const Stack = () => {
                 ))}
               </ul>
               <ul className="w-full">
-                <h3 className={styles.subtitle}>Backend</h3>
+                <h3 className={styles.subtitle}>{t('stack-backend')}</h3>
                 {currentStackBackend.map((item, index) => (
                   <li key={index}>
                     <h4 className={styles.skillName}>{item.skillName}</h4>

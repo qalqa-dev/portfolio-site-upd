@@ -3,12 +3,15 @@ import { projectsData } from 'data';
 import { t } from 'i18next';
 
 import { AppearingText } from '@/components/AppearingText/AppearingText';
+import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import sectionsStyles from 'sections/sections.module.scss';
 import styles from './Projects.module.scss';
 
 export const Projects = () => {
   const { ref, inView } = useInView();
+
+  useTranslation();
   return (
     <section
       className={styles.projects}

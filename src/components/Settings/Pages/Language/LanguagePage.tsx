@@ -1,6 +1,7 @@
 import i18n from '@/i18n';
 import { AppDispatch, RootState, setLanguage } from '@/store';
 import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './LanguagePage.module.scss';
 
@@ -18,12 +19,16 @@ export const LanguagePage = () => {
     i18n.changeLanguage(language);
   };
 
+  useTranslation();
+
   return (
     <section className={styles['language-page']}>
-      <h2 className={styles['page-title']}>Language</h2>
+      <h2 className={styles['page-title']}>{t('settings-language')}</h2>
       <div className={styles['inner-card']}>
         <div className={styles['language-section']}>
-          <h3 className={styles['language-title']}>Preferred Language</h3>
+          <h3 className={styles['language-title']}>
+            {t('settings-preferred-language')}
+          </h3>
           <ul className={styles['language-list']}>
             {languages.map((lang) => (
               <li className={styles['lang-btn']} key={lang}>

@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useInView } from 'react-intersection-observer';
 
 import { RollingText, Safari, Typewriter } from '@/components';
@@ -26,11 +25,7 @@ export const Hero = () => {
             <div className={styles.description}>
               <Typewriter
                 cursorWith={4}
-                text={[
-                  t('hero-description-1'),
-                  t('hero-description-2'),
-                  t('hero-description-3'),
-                ]}
+                text={['full-stack', 'frontend', 'backend']}
                 initialPause={2600}
                 typingSpeed={50}
               ></Typewriter>
