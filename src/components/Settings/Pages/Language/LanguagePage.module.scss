@@ -4,7 +4,7 @@
 }
 
 .inner-card {
-  border       : 1px solid var(--color-overlay2);
+  border       : 1px solid var(--color-surface1);
   padding      : 15px;
   border-radius: 8px;
 
@@ -62,5 +62,5 @@
 .divider {
   width           : 100%;
   height          : 1px;
-  background-color: var(--color-overlay2);
+  background-color: var(--color-surface1);
 }

@@ -89,11 +89,12 @@
     font-size  : clamp(14px, 10vw, 20px);
 
     &:hover {
-      background-color: var(--color-overlay2);
+      background-color: var(--color-surface1);
     }
 
     &.active {
-      background-color: var(--color-mauve-tr)
+      background-color: var(--color-mauve);
+      color           : var(--color-base)
     }
 
 
