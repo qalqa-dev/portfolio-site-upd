@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark' | 'auto';
 
 interface SettingsState {
   settingsState: boolean;
@@ -18,9 +18,7 @@ const getInitialSmoothScroll = (): boolean => {
 const getInitialTheme = (): Theme => {
   const savedTheme = localStorage.getItem('theme') as Theme | null;
   if (savedTheme) return savedTheme;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
+  return 'auto';
 };
 
 const initialState: SettingsState = {
@@ -46,6 +44,9 @@ const settingsSlice = createSlice({
       localStorage.setItem('theme', action.payload);
       document.documentElement.setAttribute('data-theme', action.payload);
     },
+    setThemeWithoutStorage: (_state, action: PayloadAction<Theme>) => {
+      document.documentElement.setAttribute('data-theme', action.payload);
+    },
     toggleTheme: (state) => {
       state.theme = state.theme === 'light' ? 'dark' : 'light';
       localStorage.setItem('theme', state.theme);
@@ -63,6 +64,7 @@ const settingsSlice = createSlice({
 export const {
   setSettingsState,
   setTheme,
+  setThemeWithoutStorage,
   toggleTheme,
   setLanguage,
   setSmoothScroll,

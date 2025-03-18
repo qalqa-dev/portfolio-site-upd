@@ -1,16 +1,34 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import BaseLayout from './layouts/BaseLayout';
-import { setTheme } from './store/settingsSlice';
-import { RootState } from './store/store';
+import { RootState, setThemeWithoutStorage, Theme } from './store';
 
 export const App = () => {
   const dispatch = useDispatch();
-
   const theme = useSelector((state: RootState) => state.settings.theme);
+
+  const [tempTheme, setTempTheme] = useState<Theme | null>(null);
+
   useEffect(() => {
-    dispatch(setTheme(theme));
+    if (theme === 'auto') {
+      setTempTheme(
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light',
+      );
+    }
+    dispatch(setThemeWithoutStorage(tempTheme || theme));
+  }, [theme, dispatch, tempTheme]);
+
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+  mediaQuery.addEventListener('change', (e) => {
+    if (e.matches) {
+      setTempTheme('dark');
+    } else {
+      setTempTheme('light');
+    }
   });
 
   const Main = lazy(() => import('./pages/Main/Main'));
