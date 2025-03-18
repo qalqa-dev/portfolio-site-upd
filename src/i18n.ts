@@ -9,6 +9,8 @@ i18n
     resources: {
       ['en-US']: {
         translation: {
+          'en-US': 'English',
+          'ru-RU': 'Russian',
           // Главная
           'hero-description-1': 'full-stack developer',
           'hero-description-2': 'frontend developer',
@@ -36,6 +38,8 @@ i18n
       },
       ['ru-RU']: {
         translation: {
+          'en-US': 'Английский',
+          'ru-RU': 'Русский',
           // Главная
           'hero-description-1': 'full-stack разработчик',
           'hero-description-2': 'frontend-разработчик',

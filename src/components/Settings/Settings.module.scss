@@ -1,10 +1,122 @@
+.settings {
+  position        : relative;
+  padding         : 15px;
+  overflow        : hidden;
+  transition      : 0.2s ease-in-out;
+  background-color: var(--color-mantle-tr);
+  backdrop-filter : blur(40px);
+  border-radius   : 15px;
+}
+
+.settings {
+  .heading {
+    padding: 15px;
+
+
+
+    .window-container {
+      width       : fit-content;
+      display     : flex;
+      align-items : center;
+      gap         : 12.5px;
+      margin-right: 25%;
+
+
+
+      .window-control-btn {
+
+        width        : 15px;
+        height       : 15px;
+        border-radius: 100%;
+        background   : var(--color-close-circle);
+        box-shadow   : 0 0 5px var(--color-close-circle);
+        top          : 15px;
+        left         : 15px;
+        cursor       : pointer;
+
+        &:nth-child(2) {
+          background: var(--color-overlay2);
+          box-shadow: 0 0 5px var(--color-overlay2);
+          top       : 15px;
+          left      : 40px;
+        }
+
+        &:nth-child(3) {
+          background: var(--color-overlay2);
+          box-shadow: 0 0 5px var(--color-overlay2);
+          bottom    : 15px;
+          left      : 65px;
+        }
+      }
+    }
+  }
+}
+
 .container {
-  position  : fixed;
-  z-index   : 99;
-  width     : 50vw;
-  height    : 50vh;
-  top       : 25%;
-  left      : 50%;
-  transform : translateX(-50%);
-  background: var(--color-mantle);
+  position      : fixed;
+  z-index       : 99;
+  max-width     : 946px;
+  width         : 100%;
+  min-height    : 298.2px;
+  padding-inline: 10px;
+  bottom        : 50%;
+  left          : 50%;
+  transform     : translateX(-50%);
+  font-family   : 'San Francisco';
+  font-weight   : 500;
+  transition    : 0.2s ease-in-out;
+  box-sizing    : border-box;
+}
+
+.left-menu {
+  width         : 40%;
+  display       : flex;
+  flex-direction: column;
+  gap           : 10px;
+  transition    : 0.2s ease-in-out;
+
+
+  .button {
+    text-align : left;
+    display    : flex;
+    align-items: center;
+    gap        : 5px;
+    font-size  : clamp(14px, 10vw, 20px);
+
+    &:hover {
+      background-color: var(--color-overlay2);
+    }
+
+    &.active {
+      background-color: var(--color-mauve-tr)
+    }
+
+
+
+    i {
+      padding      : 4px;
+      border-radius: 5px;
+    }
+
+    .appearance-icon {
+      background: linear-gradient(180deg, #2d2d2d 0%, #000000 100%);
+    }
+
+    .language-icon {
+      background: linear-gradient(180deg, #45a7ff 0%, #0d84ff 100%)
+    }
+  }
+}
+
+.right-menu {
+  width         : 100%;
+  display       : flex;
+  flex-direction: column;
+  transition    : 0.2s ease-in-out;
+}
+
+.divider {
+  width           : 100%;
+  height          : 1px;
+  background-color: var(--color-overlay2);
 }
