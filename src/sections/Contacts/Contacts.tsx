@@ -43,7 +43,7 @@ export const Contacts = () => {
               <li className={styles.iconItem}>
                 <MacIconWrapper>
                   <a
-                    href="https://github.com/qalqaa"
+                    href="https://github.com/qalqa-dev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -54,7 +54,7 @@ export const Contacts = () => {
               <li className={styles.iconItem}>
                 <MacIconWrapper>
                   <a
-                    href="https://t.me/qalqaa"
+                    href="https://t.me/qalqa_dev"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

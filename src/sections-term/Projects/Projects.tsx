@@ -70,14 +70,14 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
                 </span>
                 andreybas04@gmail.com
               </a>
-              <a href="https://github.com/qalqaa" className="flex gap-1">
+              <a href="https://github.com/qalqa-dev" className="flex gap-1">
                 <span className="highlight flex items-center gap-3">
                   <GithubIcon width={'1.25rem'} height={'1.25rem'} />
                   Github:{' '}
                 </span>
                 qalqaa
               </a>
-              <a href="https://t.me/qalqaa" className="flex gap-1">
+              <a href="https://t.me/qalqa_dev" className="flex gap-1">
                 <span className={'highlight flex items-center gap-3'}>
                   <TelegramIcon width={'1rem'} height={'1rem'} />
                   Telegram:{' '}
