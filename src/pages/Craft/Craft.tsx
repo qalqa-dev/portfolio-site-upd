@@ -12,6 +12,7 @@ import {
 } from '@/components/CraftCell/CraftCell';
 import { MacIconWrapper, Safari } from 'components';
 import { FaLongArrowAltRight } from 'react-icons/fa';
+import { useInView } from 'react-intersection-observer';
 import styles from './Craft.module.scss';
 
 export type Pickaxe =
@@ -339,8 +340,17 @@ const Craft = () => {
     }
   }, [pickaxe]);
 
+  const { ref, inView } = useInView();
+
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      ref={ref}
+      style={{
+        animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+        opacity: inView ? 1 : 0,
+      }}
+    >
       <Safari openedLink="qalqa.com/mine">
         <div className={styles.webview}>
           <div className={styles.clicker}>

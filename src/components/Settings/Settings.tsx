@@ -4,6 +4,7 @@ import { t } from 'i18next';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoGlobeOutline, IoInvertMode } from 'react-icons/io5';
+import { useInView } from 'react-intersection-observer';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppearancePage } from './Pages/Appearance/AppearancePage';
 import { LanguagePage } from './Pages/Language/LanguagePage';
@@ -21,10 +22,19 @@ export const Settings = () => {
 
   useTranslation();
 
+  const [ref, inView] = useInView();
+
   return (
     <>
       {settingsState && (
-        <div className={styles.container}>
+        <div
+          className={styles.container}
+          ref={ref}
+          style={{
+            animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+            opacity: inView ? 1 : 0,
+          }}
+        >
           <div className={`${styles.settings} flex flex-col w-full`}>
             <div className="flex flex-col md:flex-row w-full gap-5">
               <div className={styles['left-menu']}>

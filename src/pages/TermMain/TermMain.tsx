@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { About, Hero, Projects, StackBack, StackFront } from 'sections-term';
 import styles from './TermMain.module.scss';
 
@@ -51,10 +52,19 @@ export function TermMain() {
     };
   });
 
+  const [ref, inView] = useInView();
+
   return (
     <>
       <div className={styles['stack-area']}>
-        <div className={styles['stack-container']}>
+        <div
+          className={styles['stack-container']}
+          ref={ref}
+          style={{
+            animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+            opacity: inView ? 1 : 0,
+          }}
+        >
           {section === 'hero' && (
             <div className={styles.section}>
               <Hero scroll={scroll} scrollRange={{ start: 100, end: 300 }} />
