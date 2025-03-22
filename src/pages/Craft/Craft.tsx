@@ -368,6 +368,10 @@ const Craft = () => {
         opacity: inView ? 1 : 0,
       }}
     >
+      <div className={styles['dev-warning']}>
+        Attention! This page is under development, so bugs, fps drawdowns, and
+        unstable operation are possible.
+      </div>
       <Safari openedLink="qalqa.com/mine">
         <div className={styles.webview}>
           <div className={styles.clicker}>

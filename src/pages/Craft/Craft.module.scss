@@ -11,6 +11,20 @@
   padding-top       : 40px;
 }
 
+.dev-warning {
+  width           : 100vw;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  z-index         : 1000;
+  color           : var(--color-mantle-tr);
+  background-color: var(--color-yellow);
+  font-size       : 14px;
+  font-family     : 'San Francisco';
+  font-weight     : 600;
+  text-align      : center;
+}
+
 .title {
   font-family: 'San Francisco Rounded', ;
   font-size  : clamp(32px, 15vw, 60px);
