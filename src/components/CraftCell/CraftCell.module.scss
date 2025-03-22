@@ -29,8 +29,11 @@
 }
 
 .amount {
-  font-family: 'San Francisco Mono', 'Geist Mono', monospace;
-  position   : absolute;
-  bottom     : 0%;
-  right      : 0%;
+  font-family     : 'San Francisco Mono', 'Geist Mono', monospace;
+  position        : absolute;
+  bottom          : 0%;
+  right           : 0%;
+  background-color: var(--color-mantle-tr);
+  border-radius   : 10px;
+  padding         : 0 3px;
 }
