@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IoBook } from 'react-icons/io5';
 
 import { AppearingText } from '@/components/AppearingText/AppearingText';
@@ -6,6 +6,7 @@ import { Block, Cell, CraftCell } from '@/components/CraftCell/CraftCell';
 import { MacIconWrapper, Safari } from 'components';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import styles from './Craft.module.scss';
+
 const Craft = () => {
   const [clickerGlowSize, setClickerGlowSize] = useState(100);
 
@@ -24,19 +25,31 @@ const Craft = () => {
   const [block, setBlock] = useState<Block>('wood');
   const [selectedItem, setSelectedItem] = useState<[number, number]>();
 
-  const getInventoryCell = (x: number, y: number) => {
-    return inventory[y] ? inventory[y][x] : {};
+  const getCell = (scope: Cell[][], x: number, y: number) => {
+    return scope[y] ? scope[y][x] : {};
   };
 
-  const setInventoryCell = (x: number, y: number, cell: Cell) => {
-    if (inventory[y]) {
-      const updatedRow = [...inventory[y]];
+  const updateScope = <T extends Cell[][]>(
+    scope: T,
+    x: number,
+    y: number,
+    cell: Cell,
+  ): T => {
+    if (scope[y]) {
+      const updatedRow = [...scope[y]];
       updatedRow[x] = cell;
-      const updatedInventory = [...inventory];
-      updatedInventory[y] = updatedRow;
-      setInventory(updatedInventory);
+      return scope.map((row, index) =>
+        index === y ? updatedRow : [...row],
+      ) as T;
     }
+    return scope;
   };
+
+  const setCraftingTableCell = (x: number, y: number, cell: Cell) =>
+    setCraftingTable(updateScope(craftingTable, x, y, cell));
+
+  const setInventoryCell = (x: number, y: number, cell: Cell) =>
+    setInventory(updateScope(inventory, x, y, cell));
 
   const handleClickBlock = () => {
     setClickerGlowSize(70);
@@ -44,7 +57,7 @@ const Craft = () => {
       setClickerGlowSize(100);
     }, 300);
 
-    const cell = getInventoryCell(0, 0);
+    const cell = getCell(inventory, 0, 0);
     setInventoryCell(0, 0, {
       contains: block,
       amount: (cell?.amount ?? 0) + 1,
@@ -63,7 +76,7 @@ const Craft = () => {
     setSelectedItem([xCoordinateCell, yCoordinateCell]);
   };
 
-  const ValidateSelected = (
+  const validateSelected = (
     xCoordinateCell: number,
     yCoordinateCell: number,
   ) => {
@@ -75,6 +88,27 @@ const Craft = () => {
     )
       return true;
   };
+
+  const placeSelectedItemOnCraftingTable = (
+    xCoordinateCell: number,
+    yCoordinateCell: number,
+    cell: Cell,
+  ) => {
+    if (cell.contains) {
+      setCraftingTableCell(xCoordinateCell, yCoordinateCell, {});
+      return;
+    }
+    if (!selectedItem) return;
+    setCraftingTableCell(
+      xCoordinateCell,
+      yCoordinateCell,
+      getCell(inventory, selectedItem[0], selectedItem[1]),
+    );
+  };
+
+  useEffect(() => {
+    console.log(selectedItem);
+  }, [selectedItem]);
 
   return (
     <div className={styles.container}>
@@ -140,7 +174,16 @@ const Craft = () => {
                 {craftingTable.map((row, rowIndex) => (
                   <div className={styles['crafting-table-row']} key={rowIndex}>
                     {row.map((cell, cellIndex) => (
-                      <div key={cellIndex}>
+                      <div
+                        onClick={() =>
+                          placeSelectedItemOnCraftingTable(
+                            cellIndex,
+                            rowIndex,
+                            cell,
+                          )
+                        }
+                        key={cellIndex}
+                      >
                         {<CraftCell contains={cell.contains} />}
                       </div>
                     ))}
@@ -157,13 +200,13 @@ const Craft = () => {
                   {row.map((cell, cellIndex) => (
                     <div
                       onClick={() =>
-                        handleClickOnCellInInventory(rowIndex, cellIndex, cell)
+                        handleClickOnCellInInventory(cellIndex, rowIndex, cell)
                       }
                       key={cellIndex}
                     >
                       {
                         <CraftCell
-                          isSelected={ValidateSelected(rowIndex, cellIndex)}
+                          isSelected={validateSelected(cellIndex, rowIndex)}
                           contains={cell.contains}
                           amount={cell.amount}
                         />
