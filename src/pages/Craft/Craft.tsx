@@ -363,7 +363,7 @@ const Craft = () => {
                   {furnace && (
                     <img
                       className={styles['clicker-furnace-img']}
-                      src={`/src/assets/clicker_tools/furnace.webp`}
+                      src={`/clicker_tools/furnace.webp`}
                       alt="furnace"
                     />
                   )}
@@ -382,7 +382,7 @@ const Craft = () => {
                   <img
                     width={275}
                     height={275}
-                    src={`/src/assets/clicker_blocks/${block}.webp`}
+                    src={`/clicker_blocks/${block}.webp`}
                     alt="block"
                   />
                 </div>
@@ -392,7 +392,7 @@ const Craft = () => {
                   {pickaxe && (
                     <img
                       className={styles['clicker-pickaxe-img']}
-                      src={`/src/assets/clicker_tools/${pickaxe}.webp`}
+                      src={`/clicker_tools/${pickaxe}.webp`}
                       alt={`${pickaxe} || no_pickaxe`}
                     />
                   )}

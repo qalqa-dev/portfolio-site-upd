@@ -29,15 +29,9 @@ export const CraftCell = ({
 }: BlockCell & PickaxeCell & FurnaceCell) => {
   return (
     <div className={clsx(styles.cell, { [styles.selected]: isSelected })}>
-      {contains && (
-        <img src={`/src/assets/clicker_blocks/${contains}.webp`} alt="block" />
-      )}
-      {pickaxe && (
-        <img src={`/src/assets/clicker_tools/${pickaxe}.webp`} alt="block" />
-      )}
-      {furnace && (
-        <img src={`/src/assets/clicker_tools/furnace.webp`} alt="block" />
-      )}
+      {contains && <img src={`/clicker_blocks/${contains}.webp`} alt="block" />}
+      {pickaxe && <img src={`/clicker_tools/${pickaxe}.webp`} alt="block" />}
+      {furnace && <img src={`/clicker_tools/furnace.webp`} alt="block" />}
       {amount && amount > 1 && <span className={styles.amount}>{amount}</span>}
     </div>
   );
