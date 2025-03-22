@@ -94,15 +94,34 @@ const Craft = () => {
     yCoordinateCell: number,
     cell: Cell,
   ) => {
+    if (!selectedItem) return;
     if (cell.contains) {
       setCraftingTableCell(xCoordinateCell, yCoordinateCell, {});
+      const prevCell = getCell(inventory, selectedItem[0], selectedItem[1]);
+      if (!prevCell.amount) return;
+      setInventoryCell(selectedItem[0], selectedItem[1], {
+        ...cell,
+        amount: prevCell.amount + 1,
+      });
       return;
     }
-    if (!selectedItem) return;
     setCraftingTableCell(
       xCoordinateCell,
       yCoordinateCell,
       getCell(inventory, selectedItem[0], selectedItem[1]),
+    );
+    const prevCell = getCell(inventory, selectedItem[0], selectedItem[1]);
+    if (!prevCell.amount || prevCell.amount <= 1) {
+      setSelectedItem(undefined);
+      setInventoryCell(selectedItem[0], selectedItem[1], {});
+      return;
+    }
+    setInventoryCell(
+      selectedItem[0],
+      selectedItem[1],
+      prevCell.contains
+        ? { contains: prevCell.contains, amount: prevCell.amount - 1 }
+        : {},
     );
   };
 
