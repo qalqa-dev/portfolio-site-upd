@@ -1,9 +1,14 @@
 .cell {
-  width           : 64px;
-  height          : 64px;
-  background-color: var(--color-base);
-  border-radius   : 10px;
-  position        : relative;
+  width            : 64px;
+  height           : 64px;
+  background-color : var(--color-base);
+  border-radius    : 10px;
+  position         : relative;
+  user-select      : none;
+  -webkit-user-drag: none;
+  -moz-user-select : none;
+
+
 
   &::before {
     transition   : 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);

@@ -12,6 +12,7 @@ import {
 } from '@/components/CraftCell/CraftCell';
 import { MacIconWrapper, Safari } from 'components';
 import { FaLongArrowAltRight } from 'react-icons/fa';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useInView } from 'react-intersection-observer';
 import styles from './Craft.module.scss';
 
@@ -40,7 +41,10 @@ const Craft = () => {
 
   const [pickaxe, setPickaxe] = useState<Pickaxe>();
   const [furnace, setFurnace] = useState<boolean>(false);
-  const [block, setBlock] = useState<Block>('wood');
+  const [blockArray, setBlockArray] = useState<Block[]>(['wood']);
+  const [activeBlock, setActiveBlock] = useState<Block>(
+    blockArray[blockArray.length - 1],
+  );
   const [selectedItem, setSelectedItem] = useState<[number, number]>();
 
   const getCell = (scope: BlockCell[][], x: number, y: number) => {
@@ -80,6 +84,15 @@ const Craft = () => {
     return null;
   };
 
+  const changeActiveBock = (direction: 'back' | 'forward') => {
+    const currentIndex = blockArray.indexOf(activeBlock);
+    const newIndex =
+      direction === 'back'
+        ? (currentIndex - 1 + blockArray.length) % blockArray.length
+        : (currentIndex + 1) % blockArray.length;
+    setActiveBlock(blockArray[newIndex]);
+  };
+
   const handleClickBlock = () => {
     setClickerGlowSize(70);
     setTimeout(() => {
@@ -93,12 +106,12 @@ const Craft = () => {
     const [emptyCellX, emptyCellY] = emptyCellCoordinates;
 
     const existingCell = inventory.flatMap((row) =>
-      row.filter((cell) => cell.contains === block),
+      row.filter((cell) => cell.contains === activeBlock),
     )[0];
 
     if (!existingCell || !existingCell.amount) {
       setInventoryCell(emptyCellX, emptyCellY, {
-        contains: block,
+        contains: activeBlock,
         amount: 1,
       });
       return;
@@ -108,7 +121,7 @@ const Craft = () => {
     );
     const existingCellIndex = inventory[existingRow].indexOf(existingCell);
     setInventoryCell(existingCellIndex, existingRow, {
-      contains: block,
+      contains: activeBlock,
       amount: existingCell.amount + 1,
     });
   };
@@ -333,12 +346,16 @@ const Craft = () => {
 
   useEffect(() => {
     if (pickaxe === 'woodenPickaxe') {
-      setBlock('cobble');
+      setBlockArray((prevArray) => [...prevArray, 'cobble']);
     }
     if (pickaxe === 'stonePickaxe') {
-      setBlock('ironOre');
+      setBlockArray((prevArray) => [...prevArray, 'ironOre']);
     }
   }, [pickaxe]);
+
+  useEffect(() => {
+    setActiveBlock(blockArray[blockArray.length - 1]);
+  }, [blockArray]);
 
   const { ref, inView } = useInView();
 
@@ -362,6 +379,7 @@ const Craft = () => {
                 <div className={styles['clicker-furnace-container']}>
                   {furnace && (
                     <img
+                      draggable="false"
                       className={styles['clicker-furnace-img']}
                       src={`/clicker_tools/furnace.webp`}
                       alt="furnace"
@@ -380,9 +398,10 @@ const Craft = () => {
                   }}
                 >
                   <img
+                    draggable="false"
                     width={275}
                     height={275}
-                    src={`/clicker_blocks/${block}.webp`}
+                    src={`/clicker_blocks/${activeBlock}.webp`}
                     alt="block"
                   />
                 </div>
@@ -391,6 +410,7 @@ const Craft = () => {
                 <div className={styles['clicker-pickaxe-container']}>
                   {pickaxe && (
                     <img
+                      draggable="false"
                       className={styles['clicker-pickaxe-img']}
                       src={`/clicker_tools/${pickaxe}.webp`}
                       alt={`${pickaxe} || no_pickaxe`}
@@ -400,6 +420,28 @@ const Craft = () => {
               </div>
             </div>
           </div>
+          {blockArray.length > 1 && (
+            <div className="flex items-center justify-center">
+              <ul className={styles['actions-list']}>
+                <li
+                  onClick={() => changeActiveBock('back')}
+                  className={styles['actions-item']}
+                >
+                  <MacIconWrapper>
+                    <IoIosArrowBack />
+                  </MacIconWrapper>
+                </li>
+                <li
+                  onClick={() => changeActiveBock('forward')}
+                  className={styles['actions-item']}
+                >
+                  <MacIconWrapper>
+                    <IoIosArrowForward />
+                  </MacIconWrapper>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </Safari>
       <Safari openedLink="qalqa.com/craft">
@@ -424,13 +466,22 @@ const Craft = () => {
                   <div className={styles['crafting-table-row']} key={rowIndex}>
                     {row.map((cell, cellIndex) => (
                       <div
-                        onClick={() =>
+                        onMouseDown={() =>
                           placeSelectedItemOnCraftingTable(
                             cellIndex,
                             rowIndex,
                             cell,
                           )
                         }
+                        onMouseEnter={(e) => {
+                          if (e.buttons === 1) {
+                            placeSelectedItemOnCraftingTable(
+                              cellIndex,
+                              rowIndex,
+                              cell,
+                            );
+                          }
+                        }}
                         key={cellIndex}
                       >
                         {<CraftCell contains={cell.contains} />}
