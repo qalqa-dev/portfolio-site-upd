@@ -7,12 +7,13 @@ import { MacIconWrapper, Safari } from 'components';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import styles from './Craft.module.scss';
 const Craft = () => {
+  const [clickerGlowSize, setClickerGlowSize] = useState(100);
+
   const [craftingTable, setCraftingTable] = useState<Cell[][]>([
     [{}, {}, {}],
     [{}, {}, {}],
     [{}, {}, {}],
   ]);
-
   const [craftingResult, setCraftingResult] = useState<Cell>({});
 
   const [inventory, setInventory] = useState<Cell[][]>(
@@ -21,6 +22,7 @@ const Craft = () => {
 
   const [pickaxe, setPickaxe] = useState<string>();
   const [block, setBlock] = useState<Block>('wood');
+  const [selectedItem, setSelectedItem] = useState<[number, number]>();
 
   const getInventoryCell = (x: number, y: number) => {
     return inventory[y] ? inventory[y][x] : {};
@@ -36,12 +38,10 @@ const Craft = () => {
     }
   };
 
-  const [backgroundSize, setBackgroundSize] = useState(100);
-
-  const handleClick = () => {
-    setBackgroundSize(70);
+  const handleClickBlock = () => {
+    setClickerGlowSize(70);
     setTimeout(() => {
-      setBackgroundSize(100);
+      setClickerGlowSize(100);
     }, 300);
 
     const cell = getInventoryCell(0, 0);
@@ -49,6 +49,28 @@ const Craft = () => {
       contains: block,
       amount: (cell?.amount ?? 0) + 1,
     });
+  };
+
+  const handleClickOnCellInInventory = (
+    xCoordinateCell: number,
+    yCoordinateCell: number,
+    cell: Cell,
+  ) => {
+    if (!cell.contains) return;
+    setSelectedItem([xCoordinateCell, yCoordinateCell]);
+  };
+
+  const ValidateSelected = (
+    xCoordinateCell: number,
+    yCoordinateCell: number,
+  ) => {
+    if (!selectedItem) return;
+
+    if (
+      xCoordinateCell === selectedItem[0] &&
+      yCoordinateCell === selectedItem[1]
+    )
+      return true;
   };
 
   return (
@@ -61,17 +83,20 @@ const Craft = () => {
             </h2>
             <div className="grid grid-cols-[1fr_3fr_1fr] w-full">
               <div></div>
-              <div onClick={handleClick} className={styles['clicker-block']}>
+              <div
+                onClick={handleClickBlock}
+                className={styles['clicker-block']}
+              >
                 <div
                   className={styles['clicker-backdrop']}
                   style={{
-                    backgroundSize: `${backgroundSize}%`,
+                    backgroundSize: `${clickerGlowSize}%`,
                   }}
                 >
                   <img
                     width={275}
                     height={275}
-                    src="/src/assets/clicker_blocks/wood.png"
+                    src={`/src/assets/clicker_blocks/${block}.png`}
                     alt="block"
                   />
                 </div>
@@ -127,9 +152,15 @@ const Craft = () => {
               {inventory.map((row, rowIndex) => (
                 <div className={styles['inventory-row']} key={rowIndex}>
                   {row.map((cell, cellIndex) => (
-                    <div key={cellIndex}>
+                    <div
+                      onClick={() =>
+                        handleClickOnCellInInventory(rowIndex, cellIndex, cell)
+                      }
+                      key={cellIndex}
+                    >
                       {
                         <CraftCell
+                          isSelected={ValidateSelected(rowIndex, cellIndex)}
                           contains={cell.contains}
                           amount={cell.amount}
                         />
@@ -145,5 +176,4 @@ const Craft = () => {
     </div>
   );
 };
-
 export default Craft;

@@ -4,6 +4,32 @@
   background-color: var(--color-base);
   border-radius   : 10px;
   position        : relative;
+
+  &::before {
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    content   : "";
+    position  : absolute;
+    width     : 0px;
+    height    : 0px;
+    top       : 50%;
+    left      : 50%;
+  }
+
+
+  &.selected {
+    &::before {
+      content      : "";
+      position     : absolute;
+      width        : calc(100% + 4px);
+      height       : calc(100% + 6px);
+      top          : -3px;
+      left         : -2px;
+      border-radius: 12px;
+      z-index      : -1;
+
+      background: linear-gradient(180deg, var(--color-sky) 0%, var(--color-mauve) 100%);
+    }
+  }
 }
 
 .amount {
