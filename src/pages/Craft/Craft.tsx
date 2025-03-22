@@ -51,16 +51,47 @@ const Craft = () => {
   const setInventoryCell = (x: number, y: number, cell: Cell) =>
     setInventory(updateScope(inventory, x, y, cell));
 
+  const getFirstEmptyCellCoordinates = (scope: Cell[][]) => {
+    for (let i = 0; i < scope.length; i++) {
+      for (let j = 0; j < scope[i].length; j++) {
+        if (!scope[i][j].contains) {
+          return [j, i];
+        }
+      }
+    }
+    return null;
+  };
+
   const handleClickBlock = () => {
     setClickerGlowSize(70);
     setTimeout(() => {
       setClickerGlowSize(100);
     }, 300);
 
-    const cell = getCell(inventory, 0, 0);
-    setInventoryCell(0, 0, {
+    const emptyCellCoordinates = getFirstEmptyCellCoordinates(inventory);
+
+    if (emptyCellCoordinates === null) return;
+
+    const [emptyCellX, emptyCellY] = emptyCellCoordinates;
+
+    const existingCell = inventory.flatMap((row) =>
+      row.filter((cell) => cell.contains === block),
+    )[0];
+
+    if (!existingCell || !existingCell.amount) {
+      setInventoryCell(emptyCellX, emptyCellY, {
+        contains: block,
+        amount: 1,
+      });
+      return;
+    }
+    const existingRow = inventory.findIndex((row) =>
+      row.includes(existingCell),
+    );
+    const existingCellIndex = inventory[existingRow].indexOf(existingCell);
+    setInventoryCell(existingCellIndex, existingRow, {
       contains: block,
-      amount: (cell?.amount ?? 0) + 1,
+      amount: existingCell.amount + 1,
     });
   };
 
@@ -94,6 +125,26 @@ const Craft = () => {
     yCoordinateCell: number,
     cell: Cell,
   ) => {
+    if (!selectedItem) {
+      const craftingTableCell = getCell(
+        craftingTable,
+        xCoordinateCell,
+        yCoordinateCell,
+      );
+      if (craftingTableCell.contains) {
+        const emptyCellCoordinates = getFirstEmptyCellCoordinates(inventory);
+        if (emptyCellCoordinates) {
+          const [emptyCellX, emptyCellY] = emptyCellCoordinates;
+          setInventoryCell(emptyCellX, emptyCellY, {
+            contains: craftingTableCell.contains,
+            amount: 1,
+          });
+          setSelectedItem([emptyCellX, emptyCellY]);
+          setCraftingTableCell(xCoordinateCell, yCoordinateCell, {});
+          return;
+        }
+      }
+    }
     if (!selectedItem) return;
 
     const selectedCell = getCell(inventory, selectedItem[0], selectedItem[1]);
@@ -120,7 +171,18 @@ const Craft = () => {
         amount: selectedCell.amount - 1,
       });
     }
-  };
+  }; //TODO: Причесать выше
+
+  useEffect(() => {
+    const woodCount = craftingTable
+      .flat()
+      .filter((cell) => cell.contains === 'wood').length;
+    if (woodCount === 1) {
+      setCraftingResult({ contains: 'plank', amount: 4 });
+    } else {
+      setCraftingResult({});
+    }
+  }, [craftingTable]);
 
   useEffect(() => {
     console.log(selectedItem);
@@ -149,7 +211,7 @@ const Craft = () => {
                   <img
                     width={275}
                     height={275}
-                    src={`/src/assets/clicker_blocks/${block}.png`}
+                    src={`/src/assets/clicker_blocks/${block}.webp`}
                     alt="block"
                   />
                 </div>
@@ -207,7 +269,14 @@ const Craft = () => {
                 ))}
               </div>
               <FaLongArrowAltRight size={64} />
-              <div>{<CraftCell contains={craftingResult.contains} />}</div>
+              <div>
+                {
+                  <CraftCell
+                    contains={craftingResult.contains}
+                    amount={craftingResult.amount}
+                  />
+                }
+              </div>
             </div>
             <h3>Inventory</h3>
             <div className={styles.inventory}>
