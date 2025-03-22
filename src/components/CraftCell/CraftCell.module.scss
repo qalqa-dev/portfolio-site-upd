@@ -6,28 +6,24 @@
   position        : relative;
 
   &::before {
-    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    content   : "";
-    position  : absolute;
-    width     : 0px;
-    height    : 0px;
-    top       : 50%;
-    left      : 50%;
+    transition   : 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    content      : "";
+    position     : absolute;
+    width        : calc(100% + 4px);
+    height       : calc(100% + 6px);
+    border-radius: 12px;
+    transform    : translate(0%, 0%);
+    top          : -3px;
+    left         : -2px;
+    z-index      : -1;
+    scale        : 0.8;
+    background   : linear-gradient(180deg, var(--color-sky) 0%, var(--color-mauve) 100%);
   }
 
 
   &.selected {
     &::before {
-      content      : "";
-      position     : absolute;
-      width        : calc(100% + 4px);
-      height       : calc(100% + 6px);
-      top          : -3px;
-      left         : -2px;
-      border-radius: 12px;
-      z-index      : -1;
-
-      background: linear-gradient(180deg, var(--color-sky) 0%, var(--color-mauve) 100%);
+      scale: 1.05;
     }
   }
 }

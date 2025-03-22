@@ -56,7 +56,10 @@ const Craft = () => {
     yCoordinateCell: number,
     cell: Cell,
   ) => {
-    if (!cell.contains) return;
+    if (!cell.contains) {
+      setSelectedItem(undefined);
+      return;
+    }
     setSelectedItem([xCoordinateCell, yCoordinateCell]);
   };
 
