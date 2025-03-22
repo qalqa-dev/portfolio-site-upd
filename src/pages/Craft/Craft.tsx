@@ -2,34 +2,49 @@ import { useEffect, useState } from 'react';
 import { IoBook } from 'react-icons/io5';
 
 import { AppearingText } from '@/components/AppearingText/AppearingText';
-import { Block, Cell, CraftCell } from '@/components/CraftCell/CraftCell';
+import {
+  Block,
+  BlockCell,
+  Cell,
+  CraftCell,
+  PickaxeCell,
+} from '@/components/CraftCell/CraftCell';
 import { MacIconWrapper, Safari } from 'components';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import styles from './Craft.module.scss';
 
+export type Pickaxe =
+  | 'woodenPickaxe'
+  | 'stonePickaxe'
+  | 'ironPickaxe'
+  | 'diamondPickaxe'
+  | 'netheritePickaxe';
+
 const Craft = () => {
   const [clickerGlowSize, setClickerGlowSize] = useState(100);
 
-  const [craftingTable, setCraftingTable] = useState<Cell[][]>([
+  const [craftingTable, setCraftingTable] = useState<BlockCell[][]>([
     [{}, {}, {}],
     [{}, {}, {}],
     [{}, {}, {}],
   ]);
-  const [craftingResult, setCraftingResult] = useState<Cell>({});
+  const [craftingResult, setCraftingResult] = useState<BlockCell | PickaxeCell>(
+    {},
+  );
 
-  const [inventory, setInventory] = useState<Cell[][]>(
+  const [inventory, setInventory] = useState<BlockCell[][]>(
     Array.from({ length: 4 }, () => Array.from({ length: 12 }, () => ({}))),
   );
 
-  const [pickaxe, setPickaxe] = useState<string>();
+  const [pickaxe, setPickaxe] = useState<Pickaxe>();
   const [block, setBlock] = useState<Block>('wood');
   const [selectedItem, setSelectedItem] = useState<[number, number]>();
 
-  const getCell = (scope: Cell[][], x: number, y: number) => {
+  const getCell = (scope: BlockCell[][], x: number, y: number) => {
     return scope[y] ? scope[y][x] : {};
   };
 
-  const updateScope = <T extends Cell[][]>(
+  const updateScope = <T extends BlockCell[][]>(
     scope: T,
     x: number,
     y: number,
@@ -45,13 +60,13 @@ const Craft = () => {
     return scope;
   };
 
-  const setCraftingTableCell = (x: number, y: number, cell: Cell) =>
+  const setCraftingTableCell = (x: number, y: number, cell: BlockCell) =>
     setCraftingTable(updateScope(craftingTable, x, y, cell));
 
-  const setInventoryCell = (x: number, y: number, cell: Cell) =>
+  const setInventoryCell = (x: number, y: number, cell: BlockCell) =>
     setInventory(updateScope(inventory, x, y, cell));
 
-  const getFirstEmptyCellCoordinates = (scope: Cell[][]) => {
+  const getFirstEmptyCellCoordinates = (scope: BlockCell[][]) => {
     for (let i = 0; i < scope.length; i++) {
       for (let j = 0; j < scope[i].length; j++) {
         if (!scope[i][j].contains) {
@@ -98,7 +113,7 @@ const Craft = () => {
   const handleClickOnCellInInventory = (
     xCoordinateCell: number,
     yCoordinateCell: number,
-    cell: Cell,
+    cell: BlockCell,
   ) => {
     if (!cell.contains) {
       setSelectedItem(undefined);
@@ -123,7 +138,7 @@ const Craft = () => {
   const placeSelectedItemOnCraftingTable = (
     xCoordinateCell: number,
     yCoordinateCell: number,
-    cell: Cell,
+    cell: BlockCell,
   ) => {
     if (!selectedItem) {
       const craftingTableCell = getCell(
@@ -173,20 +188,102 @@ const Craft = () => {
     }
   }; //TODO: Причесать выше
 
+  const clearCraftingTable = () => {
+    setCraftingTable(
+      Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => ({}))),
+    );
+  };
+
+  const takeCraftedItem = () => {
+    if ('pickaxe' in craftingResult) {
+      setPickaxe(craftingResult.pickaxe);
+      clearCraftingTable();
+      setCraftingResult({});
+    }
+    if (!('contains' in craftingResult) || !craftingResult.contains) return;
+    const existingCell = inventory.flatMap((row) =>
+      row.filter((cell) => cell.contains === craftingResult.contains),
+    )[0];
+    if (existingCell) {
+      if (!existingCell.amount || !craftingResult.amount) return;
+      const existingRow = inventory.findIndex((row) =>
+        row.includes(existingCell),
+      );
+      const existingCellIndex = inventory[existingRow].indexOf(existingCell);
+      setInventoryCell(existingCellIndex, existingRow, {
+        contains: existingCell.contains,
+        amount: existingCell.amount + craftingResult.amount,
+      });
+    } else {
+      const emptyCellCoordinates = getFirstEmptyCellCoordinates(inventory);
+      if (!emptyCellCoordinates) return;
+
+      const [emptyCellX, emptyCellY] = emptyCellCoordinates;
+      setInventoryCell(emptyCellX, emptyCellY, {
+        contains: craftingResult.contains,
+        amount: craftingResult.amount,
+      });
+    }
+    clearCraftingTable();
+    setCraftingResult({});
+  };
+
   useEffect(() => {
+    //Доски
     const woodCount = craftingTable
       .flat()
       .filter((cell) => cell.contains === 'wood').length;
-    if (woodCount === 1) {
+
+    const planksCondition = woodCount === 1;
+
+    const craftPlank = () => {
       setCraftingResult({ contains: 'plank', amount: 4 });
-    } else {
+    };
+    //
+
+    //Палки
+    const plankCount = craftingTable
+      .flat()
+      .filter((cell) => cell.contains === 'plank').length;
+
+    const stickCondition =
+      plankCount === 2 &&
+      craftingTable.some((row, rowIndex) => {
+        return row.some((cell, index) => {
+          return (
+            cell.contains === 'plank' &&
+            craftingTable[rowIndex + 1]?.[index]?.contains === 'plank'
+          );
+        });
+      });
+
+    const craftStick = () => {
+      setCraftingResult({ contains: 'stick', amount: 2 });
+    };
+    //
+
+    //Деревянная кирка
+    const woodenPickaxeCondition =
+      craftingTable[0][0].contains === 'plank' &&
+      craftingTable[0][1].contains === 'plank' &&
+      craftingTable[0][2].contains === 'plank' &&
+      craftingTable[1][1].contains === 'stick' &&
+      craftingTable[2][1].contains === 'stick';
+
+    const craftWoodenPickaxe = () => {
+      setCraftingResult({ pickaxe: 'woodenPickaxe', amount: 1 });
+    };
+
+    //Крафт
+    if (planksCondition) craftPlank();
+    if (stickCondition) craftStick();
+    if (woodenPickaxeCondition) craftWoodenPickaxe();
+
+    //Очистка
+    if (!planksCondition && !stickCondition && !woodenPickaxeCondition) {
       setCraftingResult({});
     }
   }, [craftingTable]);
-
-  useEffect(() => {
-    console.log(selectedItem);
-  }, [selectedItem]);
 
   return (
     <div className={styles.container}>
@@ -221,7 +318,7 @@ const Craft = () => {
                   {pickaxe && (
                     <img
                       className={styles['clicker-pickaxe-img']}
-                      src={`/src/assets/clicker_tools/${pickaxe}_pickaxe.webp`}
+                      src={`/src/assets/clicker_tools/${pickaxe}.webp`}
                       alt=""
                     />
                   )}
@@ -269,10 +366,19 @@ const Craft = () => {
                 ))}
               </div>
               <FaLongArrowAltRight size={64} />
-              <div>
+              <div onClick={takeCraftedItem}>
                 {
                   <CraftCell
-                    contains={craftingResult.contains}
+                    contains={
+                      'contains' in craftingResult
+                        ? craftingResult.contains
+                        : undefined
+                    }
+                    pickaxe={
+                      'pickaxe' in craftingResult
+                        ? craftingResult.pickaxe
+                        : undefined
+                    }
                     amount={craftingResult.amount}
                   />
                 }
