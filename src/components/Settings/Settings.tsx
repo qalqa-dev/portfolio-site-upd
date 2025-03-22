@@ -31,7 +31,7 @@ export const Settings = () => {
           className={styles.container}
           ref={ref}
           style={{
-            animation: inView ? 'fade-in 0.5s ease-in-out' : '',
+            animation: inView ? 'fade-in 0.2s ease-in-out' : '',
             opacity: inView ? 1 : 0,
           }}
         >
