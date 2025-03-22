@@ -128,6 +128,37 @@
   }
 }
 
+.clicker-furnace {
+  display        : flex;
+  flex-direction : column;
+  justify-content: center;
+  padding        : 20px;
+
+  .clicker-furnace-container {
+    position: relative;
+    height  : 200px;
+
+    &::before {
+      content         : "";
+      position        : absolute;
+      z-index         : -1;
+      top             : 0;
+      left            : 0;
+      width           : 100%;
+      height          : 100%;
+      background-color: var(--color-crust);
+      mask-image      : url('/src/assets/clicker_tools/furnace.webp');
+      mask-repeat     : no-repeat;
+      mask-position   : center;
+      mask-size       : contain;
+    }
+  }
+}
+
+.clicker-furnace-img {
+  width: 100%;
+}
+
 
 
 .clicker-backdrop {

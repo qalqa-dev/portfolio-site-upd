@@ -7,6 +7,7 @@ import {
   BlockCell,
   Cell,
   CraftCell,
+  FurnaceCell,
   PickaxeCell,
 } from '@/components/CraftCell/CraftCell';
 import { MacIconWrapper, Safari } from 'components';
@@ -28,15 +29,16 @@ const Craft = () => {
     [{}, {}, {}],
     [{}, {}, {}],
   ]);
-  const [craftingResult, setCraftingResult] = useState<BlockCell | PickaxeCell>(
-    {},
-  );
+  const [craftingResult, setCraftingResult] = useState<
+    BlockCell | PickaxeCell | FurnaceCell
+  >({});
 
   const [inventory, setInventory] = useState<BlockCell[][]>(
     Array.from({ length: 4 }, () => Array.from({ length: 12 }, () => ({}))),
   );
 
   const [pickaxe, setPickaxe] = useState<Pickaxe>();
+  const [furnace, setFurnace] = useState<boolean>(false);
   const [block, setBlock] = useState<Block>('wood');
   const [selectedItem, setSelectedItem] = useState<[number, number]>();
 
@@ -200,6 +202,11 @@ const Craft = () => {
       clearCraftingTable();
       setCraftingResult({});
     }
+    if ('furnace' in craftingResult && craftingResult.furnace) {
+      setFurnace(craftingResult.furnace);
+      clearCraftingTable();
+      setCraftingResult({});
+    }
     if (!('contains' in craftingResult) || !craftingResult.contains) return;
     const existingCell = inventory.flatMap((row) =>
       row.filter((cell) => cell.contains === craftingResult.contains),
@@ -273,17 +280,64 @@ const Craft = () => {
     const craftWoodenPickaxe = () => {
       setCraftingResult({ pickaxe: 'woodenPickaxe', amount: 1 });
     };
+    //
+
+    //Каменная кирка
+    const stonePickaxeCondition =
+      craftingTable[0][0].contains === 'cobble' &&
+      craftingTable[0][1].contains === 'cobble' &&
+      craftingTable[0][2].contains === 'cobble' &&
+      craftingTable[1][1].contains === 'stick' &&
+      craftingTable[2][1].contains === 'stick';
+
+    const craftStonePickaxe = () => {
+      setCraftingResult({ pickaxe: 'stonePickaxe', amount: 1 });
+    };
+    //
+
+    //Печка
+    const furnaceCondition =
+      craftingTable[0][0].contains === 'cobble' &&
+      craftingTable[0][1].contains === 'cobble' &&
+      craftingTable[0][2].contains === 'cobble' &&
+      craftingTable[1][0].contains === 'cobble' &&
+      craftingTable[1][2].contains === 'cobble' &&
+      craftingTable[2][0].contains === 'cobble' &&
+      craftingTable[2][1].contains === 'cobble' &&
+      craftingTable[2][2].contains === 'cobble';
+
+    const craftFurnace = () => {
+      setCraftingResult({ furnace: true, amount: 1 });
+    };
+    //
 
     //Крафт
     if (planksCondition) craftPlank();
     if (stickCondition) craftStick();
     if (woodenPickaxeCondition) craftWoodenPickaxe();
+    if (stonePickaxeCondition) craftStonePickaxe();
+    if (furnaceCondition) craftFurnace();
 
     //Очистка
-    if (!planksCondition && !stickCondition && !woodenPickaxeCondition) {
+    if (
+      !planksCondition &&
+      !stickCondition &&
+      !woodenPickaxeCondition &&
+      !stonePickaxeCondition &&
+      !furnaceCondition
+    ) {
       setCraftingResult({});
     }
   }, [craftingTable]);
+
+  useEffect(() => {
+    if (pickaxe === 'woodenPickaxe') {
+      setBlock('cobble');
+    }
+    if (pickaxe === 'stonePickaxe') {
+      setBlock('ironOre');
+    }
+  }, [pickaxe]);
 
   return (
     <div className={styles.container}>
@@ -294,7 +348,17 @@ const Craft = () => {
               <AppearingText text="Mine" />
             </h2>
             <div className="grid grid-cols-[1fr_3fr_1fr] w-full">
-              <div></div>
+              <div className={styles['clicker-furnace']}>
+                <div className={styles['clicker-furnace-container']}>
+                  {furnace && (
+                    <img
+                      className={styles['clicker-furnace-img']}
+                      src={`/src/assets/clicker_tools/furnace.webp`}
+                      alt="furnace"
+                    />
+                  )}
+                </div>
+              </div>
               <div
                 onClick={handleClickBlock}
                 className={styles['clicker-block']}
@@ -319,7 +383,7 @@ const Craft = () => {
                     <img
                       className={styles['clicker-pickaxe-img']}
                       src={`/src/assets/clicker_tools/${pickaxe}.webp`}
-                      alt=""
+                      alt={`${pickaxe} || no_pickaxe`}
                     />
                   )}
                 </div>
@@ -377,6 +441,11 @@ const Craft = () => {
                     pickaxe={
                       'pickaxe' in craftingResult
                         ? craftingResult.pickaxe
+                        : undefined
+                    }
+                    furnace={
+                      'furnace' in craftingResult
+                        ? craftingResult.furnace
                         : undefined
                     }
                     amount={craftingResult.amount}
