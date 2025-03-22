@@ -3,4 +3,12 @@
   height          : 64px;
   background-color: var(--color-base);
   border-radius   : 10px;
+  position        : relative;
+}
+
+.amount {
+  font-family: 'San Francisco Mono', 'Geist Mono', monospace;
+  position   : absolute;
+  bottom     : 0%;
+  right      : 0%;
 }

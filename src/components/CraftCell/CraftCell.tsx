@@ -1,9 +1,17 @@
 import styles from './CraftCell.module.scss';
 
-type Recourse = 'wood' | 'coal' | 'iron';
+export type Block = 'wood' | 'coal' | 'iron';
 export interface Cell {
-  contains?: Recourse;
+  contains?: Block;
+  amount?: number;
 }
-export const CraftCell = ({ contains }: Cell) => {
-  return <div className={styles.cell}>{contains}</div>;
+export const CraftCell = ({ contains, amount }: Cell) => {
+  return (
+    <div className={styles.cell}>
+      {contains && (
+        <img src={`/src/assets/clicker_blocks/${contains}.png`} alt="block" />
+      )}
+      <span className={styles.amount}>{amount}</span>
+    </div>
+  );
 };

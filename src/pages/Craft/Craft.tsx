@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { IoBook } from 'react-icons/io5';
 
 import { AppearingText } from '@/components/AppearingText/AppearingText';
-import { Cell, CraftCell } from '@/components/CraftCell/CraftCell';
+import { Block, Cell, CraftCell } from '@/components/CraftCell/CraftCell';
 import { MacIconWrapper, Safari } from 'components';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import styles from './Craft.module.scss';
@@ -20,6 +20,21 @@ const Craft = () => {
   );
 
   const [pickaxe, setPickaxe] = useState<string>();
+  const [block, setBlock] = useState<Block>('wood');
+
+  const getInventoryCell = (x: number, y: number) => {
+    return inventory[y] ? inventory[y][x] : {};
+  };
+
+  const setInventoryCell = (x: number, y: number, cell: Cell) => {
+    if (inventory[y]) {
+      const updatedRow = [...inventory[y]];
+      updatedRow[x] = cell;
+      const updatedInventory = [...inventory];
+      updatedInventory[y] = updatedRow;
+      setInventory(updatedInventory);
+    }
+  };
 
   const [backgroundSize, setBackgroundSize] = useState(100);
 
@@ -28,6 +43,12 @@ const Craft = () => {
     setTimeout(() => {
       setBackgroundSize(100);
     }, 300);
+
+    const cell = getInventoryCell(0, 0);
+    setInventoryCell(0, 0, {
+      contains: block,
+      amount: (cell?.amount ?? 0) + 1,
+    });
   };
 
   return (
@@ -107,7 +128,12 @@ const Craft = () => {
                 <div className={styles['inventory-row']} key={rowIndex}>
                   {row.map((cell, cellIndex) => (
                     <div key={cellIndex}>
-                      {<CraftCell contains={cell.contains} />}
+                      {
+                        <CraftCell
+                          contains={cell.contains}
+                          amount={cell.amount}
+                        />
+                      }
                     </div>
                   ))}
                 </div>
