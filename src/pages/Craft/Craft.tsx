@@ -95,34 +95,31 @@ const Craft = () => {
     cell: Cell,
   ) => {
     if (!selectedItem) return;
+
+    const selectedCell = getCell(inventory, selectedItem[0], selectedItem[1]);
+
+    if (!selectedCell.amount) return;
+
     if (cell.contains) {
       setCraftingTableCell(xCoordinateCell, yCoordinateCell, {});
-      const prevCell = getCell(inventory, selectedItem[0], selectedItem[1]);
-      if (!prevCell.amount) return;
       setInventoryCell(selectedItem[0], selectedItem[1], {
         ...cell,
-        amount: prevCell.amount + 1,
+        amount: selectedCell.amount + 1,
       });
       return;
     }
-    setCraftingTableCell(
-      xCoordinateCell,
-      yCoordinateCell,
-      getCell(inventory, selectedItem[0], selectedItem[1]),
-    );
-    const prevCell = getCell(inventory, selectedItem[0], selectedItem[1]);
-    if (!prevCell.amount || prevCell.amount <= 1) {
-      setSelectedItem(undefined);
+
+    setCraftingTableCell(xCoordinateCell, yCoordinateCell, selectedCell);
+
+    if (selectedCell.amount <= 1) {
       setInventoryCell(selectedItem[0], selectedItem[1], {});
-      return;
+      setSelectedItem(undefined);
+    } else {
+      setInventoryCell(selectedItem[0], selectedItem[1], {
+        contains: selectedCell.contains,
+        amount: selectedCell.amount - 1,
+      });
     }
-    setInventoryCell(
-      selectedItem[0],
-      selectedItem[1],
-      prevCell.contains
-        ? { contains: prevCell.contains, amount: prevCell.amount - 1 }
-        : {},
-    );
   };
 
   useEffect(() => {
