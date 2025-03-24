@@ -22,6 +22,7 @@ export const Switch = ({ checked, onChange }: SwitchProps) => {
         id="checkbox"
         checked={checked}
         onChange={handleChange}
+        aria-checked={checked ? 'true' : 'false'}
       />
       <label className={styles.switch} htmlFor="checkbox">
         <span className={styles.slider} />
