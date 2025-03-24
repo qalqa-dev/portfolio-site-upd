@@ -7,8 +7,6 @@ import {
   BlockCell,
   Cell,
   CraftCell,
-  FurnaceCell,
-  PickaxeCell,
 } from '@/components/CraftCell/CraftCell';
 import { MacIconWrapper, Safari } from 'components';
 import { FaLongArrowAltRight } from 'react-icons/fa';
@@ -23,22 +21,32 @@ export type Pickaxe =
   | 'diamondPickaxe'
   | 'netheritePickaxe';
 
+type CraftingResult =
+  | { contains: Block; amount: number }
+  | { pickaxe: Pickaxe; amount: number }
+  | { furnace: true; amount: number }
+  | object;
+
+const CRAFTING_TABLE_ROWS = 3;
+const CRAFTING_TABLE_COLS = 3;
+const INVENTORY_ROWS = 4;
+const INVENTORY_COLS = 12;
+
+const emptyCell = {};
+
+const createGrid = (rows: number, cols: number): BlockCell[][] =>
+  Array.from({ length: rows }, () => Array.from({ length: cols }, () => ({})));
+
 const Craft = () => {
   const [clickerGlowSize, setClickerGlowSize] = useState(100);
-
-  const [craftingTable, setCraftingTable] = useState<BlockCell[][]>([
-    [{}, {}, {}],
-    [{}, {}, {}],
-    [{}, {}, {}],
-  ]);
-  const [craftingResult, setCraftingResult] = useState<
-    BlockCell | PickaxeCell | FurnaceCell
-  >({});
-
-  const [inventory, setInventory] = useState<BlockCell[][]>(
-    Array.from({ length: 4 }, () => Array.from({ length: 12 }, () => ({}))),
+  const [craftingTable, setCraftingTable] = useState<BlockCell[][]>(
+    createGrid(CRAFTING_TABLE_ROWS, CRAFTING_TABLE_COLS),
   );
-
+  const [craftingResult, setCraftingResult] =
+    useState<CraftingResult>(emptyCell);
+  const [inventory, setInventory] = useState<BlockCell[][]>(
+    createGrid(INVENTORY_ROWS, INVENTORY_COLS),
+  );
   const [pickaxe, setPickaxe] = useState<Pickaxe>();
   const [furnace, setFurnace] = useState<boolean>(false);
   const [blockArray, setBlockArray] = useState<Block[]>(['wood']);
@@ -127,40 +135,34 @@ const Craft = () => {
   };
 
   const handleClickOnCellInInventory = (
-    xCoordinateCell: number,
-    yCoordinateCell: number,
+    xInventory: number,
+    yInventory: number,
     cell: BlockCell,
   ) => {
     if (!cell.contains) {
       setSelectedItem(undefined);
       return;
     }
-    setSelectedItem([xCoordinateCell, yCoordinateCell]);
+    setSelectedItem([xInventory, yInventory]);
   };
 
-  const validateSelected = (
-    xCoordinateCell: number,
-    yCoordinateCell: number,
-  ) => {
+  const validateSelected = (xInventory: number, yInventory: number) => {
     if (!selectedItem) return;
 
-    if (
-      xCoordinateCell === selectedItem[0] &&
-      yCoordinateCell === selectedItem[1]
-    )
+    if (xInventory === selectedItem[0] && yInventory === selectedItem[1])
       return true;
   };
 
   const placeSelectedItemOnCraftingTable = (
-    xCoordinateCell: number,
-    yCoordinateCell: number,
-    cell: BlockCell,
+    xCraftingTable: number,
+    yCraftingTable: number,
+    cellCraftingTable: BlockCell,
   ) => {
     if (!selectedItem) {
       const craftingTableCell = getCell(
         craftingTable,
-        xCoordinateCell,
-        yCoordinateCell,
+        xCraftingTable,
+        yCraftingTable,
       );
       if (craftingTableCell.contains) {
         const emptyCellCoordinates = getFirstEmptyCellCoordinates(inventory);
@@ -171,7 +173,7 @@ const Craft = () => {
             amount: 1,
           });
           setSelectedItem([emptyCellX, emptyCellY]);
-          setCraftingTableCell(xCoordinateCell, yCoordinateCell, {});
+          setCraftingTableCell(xCraftingTable, yCraftingTable, {});
           return;
         }
       }
@@ -182,16 +184,16 @@ const Craft = () => {
 
     if (!selectedCell.amount) return;
 
-    if (cell.contains) {
-      setCraftingTableCell(xCoordinateCell, yCoordinateCell, {});
+    if (cellCraftingTable.contains) {
+      setCraftingTableCell(xCraftingTable, yCraftingTable, {});
       setInventoryCell(selectedItem[0], selectedItem[1], {
-        ...cell,
+        ...cellCraftingTable,
         amount: selectedCell.amount + 1,
       });
       return;
     }
 
-    setCraftingTableCell(xCoordinateCell, yCoordinateCell, selectedCell);
+    setCraftingTableCell(xCraftingTable, yCraftingTable, selectedCell);
 
     if (selectedCell.amount <= 1) {
       setInventoryCell(selectedItem[0], selectedItem[1], {});
@@ -215,11 +217,13 @@ const Craft = () => {
       setPickaxe(craftingResult.pickaxe);
       clearCraftingTable();
       setCraftingResult({});
+      return;
     }
     if ('furnace' in craftingResult && craftingResult.furnace) {
       setFurnace(craftingResult.furnace);
       clearCraftingTable();
       setCraftingResult({});
+      return;
     }
     if (!('contains' in craftingResult) || !craftingResult.contains) return;
     const existingCell = inventory.flatMap((row) =>
@@ -251,10 +255,10 @@ const Craft = () => {
 
   useEffect(() => {
     //Доски
-    const woodCount = craftingTable
-      .flat()
-      .filter((cell) => cell.contains === 'wood').length;
+    const countInTable = (item: Block) =>
+      craftingTable.flat().filter((cell) => cell.contains === item).length;
 
+    const woodCount = countInTable('wood');
     const planksCondition = woodCount === 1;
 
     const craftPlank = () => {
@@ -263,20 +267,17 @@ const Craft = () => {
     //
 
     //Палки
-    const plankCount = craftingTable
-      .flat()
-      .filter((cell) => cell.contains === 'plank').length;
+    const plankCount = countInTable('plank');
 
     const stickCondition =
       plankCount === 2 &&
-      craftingTable.some((row, rowIndex) => {
-        return row.some((cell, index) => {
-          return (
+      craftingTable.some((row, rowIndex) =>
+        row.some(
+          (cell, colIndex) =>
             cell.contains === 'plank' &&
-            craftingTable[rowIndex + 1]?.[index]?.contains === 'plank'
-          );
-        });
-      });
+            craftingTable[rowIndex + 1]?.[colIndex]?.contains === 'plank',
+        ),
+      );
 
     const craftStick = () => {
       setCraftingResult({ contains: 'stick', amount: 2 });
@@ -325,31 +326,36 @@ const Craft = () => {
     };
     //
 
-    //Крафт
-    if (planksCondition) craftPlank();
-    if (stickCondition) craftStick();
-    if (woodenPickaxeCondition) craftWoodenPickaxe();
-    if (stonePickaxeCondition) craftStonePickaxe();
-    if (furnaceCondition) craftFurnace();
-
-    //Очистка
-    if (
-      !planksCondition &&
-      !stickCondition &&
-      !woodenPickaxeCondition &&
-      !stonePickaxeCondition &&
-      !furnaceCondition
-    ) {
-      setCraftingResult({});
+    switch (true) {
+      case planksCondition:
+        craftPlank();
+        break;
+      case stickCondition:
+        craftStick();
+        break;
+      case woodenPickaxeCondition:
+        craftWoodenPickaxe();
+        break;
+      case stonePickaxeCondition:
+        craftStonePickaxe();
+        break;
+      case furnaceCondition:
+        craftFurnace();
+        break;
+      default:
+        setCraftingResult({});
+        break;
     }
   }, [craftingTable]);
 
   useEffect(() => {
-    if (pickaxe === 'woodenPickaxe') {
-      setBlockArray((prevArray) => [...prevArray, 'cobble']);
-    }
-    if (pickaxe === 'stonePickaxe') {
-      setBlockArray((prevArray) => [...prevArray, 'ironOre']);
+    switch (pickaxe) {
+      case 'woodenPickaxe':
+        setBlockArray((prevArray) => [...prevArray, 'cobble']);
+        break;
+      case 'stonePickaxe':
+        setBlockArray((prevArray) => [...prevArray, 'ironOre']);
+        break;
     }
   }, [pickaxe]);
 
@@ -513,7 +519,11 @@ const Craft = () => {
                         ? craftingResult.furnace
                         : undefined
                     }
-                    amount={craftingResult.amount}
+                    amount={
+                      'amount' in craftingResult
+                        ? craftingResult.amount
+                        : undefined
+                    }
                   />
                 }
               </div>
