@@ -1,0 +1,18 @@
+.title {
+  font-family  : 'SF-Pro Rounded', ;
+  font-size    : clamp(32px, 15vw, 60px);
+  font-weight  : 600;
+  text-align   : center;
+  margin-bottom: 20px;
+}
+
+.webview {
+  padding: 50px;
+  width  : 100%;
+}
+
+@media (max-width: 768px) {
+  .webview {
+    padding: 10px;
+  }
+}

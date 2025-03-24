@@ -1,18 +1,28 @@
 export { AppearingText } from './AppearingText';
-export { AsciiArt } from './AsciiArt';
-export { AsciiBar } from './AsciiBar';
-export { AsciiSkillBar } from './AsciiSkillBar';
-export { CraftCell } from './CraftCell';
+export { Cell, CraftClicker, CraftingArea } from './Craft';
 export { Dock } from './Dock';
-export { List } from './List';
-export { MacIconWrapper } from './MacIconWrapper';
-export { Preview } from './Preview';
-export { ProgressBar } from './ProgressBar';
-export { ProjectCard, ProjectList } from './Project';
-export { RollingText } from './RollingText';
+
+export {
+  MacIconWrapper,
+  ProgressBar,
+  ProjectCard,
+  ProjectList,
+  RollingText,
+} from './Main';
+
 export { Safari } from './Safari';
 export { Settings } from './Settings';
-export { Term } from './Term';
-export { TermCursor } from './TermCursor';
+export { Skeleton } from './Skeleton';
+
+export {
+  AsciiArt,
+  AsciiBar,
+  AsciiSkillBar,
+  List,
+  Preview,
+  TermCursor,
+  TermWrapper,
+} from './Term';
+
 export { Typewriter } from './Typewriter';
 export { Wallpapers } from './Wallpapers';

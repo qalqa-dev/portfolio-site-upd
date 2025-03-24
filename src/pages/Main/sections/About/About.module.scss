@@ -1,0 +1,58 @@
+.about {
+  width        : 100%;
+  margin-bottom: 10vh;
+
+  .title {
+    font-family: 'SF-Pro Rounded', ;
+    font-size  : clamp(32px, 15vw, 60px);
+    font-weight: 600;
+    text-align : center;
+  }
+
+  .about-container {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+  }
+
+
+
+  .text {
+    width       : 100%;
+    font-size   : clamp(16px, 1.5vw, 24px);
+    margin-right: auto;
+
+    p {
+      margin-bottom: 10px;
+      text-wrap    : stable
+    }
+
+    strong {
+      color      : var(--color-mauve);
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size  : clamp(24px, 3vw, 32px);
+      font-weight: 600;
+    }
+
+    ul {
+      margin-left    : 20px;
+      list-style-type: disc;
+      margin-bottom  : 10px;
+    }
+
+    em {
+      font-style: italic;
+    }
+  }
+
+
+}
+
+.img {
+  background-color: var(--color-mantle);
+  border-radius   : 15px;
+  width           : 100%;
+}

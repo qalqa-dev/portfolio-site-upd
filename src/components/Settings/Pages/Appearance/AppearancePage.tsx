@@ -1,4 +1,4 @@
-import { Switch } from '@/components/Switch/Switch';
+import { Switch } from '@/components/Settings/Switch/Switch';
 import { AppDispatch, RootState, setSmoothScroll, setTheme } from '@/store';
 import clsx from 'clsx';
 import { t } from 'i18next';

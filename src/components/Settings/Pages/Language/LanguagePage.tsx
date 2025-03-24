@@ -1,5 +1,5 @@
-import i18n from '@/i18n';
 import { AppDispatch, RootState, setLanguage } from '@/store';
+import i18n from '@/utils/i18n';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';

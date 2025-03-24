@@ -1,4 +1,3 @@
-import { AppDispatch, RootState, setSettingsState } from '@/store';
 import clsx from 'clsx';
 import { t } from 'i18next';
 import { useState } from 'react';
@@ -6,8 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { IoGlobeOutline, IoInvertMode } from 'react-icons/io5';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppearancePage } from './Pages/Appearance/AppearancePage';
-import { LanguagePage } from './Pages/Language/LanguagePage';
+
+import { AppDispatch, RootState, setSettingsState } from '@/store';
+import { AppearancePage } from './Pages/Appearance';
+import { LanguagePage } from './Pages/Language';
 import styles from './Settings.module.scss';
 
 export const Settings = () => {

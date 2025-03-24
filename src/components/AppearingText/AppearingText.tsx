@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useInView } from 'react-intersection-observer';
+
 import styles from './AppearingText.module.scss';
 
 export const AppearingText = ({ text }: { text: string }) => {

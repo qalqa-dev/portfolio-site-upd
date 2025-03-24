@@ -1,10 +1,10 @@
 import Lenis from 'lenis';
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-
-import { About, Contacts, Hero, Projects, Stack } from 'sections';
 import { RootState } from 'store';
+
 import styles from './Main.module.scss';
+import { About, Contacts, Hero, Projects, Stack } from './sections';
 
 const Main = () => {
   const smoothScroll = useSelector(

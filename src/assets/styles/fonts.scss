@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Geist Sans";
+  src        : url("../fonts/Geist/GeistSans.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src        : url("../fonts/Geist/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src        : url("../fonts/JetBrainsMono/JetBrainsMono.ttf") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@font-face {
+  font-family: "SF-Pro";
+  src        : url("../fonts/SanFrancisco/SF-Pro.ttf") format("woff2");
+  font-weight: 100 900;
+  font-style : normal;
+}
+
+@mixin font-face($name, $weight, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src        : url("../fonts/SanFrancisco/Rounded/#{$file}.otf") format("woff2");
+    font-weight: $weight;
+    font-style : normal;
+  }
+}
+
+@include font-face("SF-Pro Rounded", 100, "SF-Pro-Rounded-UltraLight");
+@include font-face("SF-Pro Rounded", 200, "SF-Pro-Rounded-Thin");
+@include font-face("SF-Pro Rounded", 300, "SF-Pro-Rounded-Light");
+@include font-face("SF-Pro Rounded", 400, "SF-Pro-Rounded-Regular");
+@include font-face("SF-Pro Rounded", 500, "SF-Pro-Rounded-Medium");
+@include font-face("SF-Pro Rounded", 600, "SF-Pro-Rounded-Semibold");
+@include font-face("SF-Pro Rounded", 700, "SF-Pro-Rounded-Bold");
+@include font-face("SF-Pro Rounded", 800, "SF-Pro-Rounded-Heavy");
+@include font-face("SF-Pro Rounded", 900, "SF-Pro-Rounded-Black");
+
+@mixin font-face($name, $weight, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src        : url("../fonts/SanFrancisco/Mono/#{$file}.otf") format("woff2");
+    font-weight: $weight;
+    font-style : normal;
+  }
+}
+
+@include font-face("SF-Pro Mono", 100, "SF-Mono-UltraLight");
+@include font-face("SF-Pro Mono", 200, "SF-Mono-Thin");
+@include font-face("SF-Pro Mono", 300, "SF-Mono-Light");
+@include font-face("SF-Pro Mono", 400, "SF-Mono-Regular");
+@include font-face("SF-Pro Mono", 500, "SF-Mono-Medium");
+@include font-face("SF-Pro Mono", 600, "SF-Mono-Semibold");
+@include font-face("SF-Pro Mono", 700, "SF-Mono-Bold");
+@include font-face("SF-Pro Mono", 800, "SF-Mono-Heavy");
+@include font-face("SF-Pro Mono", 900, "SF-Mono-Black");

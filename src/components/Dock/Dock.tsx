@@ -6,7 +6,7 @@ import { PiGearFill, PiHouseFill, PiTerminalWindowFill } from 'react-icons/pi';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router';
 import { scaleValue } from 'utils/scale';
-import { MacIconWrapper } from '../MacIconWrapper/MacIconWrapper';
+import { MacIconWrapper } from '../Main/MacIconWrapper/MacIconWrapper';
 import styles from './Dock.module.scss';
 
 const maxAdditionalSize = 5;

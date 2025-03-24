@@ -11,11 +11,12 @@ export default defineConfig({
       ['components']: path.resolve(__dirname, '/src/components'),
       ['sections']: path.resolve(__dirname, '/src/sections'),
       ['sections-term']: path.resolve(__dirname, '/src/sections-term'),
+      ['assets']: path.resolve(__dirname, '/src/assets'),
       ['types']: path.resolve(__dirname, '/src/types'),
       ['utils']: path.resolve(__dirname, '/src/utils'),
       ['store']: path.resolve(__dirname, '/src/store'),
       ['data']: path.resolve(__dirname, '/src/data'),
-      ['locales']:  path.resolve(__dirname, '/src/locales'),
+      ['locales']: path.resolve(__dirname, '/src/locales'),
     },
   },
 });

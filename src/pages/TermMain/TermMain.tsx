@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { About, Hero, Projects, StackBack, StackFront } from 'sections-term';
+import { About, Hero, Projects, StackBack, StackFront } from './sections';
 import styles from './TermMain.module.scss';
 
 export function TermMain() {

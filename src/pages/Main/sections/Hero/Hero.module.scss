@@ -1,0 +1,31 @@
+.hero {
+  position       : relative;
+  margin         : 0 auto;
+  height         : 100vh;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+
+  .webview {
+    padding-bottom: 100px;
+  }
+
+  .title {
+    font-family: 'SF-Pro Mono', 'SF-Pro';
+
+  }
+
+  .description {
+    font-family: 'SF-Pro Mono', 'SF-Pro';
+    font-size  : clamp(16px, 3vw, 32px);
+    font-weight: 400;
+    text-align : center;
+    height     : clamp(16px, 3vw, 32px);
+  }
+
+  @media (max-width: 768px) {
+    .webview {
+      padding-bottom: 50px;
+    }
+  }
+}

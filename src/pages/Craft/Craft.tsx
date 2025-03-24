@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { Block, BlockCell, Cell } from '@/components/CraftCell/CraftCell';
-import { CraftClicker } from '@/components/CraftClicker';
-import { CraftingArea } from '@/components/CraftingArea';
+import { Block, BlockCell, CellType } from '@/components/Craft/Cell/Cell';
+import { CraftClicker } from '@/components/Craft/Clicker';
+import { CraftingArea } from '@/components/Craft/CraftingArea';
 import { Safari } from 'components';
 import { useInView } from 'react-intersection-observer';
 import styles from './Craft.module.scss';
@@ -56,7 +56,7 @@ const Craft = () => {
     scope: T,
     x: number,
     y: number,
-    cell: Cell,
+    cell: CellType,
   ): T => {
     if (scope[y]) {
       const updatedRow = [...scope[y]];

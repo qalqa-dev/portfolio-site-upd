@@ -1,0 +1,1 @@
+export { TermWrapper } from './TermWrapper';

@@ -20,13 +20,13 @@
   color           : var(--color-mantle-tr);
   background-color: var(--color-yellow);
   font-size       : 14px;
-  font-family     : 'San Francisco';
+  font-family     : 'SF-Pro';
   font-weight     : 600;
   text-align      : center;
 }
 
 .title {
-  font-family: 'San Francisco Rounded', ;
+  font-family: 'SF-Pro Rounded', ;
   font-size  : clamp(32px, 15vw, 60px);
   font-weight: 600;
   text-align : center;
@@ -37,7 +37,7 @@
   width  : 100%;
 
   h3 {
-    font-family: 'San Francisco';
+    font-family: 'SF-Pro';
     font-size  : clamp(16px, 3vw, 24px);
     font-weight: 600;
   }

@@ -1,0 +1,68 @@
+.title {
+  font-family: 'SF-Pro Rounded', ;
+  font-size  : clamp(32px, 15vw, 60px);
+  font-weight: 600;
+  text-align : center;
+}
+
+.crafting-header {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  gap            : 10px;
+}
+
+.actions-list {
+  display: flex;
+  gap    : 10px;
+  padding: 10px;
+
+  .actions-item {
+    width : 64px;
+    height: 64px;
+  }
+}
+
+.crafting-window {
+  padding        : 0 40px;
+  width          : fit-content;
+  aspect-ratio   : 2/1;
+  border-radius  : 15px;
+  display        : flex;
+  flex-direction : column;
+  gap            : 16px;
+  justify-content: center;
+  margin         : 0 auto;
+}
+
+.crafting-area {
+  display    : flex;
+  align-items: center;
+  gap        : 8px;
+}
+
+.crafting-table {
+  display           : grid;
+  grid-template-rows: repeat(3, 64px);
+  gap               : 8px;
+}
+
+.crafting-table-row {
+
+  display              : grid;
+  grid-template-columns: repeat(3, 64px);
+  gap                  : 8px;
+}
+
+.inventory {
+  display           : grid;
+  grid-template-rows: repeat(4, 64px);
+  gap               : 8px;
+
+}
+
+.inventory-row {
+  display              : grid;
+  grid-template-columns: repeat(12, 64px);
+  gap                  : 8px;
+}
