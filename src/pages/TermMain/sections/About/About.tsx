@@ -15,7 +15,7 @@ export const About = ({ scroll, scrollRange }: SectionsProps) => {
           className={clsx(
             styles['term-split'],
             'justify-center items-center',
-            'h-[97vh] xl:h-[80vh]',
+            'h-[97vh] 2xl:h-[80vh]',
             {},
           )}
           customStyles={{

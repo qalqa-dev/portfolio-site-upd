@@ -1,9 +1,8 @@
-import { BlockCell, Cell } from '@/components/Craft/Cell/Cell';
-import { CraftingResult } from '@/pages/Craft/Craft';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { IoBook } from 'react-icons/io5';
-import { AppearingText } from '../../AppearingText';
-import { MacIconWrapper } from '../../Main/MacIconWrapper';
+
+import { BlockCell, CraftingResult } from '@/types/Craft';
+import { AppearingText, Cell, MacIconWrapper } from 'components';
 import styles from './CraftingArea.module.scss';
 
 interface CraftingAreaProps {

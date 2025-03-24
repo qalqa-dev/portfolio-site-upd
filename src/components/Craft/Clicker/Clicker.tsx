@@ -1,6 +1,6 @@
-import { AppearingText } from '@/components/AppearingText/AppearingText';
-import { MacIconWrapper } from 'components';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+
+import { AppearingText, MacIconWrapper } from 'components';
 import styles from './Clicker.module.scss';
 
 interface ClickerProps {

@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 
-import { GithubIcon } from '@/assets/svgs/GithubIcon';
-import { TelegramIcon } from '@/assets/svgs/TelegramIcon';
-import { VkIcon } from '@/assets/svgs/VkIcon';
 import { projectsData } from '@/data/projectsData';
 import { List, Preview, TermCursor, TermWrapper } from 'components';
+import { FaGithubAlt, FaTelegramPlane, FaVk } from 'react-icons/fa';
+import { IoIosMail } from 'react-icons/io';
 import { IProject, SectionsProps } from 'types';
 import styles from './Projects.module.scss';
 
@@ -24,7 +23,7 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
       <div className={clsx('flex flex-col', styles['term-container'])}>
         <TermWrapper
           heading="qalqa/projects"
-          className={styles['projects-term'] + ' h-[97vh] xl:h-[80vh]'}
+          className={styles['projects-term'] + ' h-[97vh] 2xl:h-[80vh]'}
           customStyles={{ marginBottom: `${contactsMargin}px` }}
         >
           {scroll < 6700 && (
@@ -66,27 +65,25 @@ export const Projects = ({ scroll, scrollRange }: SectionsProps) => {
             <div>
               <a href="mailto:andreybas04@gmail.com" className="flex gap-1">
                 <span className={'highlight flex items-center gap-3'}>
-                  <i>✉️</i>Email:{' '}
+                  <IoIosMail /> Email:{' '}
                 </span>
                 andreybas04@gmail.com
               </a>
               <a href="https://github.com/qalqa-dev" className="flex gap-1">
                 <span className="highlight flex items-center gap-3">
-                  <GithubIcon width={'1.25rem'} height={'1.25rem'} />
-                  Github:{' '}
+                  <FaGithubAlt /> Github:{' '}
                 </span>
-                qalqaa
+                qalqa-dev
               </a>
               <a href="https://t.me/qalqa_dev" className="flex gap-1">
                 <span className={'highlight flex items-center gap-3'}>
-                  <TelegramIcon width={'1rem'} height={'1rem'} />
-                  Telegram:{' '}
+                  <FaTelegramPlane /> Telegram:{' '}
                 </span>
-                qalqaa
+                qalqa_dev
               </a>
               <a href="https://vk.com/qalqaa" className="flex gap-1">
                 <span className={'highlight flex items-center gap-3'}>
-                  <VkIcon width={'1rem'} height={'1rem'} /> VK:{' '}
+                  <FaVk /> VK:{' '}
                 </span>
                 qalqaa
               </a>

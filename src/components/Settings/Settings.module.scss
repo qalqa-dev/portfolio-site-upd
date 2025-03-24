@@ -59,9 +59,9 @@
   width         : 100%;
   min-height    : 298.2px;
   padding-inline: 10px;
-  bottom        : 50%;
+  top           : 50%;
   left          : 50%;
-  transform     : translateX(-50%);
+  transform     : translateX(-50%) translateY(-50%);
   font-family   : 'SF-Pro';
   font-weight   : 500;
   transition    : 0.2s ease-in-out;

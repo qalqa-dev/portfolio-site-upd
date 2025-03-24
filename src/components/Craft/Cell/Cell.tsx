@@ -1,25 +1,8 @@
-import { Pickaxe } from '@/pages/Craft/Craft';
 import clsx from 'clsx';
+
+import { BlockCell, FurnaceCell, PickaxeCell } from '@/types/Craft';
 import styles from './Cell.module.scss';
 
-export type Block = 'wood' | 'plank' | 'stick' | 'cobble' | 'ironOre';
-
-export type CellType = {
-  amount?: number;
-  isSelected?: boolean;
-};
-
-export type PickaxeCell = CellType & {
-  pickaxe?: Pickaxe;
-};
-
-export type FurnaceCell = CellType & {
-  furnace?: boolean;
-};
-
-export type BlockCell = CellType & {
-  contains?: Block;
-};
 export const Cell = ({
   contains,
   pickaxe,

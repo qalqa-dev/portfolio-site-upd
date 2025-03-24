@@ -1,24 +1,17 @@
 import { useEffect, useState } from 'react';
 
-import { Block, BlockCell, CellType } from '@/components/Craft/Cell/Cell';
 import { CraftClicker } from '@/components/Craft/Clicker';
 import { CraftingArea } from '@/components/Craft/CraftingArea';
+import {
+  Block,
+  BlockCell,
+  CellType,
+  CraftingResult,
+  Pickaxe,
+} from '@/types/Craft';
 import { Safari } from 'components';
 import { useInView } from 'react-intersection-observer';
 import styles from './Craft.module.scss';
-
-export type Pickaxe =
-  | 'woodenPickaxe'
-  | 'stonePickaxe'
-  | 'ironPickaxe'
-  | 'diamondPickaxe'
-  | 'netheritePickaxe';
-
-export type CraftingResult =
-  | { contains: Block; amount: number }
-  | { pickaxe: Pickaxe; amount: number }
-  | { furnace: true; amount: number }
-  | object;
 
 const CRAFTING_TABLE_ROWS = 3;
 const CRAFTING_TABLE_COLS = 3;
