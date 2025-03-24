@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Skeleton } from './components/Skeleton/Skeleton';
 import BaseLayout from './layouts/BaseLayout';
-import Craft from './pages/Craft/Craft';
 import NotFound from './pages/NotFound/NotFound';
 import { RootState, setThemeWithoutStorage, Theme } from './store';
 
@@ -38,6 +37,7 @@ export const App = () => {
 
   const Main = lazy(() => import('./pages/Main/Main'));
   const TermMain = lazy(() => import('./pages/TermMain/TermMain'));
+  const Craft = lazy(() => import('./pages/Craft/Craft'));
 
   return (
     <>
@@ -46,7 +46,7 @@ export const App = () => {
           <Route
             path="/"
             element={
-              <Suspense fallback={<Skeleton height={100} />}>
+              <Suspense fallback={<Skeleton height={800} />}>
                 <BaseLayout />
               </Suspense>
             }
