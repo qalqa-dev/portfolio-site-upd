@@ -1,5 +1,5 @@
 export { AppearingText } from './AppearingText';
-export { Cell, CraftClicker, CraftingArea } from './Craft';
+export { Cell, Clicker as CraftClicker, CraftingArea } from './Craft';
 export { Dock } from './Dock';
 
 export {

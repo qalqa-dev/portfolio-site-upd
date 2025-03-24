@@ -61,7 +61,7 @@ export const Clicker = ({
                 draggable="false"
                 className={styles['clicker-pickaxe-img']}
                 src={`/clicker_tools/${pickaxe}.webp`}
-                alt={`${pickaxe} || no_pickaxe`}
+                alt={pickaxe}
               />
             )}
           </div>

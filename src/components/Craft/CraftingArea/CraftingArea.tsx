@@ -46,7 +46,11 @@ export const CraftingArea = ({
       <div className={styles['crafting-area']}>
         <div className={styles['crafting-table']}>
           {craftingTable.map((row, rowIndex) => (
-            <div className={styles['crafting-table-row']} key={rowIndex}>
+            <div
+              data-testid="crafting-table-row"
+              className={styles['crafting-table-row']}
+              key={rowIndex}
+            >
               {row.map((cell, cellIndex) => (
                 <div
                   onMouseDown={() =>
@@ -70,27 +74,18 @@ export const CraftingArea = ({
           ))}
         </div>
         <FaLongArrowAltRight size={64} />
-        <div onClick={takeCraftedItem}>
-          <Cell
-            contains={
-              'contains' in craftingResult ? craftingResult.contains : undefined
-            }
-            pickaxe={
-              'pickaxe' in craftingResult ? craftingResult.pickaxe : undefined
-            }
-            furnace={
-              'furnace' in craftingResult ? craftingResult.furnace : undefined
-            }
-            amount={
-              'amount' in craftingResult ? craftingResult.amount : undefined
-            }
-          />
+        <div data-testid="crafting-result" onClick={takeCraftedItem}>
+          <Cell {...craftingResult} />
         </div>
       </div>
       <h3>Inventory</h3>
       <div className={styles.inventory}>
         {inventory.map((row, rowIndex) => (
-          <div className={styles['inventory-row']} key={rowIndex}>
+          <div
+            data-testid="inventory-row"
+            className={styles['inventory-row']}
+            key={rowIndex}
+          >
             {row.map((cell, cellIndex) => (
               <div
                 onClick={() =>

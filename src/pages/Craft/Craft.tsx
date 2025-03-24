@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { CraftClicker } from '@/components/Craft/Clicker';
+import { Clicker } from '@/components/Craft/Clicker';
 import { CraftingArea } from '@/components/Craft/CraftingArea';
 import {
   Block,
@@ -366,7 +366,7 @@ const Craft = () => {
       </div>
       <Safari openedLink="qalqa.com/mine">
         <div className={styles.webview}>
-          <CraftClicker
+          <Clicker
             clickerGlowSize={clickerGlowSize}
             activeBlock={activeBlock}
             pickaxe={pickaxe}

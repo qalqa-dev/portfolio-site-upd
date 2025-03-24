@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Switch } from './Switch';
+import { Switch } from '../Switch';
 
 describe('Switch Component', () => {
-  afterEach(cleanup);
-
   it('renders with correct checked state', () => {
     const { rerender } = render(<Switch checked={false} onChange={() => {}} />);
     expect(screen.getByRole('checkbox')).not.toBeChecked();

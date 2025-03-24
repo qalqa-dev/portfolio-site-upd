@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type Theme = 'light' | 'dark' | 'auto';
 
-interface SettingsState {
+export interface SettingsState {
   settingsState: boolean;
   smoothScroll: boolean;
   theme: Theme;

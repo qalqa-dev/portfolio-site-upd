@@ -1,1 +1,1 @@
-export { Clicker as CraftClicker } from './Clicker';
+export { Clicker as Clicker } from './Clicker';
