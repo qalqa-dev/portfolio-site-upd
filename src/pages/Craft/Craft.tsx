@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
-import { IoBook } from 'react-icons/io5';
 
-import { AppearingText } from '@/components/AppearingText/AppearingText';
-import {
-  Block,
-  BlockCell,
-  Cell,
-  CraftCell,
-} from '@/components/CraftCell/CraftCell';
-import { MacIconWrapper, Safari } from 'components';
-import { FaLongArrowAltRight } from 'react-icons/fa';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { Block, BlockCell, Cell } from '@/components/CraftCell/CraftCell';
+import { CraftClicker } from '@/components/CraftClicker';
+import { CraftingArea } from '@/components/CraftingArea';
+import { Safari } from 'components';
 import { useInView } from 'react-intersection-observer';
 import styles from './Craft.module.scss';
 
@@ -21,7 +14,7 @@ export type Pickaxe =
   | 'diamondPickaxe'
   | 'netheritePickaxe';
 
-type CraftingResult =
+export type CraftingResult =
   | { contains: Block; amount: number }
   | { pickaxe: Pickaxe; amount: number }
   | { furnace: true; amount: number }
@@ -92,7 +85,7 @@ const Craft = () => {
     return null;
   };
 
-  const changeActiveBock = (direction: 'back' | 'forward') => {
+  const changeActiveBlock = (direction: 'back' | 'forward') => {
     const currentIndex = blockArray.indexOf(activeBlock);
     const newIndex =
       direction === 'back'
@@ -380,178 +373,28 @@ const Craft = () => {
       </div>
       <Safari openedLink="qalqa.com/mine">
         <div className={styles.webview}>
-          <div className={styles.clicker}>
-            <h2 className={styles.title}>
-              <AppearingText text="Mine" />
-            </h2>
-            <div className="grid grid-cols-[1fr_3fr_1fr] w-full">
-              <div className={styles['clicker-furnace']}>
-                <div className={styles['clicker-furnace-container']}>
-                  {furnace && (
-                    <img
-                      draggable="false"
-                      className={styles['clicker-furnace-img']}
-                      src={`/clicker_tools/furnace.webp`}
-                      alt="furnace"
-                    />
-                  )}
-                </div>
-              </div>
-              <div
-                onClick={handleClickBlock}
-                className={styles['clicker-block']}
-              >
-                <div
-                  className={styles['clicker-backdrop']}
-                  style={{
-                    backgroundSize: `${clickerGlowSize}%`,
-                  }}
-                >
-                  <img
-                    draggable="false"
-                    width={275}
-                    height={275}
-                    src={`/clicker_blocks/${activeBlock}.webp`}
-                    alt="block"
-                  />
-                </div>
-              </div>
-              <div className={styles['clicker-pickaxe']}>
-                <div className={styles['clicker-pickaxe-container']}>
-                  {pickaxe && (
-                    <img
-                      draggable="false"
-                      className={styles['clicker-pickaxe-img']}
-                      src={`/clicker_tools/${pickaxe}.webp`}
-                      alt={`${pickaxe} || no_pickaxe`}
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-          {blockArray.length > 1 && (
-            <div className="flex items-center justify-center">
-              <ul className={styles['actions-list']}>
-                <li
-                  onClick={() => changeActiveBock('back')}
-                  className={styles['actions-item']}
-                >
-                  <MacIconWrapper>
-                    <IoIosArrowBack />
-                  </MacIconWrapper>
-                </li>
-                <li
-                  onClick={() => changeActiveBock('forward')}
-                  className={styles['actions-item']}
-                >
-                  <MacIconWrapper>
-                    <IoIosArrowForward />
-                  </MacIconWrapper>
-                </li>
-              </ul>
-            </div>
-          )}
+          <CraftClicker
+            clickerGlowSize={clickerGlowSize}
+            activeBlock={activeBlock}
+            pickaxe={pickaxe}
+            furnace={furnace}
+            handleClickBlock={handleClickBlock}
+            changeActiveBlock={changeActiveBlock}
+            blockArray={blockArray}
+          />
         </div>
       </Safari>
       <Safari openedLink="qalqa.com/craft">
         <div className={styles.webview}>
-          <div className="flex justify-center">
-            <h2 className={styles.title}>
-              <AppearingText text="Craft" />
-            </h2>
-            <ul className={styles['actions-list']}>
-              <li className={styles['actions-item']}>
-                <MacIconWrapper>
-                  <IoBook />
-                </MacIconWrapper>
-              </li>
-            </ul>
-          </div>
-          <div className={styles['crafting-window']}>
-            <h3>Crafting Table</h3>
-            <div className={styles['crafting-area']}>
-              <div className={styles['crafting-table']}>
-                {craftingTable.map((row, rowIndex) => (
-                  <div className={styles['crafting-table-row']} key={rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <div
-                        onMouseDown={() =>
-                          placeSelectedItemOnCraftingTable(
-                            cellIndex,
-                            rowIndex,
-                            cell,
-                          )
-                        }
-                        onMouseEnter={(e) => {
-                          if (e.buttons === 1) {
-                            placeSelectedItemOnCraftingTable(
-                              cellIndex,
-                              rowIndex,
-                              cell,
-                            );
-                          }
-                        }}
-                        key={cellIndex}
-                      >
-                        {<CraftCell contains={cell.contains} />}
-                      </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              <FaLongArrowAltRight size={64} />
-              <div onClick={takeCraftedItem}>
-                {
-                  <CraftCell
-                    contains={
-                      'contains' in craftingResult
-                        ? craftingResult.contains
-                        : undefined
-                    }
-                    pickaxe={
-                      'pickaxe' in craftingResult
-                        ? craftingResult.pickaxe
-                        : undefined
-                    }
-                    furnace={
-                      'furnace' in craftingResult
-                        ? craftingResult.furnace
-                        : undefined
-                    }
-                    amount={
-                      'amount' in craftingResult
-                        ? craftingResult.amount
-                        : undefined
-                    }
-                  />
-                }
-              </div>
-            </div>
-            <h3>Inventory</h3>
-            <div className={styles.inventory}>
-              {inventory.map((row, rowIndex) => (
-                <div className={styles['inventory-row']} key={rowIndex}>
-                  {row.map((cell, cellIndex) => (
-                    <div
-                      onClick={() =>
-                        handleClickOnCellInInventory(cellIndex, rowIndex, cell)
-                      }
-                      key={cellIndex}
-                    >
-                      {
-                        <CraftCell
-                          isSelected={validateSelected(cellIndex, rowIndex)}
-                          contains={cell.contains}
-                          amount={cell.amount}
-                        />
-                      }
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
+          <CraftingArea
+            craftingTable={craftingTable}
+            inventory={inventory}
+            craftingResult={craftingResult}
+            placeSelectedItemOnCraftingTable={placeSelectedItemOnCraftingTable}
+            takeCraftedItem={takeCraftedItem}
+            handleClickOnCellInInventory={handleClickOnCellInInventory}
+            validateSelected={validateSelected}
+          />
         </div>
       </Safari>
     </div>
