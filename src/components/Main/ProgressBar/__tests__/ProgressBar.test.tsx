@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { useInView } from 'react-intersection-observer';
 import { MockInstance, vi } from 'vitest';
-import { ProgressBar } from './ProgressBar';
-import styles from './ProgressBar.module.scss';
+import { ProgressBar } from '../ProgressBar';
+import styles from '../ProgressBar.module.scss';
 
 class IntersectionObserver {
   observe = vi.fn();
