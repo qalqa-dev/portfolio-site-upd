@@ -12,7 +12,7 @@ import styles from './Dock.module.scss';
 const maxAdditionalSize = 5;
 
 export const Dock = () => {
-  const dockRef = useRef<HTMLDivElement>(null);
+  const dockRef = useRef<HTMLDivElement>(null!);
   const dispatch = useDispatch();
   const settingsState = useSelector(
     (state: RootState) => state.settings.settingsState,
@@ -21,34 +21,26 @@ export const Dock = () => {
   const location = useLocation();
 
   const handleAppHover = (ev: React.MouseEvent<HTMLLIElement>) => {
-    if (!dockRef.current) return;
-
+    const { left: iconPositionLeft, width: iconWidth } =
+      ev.currentTarget.getBoundingClientRect();
     const mousePosition = ev.clientX;
-    const iconPositionLeft = ev.currentTarget.getBoundingClientRect().left;
-    const iconWidth = ev.currentTarget.getBoundingClientRect().width;
 
     const cursorDistance = (mousePosition - iconPositionLeft) / iconWidth;
     const offsetPixels = scaleValue(
       cursorDistance,
       [0, 1],
-      [maxAdditionalSize * -1, maxAdditionalSize],
+      [-maxAdditionalSize, maxAdditionalSize],
     );
 
-    dockRef.current.style.setProperty(
-      '--dock-offset-left',
-      `${offsetPixels * -1}px`,
-    );
-
-    dockRef.current.style.setProperty(
-      '--dock-offset-right',
-      `${offsetPixels}px`,
-    );
+    const dockElement = dockRef.current;
+    dockElement.style.setProperty('--dock-offset-left', `${-offsetPixels}px`);
+    dockElement.style.setProperty('--dock-offset-right', `${offsetPixels}px`);
   };
 
   const getActiveTab = (path: string) => location.pathname === path;
 
   return (
-    <nav ref={dockRef} className={styles.dock}>
+    <nav ref={dockRef} className={styles.dock} data-testid="dock">
       <ul>
         <li className={styles.app} onMouseMove={handleAppHover}>
           <Link to="/">
