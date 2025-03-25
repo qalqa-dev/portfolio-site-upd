@@ -16,6 +16,7 @@ export const ProgressBar = ({ percentage }: ProgressBarProps) => {
       <div ref={ref} className={styles['progress-bar-container']}>
         <div
           className={styles['progress-bar']}
+          role="progressbar"
           style={{
             width: `${inView ? clampedPercentage : 0}%`,
             background: `linear-gradient(to right, var(--color-sky) 0%, var(--color-mauve) ${
