@@ -1,3 +1,11 @@
+import {
+  stackFrontendFrameworksData,
+  stackFrontendLanguagesData,
+} from '@/data/stackData';
+import {
+  StackFrontendFrameworksDataKeys,
+  StackFrontendLanguagesDataKeys,
+} from '@/types/stackDataEnum';
 import clsx from 'clsx';
 import { AsciiSkillBar, TermCursor, TermWrapper } from 'components';
 import { useEffect } from 'react';
@@ -8,6 +16,7 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
   useEffect(() => {
     document.title = 'qalqa/stack/fe';
   }, []);
+
   return (
     <>
       <section className={styles.stack}>
@@ -44,55 +53,43 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
             >
               <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
                 <AsciiSkillBar
-                  skillName="JavaScript"
-                  levelScore={85}
-                  affinityScore={50}
-                  usageScore={15}
-                  littleSummary="More like something I have to use when working with legacy code. But don't forget who we all owe it to!"
+                  {...stackFrontendLanguagesData[
+                    StackFrontendLanguagesDataKeys.JS
+                  ]}
                   imgName="js"
                 />
                 <AsciiSkillBar
-                  skillName="TypeScript"
-                  levelScore={90}
-                  affinityScore={100}
-                  usageScore={85}
-                  littleSummary="Is absolute goat. I can't live without it."
+                  {...stackFrontendLanguagesData[
+                    StackFrontendLanguagesDataKeys.TS
+                  ]}
                   imgName="ts"
                 />
               </div>
               <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
                 <AsciiSkillBar
-                  skillName="React"
-                  levelScore={90}
-                  affinityScore={80}
-                  usageScore={60}
-                  littleSummary="At the moment, my main framework is for its simplicity and flexibility. Virtual DOM - makes things"
+                  {...stackFrontendFrameworksData[
+                    StackFrontendFrameworksDataKeys.REACT
+                  ]}
                   imgName="react"
                 />
                 <AsciiSkillBar
-                  skillName="NextJs"
-                  levelScore={40}
-                  affinityScore={80}
-                  usageScore={20}
-                  littleSummary="It's a new tech that I'm learning, so not feel confident at it yet."
+                  {...stackFrontendFrameworksData[
+                    StackFrontendFrameworksDataKeys.NEXTJS
+                  ]}
                   imgName="nextjs"
                 />
               </div>
               <div className="flex flex-col gap-1 md:flex-row">
                 <AsciiSkillBar
-                  skillName="Angular"
-                  levelScore={70}
-                  affinityScore={50}
-                  usageScore={0}
-                  littleSummary="In the past, this was my main framework, but now it's too overloaded for my tasks."
+                  {...stackFrontendFrameworksData[
+                    StackFrontendFrameworksDataKeys.ANGULAR
+                  ]}
                   imgName="angular"
                 />
                 <AsciiSkillBar
-                  skillName="Vue"
-                  levelScore={50}
-                  affinityScore={50}
-                  usageScore={20}
-                  littleSummary="I had to learn it in university, there aren't many differences from react, mid so..."
+                  {...stackFrontendFrameworksData[
+                    StackFrontendFrameworksDataKeys.VUE
+                  ]}
                   imgName="vue"
                 />
               </div>

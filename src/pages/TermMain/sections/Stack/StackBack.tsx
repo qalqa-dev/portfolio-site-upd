@@ -1,3 +1,12 @@
+import {  stackBackendFrameworksData,
+  stackBackendLanguagesData,
+  stackBackendToolsData,
+} from '@/data/stackData';
+import {
+  StackBackendFrameworksDataKeys,
+  StackBackendLanguagesDataKeys,
+  StackBackendToolsDataKeys,
+} from '@/types/stackDataEnum';
 import clsx from 'clsx';
 import { AsciiSkillBar, TermCursor, TermWrapper } from 'components';
 import { useEffect } from 'react';
@@ -8,6 +17,7 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
   useEffect(() => {
     document.title = 'qalqa/stack/be';
   }, []);
+
   return (
     <>
       <section className={styles.stack}>
@@ -42,57 +52,43 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                     : Math.max(1 - (scroll - 5100) / 400, 0),
               }}
             >
-              <div className="flex flex-col md:flex-row gap-1 mb-1 md:mb-10">
+              <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
                 <AsciiSkillBar
-                  skillName="Python"
-                  levelScore={70}
-                  affinityScore={90}
-                  usageScore={50}
-                  littleSummary="I started learning it at school so far, but still it's my main BE lang"
+                  {...stackBackendLanguagesData[
+                    StackBackendLanguagesDataKeys.PYTHON
+                  ]}
                   imgName="python"
                 />
                 <AsciiSkillBar
-                  skillName="php"
-                  levelScore={40}
-                  affinityScore={30}
-                  usageScore={50}
-                  littleSummary="I mean it's allright, like... it's just php. A dirty syntax, but basically tolerable."
+                  {...stackBackendLanguagesData[
+                    StackBackendLanguagesDataKeys.PHP
+                  ]}
                   imgName="php"
                 />
               </div>
-              <div className="flex flex-col md:flex-row gap-1 mb-1 md:mb-10">
+              <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
                 <AsciiSkillBar
-                  skillName="django"
-                  levelScore={70}
-                  affinityScore={75}
-                  usageScore={75}
-                  littleSummary="A little bit overloaded, a little legacy too, but it's pretty good for my proposes"
+                  {...stackBackendFrameworksData[
+                    StackBackendFrameworksDataKeys.DJANGO
+                  ]}
                   imgName="django"
                 />
                 <AsciiSkillBar
-                  skillName="Laravel"
-                  levelScore={40}
-                  affinityScore={50}
-                  usageScore={25}
-                  littleSummary="Upgraded php, so more tolerable"
+                  {...stackBackendFrameworksData[
+                    StackBackendFrameworksDataKeys.LARAVEL
+                  ]}
                   imgName="laravel"
                 />
               </div>
-              <div className="flex flex-col md:flex-row gap-1 md:mb-10">
+              <div className="flex flex-col gap-1 md:flex-row">
                 <AsciiSkillBar
-                  skillName="PostgreSQL"
-                  levelScore={50}
-                  affinityScore={50}
-                  usageScore={80}
-                  littleSummary="Strongest SQL database with a lot of plugins, sPostgresql is the only one that I use besides sqlite"
+                  {...stackBackendToolsData[
+                    StackBackendToolsDataKeys.POSTGRESQL
+                  ]}
                   imgName="postgre"
                 />
                 <AsciiSkillBar
-                  skillName="Docker"
-                  levelScore={50}
-                  affinityScore={50}
-                  usageScore={80}
-                  littleSummary="Well, it's a docker, how am I going to deploy without it"
+                  {...stackBackendToolsData[StackBackendToolsDataKeys.DOCKER]}
                   imgName="docker"
                 />
               </div>

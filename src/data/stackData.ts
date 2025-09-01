@@ -23,7 +23,7 @@ export const stackFrontendFrameworksData: StackItem[] = [
     skillName: 'React',
     levelScore: 95,
     affinityScore: 80,
-    usageScore: 60,
+    usageScore: 80,
     littleSummary:
       'At the moment, my main framework is for its simplicity and flexibility. Virtual DOM - makes things',
   },
@@ -47,7 +47,7 @@ export const stackFrontendFrameworksData: StackItem[] = [
     skillName: 'Vue',
     levelScore: 50,
     affinityScore: 50,
-    usageScore: 20,
+    usageScore: 0,
     littleSummary:
       "I had to learn it in university, there aren't many differences from react, mid so...",
   },
@@ -98,17 +98,17 @@ export const stackFrontendToolsData: StackItem[] = [
 export const stackBackendLanguagesData: StackItem[] = [
   {
     skillName: 'Python',
-    levelScore: 70,
-    affinityScore: 90,
-    usageScore: 50,
+    levelScore: 45,
+    affinityScore: 100,
+    usageScore: 100,
     littleSummary:
       "I started learning it at school so far, but still it's my main BE lang",
   },
   {
     skillName: 'PHP',
-    levelScore: 40,
-    affinityScore: 30,
-    usageScore: 50,
+    levelScore: 30,
+    affinityScore: 20,
+    usageScore: 0,
     littleSummary:
       "I mean it's allright, like... it's just php. A dirty syntax, but basically tolerable.",
   },
@@ -117,47 +117,42 @@ export const stackBackendLanguagesData: StackItem[] = [
 export const stackBackendFrameworksData: StackItem[] = [
   {
     skillName: 'Django',
-    levelScore: 70,
-    affinityScore: 75,
-    usageScore: 75,
-    littleSummary: '',
+    levelScore: 30,
+    affinityScore: 100,
+    usageScore: 100,
+    littleSummary:
+      "A little bit overloaded, a little legacy too, but it's pretty good for my proposes",
   },
   {
     skillName: 'Laravel',
-    levelScore: 40,
-    affinityScore: 50,
-    usageScore: 25,
-    littleSummary: '',
+    levelScore: 30,
+    affinityScore: 30,
+    usageScore: 0,
+    littleSummary: 'Upgraded php, so more tolerable',
   },
 ];
 
 export const stackBackendToolsData: StackItem[] = [
   {
     skillName: 'Docker',
-    levelScore: 60,
-    affinityScore: 60,
-    usageScore: 0,
-    littleSummary: '',
+    levelScore: 40,
+    affinityScore: 100,
+    usageScore: 90,
+    littleSummary: "Well, it's a docker, how am I going to deploy without it",
   },
   {
     skillName: 'PosgreSQL',
-    levelScore: 65,
+    levelScore: 30,
     affinityScore: 100,
     usageScore: 100,
-    littleSummary: '',
+    littleSummary:
+      'Strongest SQL database with a lot of plugins, sPostgresql is the only one that I use besides sqlite',
   },
   {
     skillName: 'Redis',
     levelScore: 45,
     affinityScore: 100,
     usageScore: 100,
-    littleSummary: '',
-  },
-  {
-    skillName: 'MongoDb',
-    levelScore: 50,
-    affinityScore: 50,
-    usageScore: 0,
     littleSummary: '',
   },
 ];
