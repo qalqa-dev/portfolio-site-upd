@@ -1,5 +1,4 @@
-import {
-  stackFrontendFrameworksData,
+import {  stackFrontendFrameworksData,
   stackFrontendLanguagesData,
 } from '@/data/stackData';
 import {
@@ -72,26 +71,14 @@ export const StackFront = ({ scroll, scrollRange }: SectionsProps) => {
                   ]}
                   imgName="react"
                 />
-                <AsciiSkillBar
-                  {...stackFrontendFrameworksData[
-                    StackFrontendFrameworksDataKeys.NEXTJS
-                  ]}
-                  imgName="nextjs"
-                />
-              </div>
-              <div className="flex flex-col gap-1 md:flex-row">
-                <AsciiSkillBar
-                  {...stackFrontendFrameworksData[
-                    StackFrontendFrameworksDataKeys.ANGULAR
-                  ]}
-                  imgName="angular"
-                />
-                <AsciiSkillBar
-                  {...stackFrontendFrameworksData[
-                    StackFrontendFrameworksDataKeys.VUE
-                  ]}
-                  imgName="vue"
-                />
+                <div className="flex flex-col gap-1 md:flex-row">
+                  <AsciiSkillBar
+                    {...stackFrontendFrameworksData[
+                      StackFrontendFrameworksDataKeys.ANGULAR
+                    ]}
+                    imgName="angular"
+                  />
+                </div>
               </div>
             </div>
           )}

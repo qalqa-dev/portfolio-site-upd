@@ -2,7 +2,7 @@ import { StackItem } from 'types/StackItem';
 
 export const stackFrontendLanguagesData: StackItem[] = [
   {
-    skillName: 'JS',
+    skillName: 'JavaScript',
     levelScore: 85,
     affinityScore: 50,
     usageScore: 15,
@@ -21,11 +21,11 @@ export const stackFrontendLanguagesData: StackItem[] = [
 export const stackFrontendFrameworksData: StackItem[] = [
   {
     skillName: 'React',
-    levelScore: 95,
+    levelScore: 65,
     affinityScore: 80,
-    usageScore: 80,
+    usageScore: 10,
     littleSummary:
-      'At the moment, my main framework is for its simplicity and flexibility. Virtual DOM - makes things',
+      'At the moment i stopped using React, cause now i working with Angular on my startup. But I love it, and sometimes practice it',
   },
   {
     skillName: 'NextJs',
@@ -38,10 +38,10 @@ export const stackFrontendFrameworksData: StackItem[] = [
   {
     skillName: 'Angular',
     levelScore: 70,
-    affinityScore: 50,
-    usageScore: 0,
+    affinityScore: 70,
+    usageScore: 90,
     littleSummary:
-      "In the past, this was my main framework, but now it's too overloaded for my tasks.",
+      'Previously and now my main framework, now using it in my startup, ideal for complex tasks, but not for simple ones',
   },
   {
     skillName: 'Vue',
@@ -68,6 +68,14 @@ export const stackFrontendStateManagersData: StackItem[] = [
     affinityScore: 50,
     usageScore: 25,
     littleSummary: '',
+  },
+  {
+    skillName: 'NgRx',
+    levelScore: 90,
+    affinityScore: 80,
+    usageScore: 100,
+    littleSummary:
+      "It's a state management library that I'm learning, so not feel confident at it yet.",
   },
 ];
 
@@ -98,11 +106,10 @@ export const stackFrontendToolsData: StackItem[] = [
 export const stackBackendLanguagesData: StackItem[] = [
   {
     skillName: 'Python',
-    levelScore: 45,
+    levelScore: 30,
     affinityScore: 100,
     usageScore: 100,
-    littleSummary:
-      "I started learning it at school so far, but still it's my main BE lang",
+    littleSummary: 'Only language, that i know, besides JS.',
   },
   {
     skillName: 'PHP',
@@ -117,7 +124,7 @@ export const stackBackendLanguagesData: StackItem[] = [
 export const stackBackendFrameworksData: StackItem[] = [
   {
     skillName: 'Django',
-    levelScore: 30,
+    levelScore: 25,
     affinityScore: 100,
     usageScore: 100,
     littleSummary:
@@ -135,14 +142,14 @@ export const stackBackendFrameworksData: StackItem[] = [
 export const stackBackendToolsData: StackItem[] = [
   {
     skillName: 'Docker',
-    levelScore: 40,
+    levelScore: 45,
     affinityScore: 100,
     usageScore: 90,
     littleSummary: "Well, it's a docker, how am I going to deploy without it",
   },
   {
     skillName: 'PosgreSQL',
-    levelScore: 30,
+    levelScore: 22,
     affinityScore: 100,
     usageScore: 100,
     littleSummary:
@@ -158,11 +165,10 @@ export const stackBackendToolsData: StackItem[] = [
 ];
 
 export const currentStackFrontend: StackItem[] = [
-  stackFrontendLanguagesData[1],
-  stackFrontendFrameworksData[0],
-  stackFrontendFrameworksData[1],
-  stackFrontendStateManagersData[0],
-  ...stackFrontendToolsData.slice(0, stackFrontendToolsData.length - 1),
+  ...stackFrontendLanguagesData,
+  stackFrontendFrameworksData[2],
+  stackFrontendStateManagersData[2],
+  // ...stackFrontendToolsData.slice(0, stackFrontendToolsData.length - 1),
 ];
 
 export const currentStackBackend: StackItem[] = [

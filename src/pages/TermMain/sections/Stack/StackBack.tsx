@@ -60,24 +60,10 @@ export const StackBack = ({ scroll, scrollRange }: SectionsProps) => {
                   imgName="python"
                 />
                 <AsciiSkillBar
-                  {...stackBackendLanguagesData[
-                    StackBackendLanguagesDataKeys.PHP
-                  ]}
-                  imgName="php"
-                />
-              </div>
-              <div className="flex flex-col gap-1 mb-1 md:flex-row md:mb-10">
-                <AsciiSkillBar
                   {...stackBackendFrameworksData[
                     StackBackendFrameworksDataKeys.DJANGO
                   ]}
                   imgName="django"
-                />
-                <AsciiSkillBar
-                  {...stackBackendFrameworksData[
-                    StackBackendFrameworksDataKeys.LARAVEL
-                  ]}
-                  imgName="laravel"
                 />
               </div>
               <div className="flex flex-col gap-1 md:flex-row">
